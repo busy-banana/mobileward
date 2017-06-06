@@ -31,7 +31,7 @@ export default class Dashboard extends React.Component{
 				height: '150px',
 				fontSize: '40px',
 				fontWeight: 'normal',
-				lineHeight: '120px'
+				lineHeight: '120px',
 			}
 		}
 
