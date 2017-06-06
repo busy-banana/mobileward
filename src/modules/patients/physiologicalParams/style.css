@@ -1,0 +1,31 @@
+.physiologicalParams-container{
+	width: 100%;
+	height: 100%;
+	background: #333;
+}
+
+.xy-waveform{
+	width: 70%;
+	height: 22%;
+	overflow: hidden;
+	border-right: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+}
+
+.xy-waveform p{
+	color: #71F515;
+	font-size: 3em;
+	text-align: center;
+}
+.waveform-line{
+	margin-top: 20px;
+    margin-left: 20px;
+	position: relative;
+	left: 442px;
+	animation: moveToLeft 5s linear;
+}
+@keyframes moveToLeft{
+	from {left:666px;}
+	to {left: 442px;}
+}
+

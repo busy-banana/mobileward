@@ -1,0 +1,25 @@
+.navbar-title{
+	font-size: 50px;
+    line-height: 175px;
+    font-weight: normal;
+}
+
+.app-bar{
+	height: 170px;
+	background: #4642B6 !important;
+}
+
+.navigation-arrow-back{
+	width: 70px !important;
+	height: 70px !important;
+	padding: 32px;
+}
+
+.navigation-btn{
+	width: 140px !important;
+	height: 155px !important;
+}
+
+.app-bar div{
+	overflow: visible !important;
+}

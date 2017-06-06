@@ -1,0 +1,40 @@
+.login-header{
+	background-color: #4642B6;
+	height: 15%;
+}
+
+.login-title{
+    width: 100%;
+	font-size: 100px;
+    color: #fff;
+    margin-top: 65px;
+    text-align: center;
+    display: inline-block;
+}
+
+.login-portrait{
+  	width: 300px;
+  	height: 300px;
+	border-radius: 150px;
+	-moz-border-radius: 150px;
+	-webkit-border-radius: 150px;
+	box-shadow: 5px 5px 10px #aaa;
+	-moz-box-shadow: 5px 5px 10px #aaa; 
+	-webkit-box-shadow:  5px 5px 10px #aaa;
+}
+
+.login-img{
+	width: 300px;
+	margin: 80px auto;
+}
+
+.login-input div{
+    bottom: 40px !important;
+}
+
+
+
+
+
+
+

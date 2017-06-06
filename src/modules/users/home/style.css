@@ -1,0 +1,25 @@
+.select-field svg{
+	width: 80px !important;
+	height: 80px !important;
+	fill: #000 !important;
+	position: relative;
+    bottom: 30px;
+    right: 40px;
+}
+/*
+.date-picker{
+	background: red;
+}*/
+
+.bottom-navigation-item{
+	width: 33.3%;
+	max-width: none !important;
+}
+
+.bottom-navigation-item svg{
+    height: 60px !important;
+}
+
+.bottom-navigation-item div{
+    font-size: 30px !important;
+}

@@ -1,0 +1,12 @@
+.select-field svg{
+	width: 80px !important;
+	height: 80px !important;
+	fill: #000 !important;
+	position: relative;
+    bottom: 30px;
+    right: 40px;
+}
+/*
+.date-picker{
+	background: red;
+}*/

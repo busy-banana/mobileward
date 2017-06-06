@@ -1,0 +1,23 @@
+.bottom-navigation-item{
+	width: 33.3%;
+	max-width: none !important;
+}
+
+.bottom-navigation-item svg{
+    height: 60px !important;
+}
+
+.bottom-navigation-item div{
+    font-size: 30px !important;
+}
+
+.list-item svg{
+	width: 50px !important;
+	height: 50px !important;
+	top: 40px !important;
+    margin-right: 90px !important;
+}
+
+.list-item div{
+    margin-left: 80px;
+}
