@@ -31,7 +31,7 @@ export default class PhysiologicalParams extends React.Component{
 		//const testData = [{x: 0,value: 1},{x: 5,value: 2},{x: 10,value: 2.5},{x: 15,value: 2.3},{x: 20,value: 1.6}]
 		return(
 			<div className="physiologicalParams-container">
-				<NavBar title="生理参数" href="#/dashboard"/>
+				<NavBar title="生理参数" href="#/monitorTerminalList"/>
 
 				<div className="xy-waveform">
 					<p>血压</p>

@@ -48,7 +48,7 @@ export default class Dashboard extends React.Component{
 						className="list-item"
 						primaryText="生理参数" 
 						leftIcon={<PhotoLibrary />}
-						href="#/physiologicalParams"
+						href="#/monitorTerminalList"
 						style={style.listItemStyle}
 					/>
 					<Divider />

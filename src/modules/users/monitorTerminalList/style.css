@@ -1,0 +1,29 @@
+.list-item svg{
+	width: 50px !important;
+	height: 50px !important;
+	top: 40px !important;
+}
+
+.list-item div{
+    margin-left: 80px;
+}
+
+.terminal-type{
+	margin: 30px 0;
+}
+
+.terminal-type p{
+	font-size: 35px;
+    margin: 0 auto;
+    color: rgba(0, 0, 0, 0.5);
+    width: 80%;
+    text-align: center;
+}
+
+.user-name{
+	font-size: 40px;
+    float: right;
+    position: relative;
+    bottom: 102px;
+    right: 120px;
+}
