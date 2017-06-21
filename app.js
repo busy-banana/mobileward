@@ -20,9 +20,5 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.post('/api/login',login.verify);
 
-app.use('/login',function(){
-	res.send(login.html)
-});
-
 app.listen(3000);
 console.log('Server is running..');
