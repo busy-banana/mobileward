@@ -41171,6 +41171,10 @@ var _RaisedButton = __webpack_require__(220);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _dialog = __webpack_require__(1053);
+
+var _dialog2 = _interopRequireDefault(_dialog);
+
 __webpack_require__(1047);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -41187,10 +41191,20 @@ var Login = function (_React$Component) {
 	function Login(props) {
 		_classCallCheck(this, Login);
 
-		return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+		_this.state = {
+			open: true
+		};
+		return _this;
 	}
 
 	_createClass(Login, [{
+		key: 'tip',
+		value: function tip() {
+			alert('123');
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var style = {
@@ -41285,14 +41299,16 @@ var Login = function (_React$Component) {
 					label: '\u767B\u5F55',
 					style: style.loginBtn,
 					buttonStyle: style.btnStyle,
-					labelStyle: style.loginLabelStyle
+					labelStyle: style.loginLabelStyle,
+					onTouchTap: this.tip
 				}),
 				_react2.default.createElement(_RaisedButton2.default, {
 					href: '#/register',
 					label: '\u6CE8\u518C',
 					style: style.registerBtn,
 					labelStyle: style.registerLabelStyle
-				})
+				}),
+				_react2.default.createElement(_dialog2.default, null)
 			);
 		}
 	}]);
@@ -93466,6 +93482,128 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 1053 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Dialog = __webpack_require__(792);
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _FlatButton = __webpack_require__(798);
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+__webpack_require__(1055);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dialogs = function (_React$Component) {
+	_inherits(Dialogs, _React$Component);
+
+	function Dialogs(props) {
+		_classCallCheck(this, Dialogs);
+
+		var _this = _possibleConstructorReturn(this, (Dialogs.__proto__ || Object.getPrototypeOf(Dialogs)).call(this, props));
+
+		_this.state = {
+			open: true
+		};
+		_this.handleClose = _this.handleClose.bind(_this);
+		return _this;
+	}
+
+	_createClass(Dialogs, [{
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({ open: false });
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var actions = [_react2.default.createElement(_FlatButton2.default, {
+				label: '\u786E\u5B9A',
+				primary: true,
+				onTouchTap: this.handleClose
+			})];
+			return _react2.default.createElement(
+				_Dialog2.default,
+				{
+					title: '\u6CE8\u518C\u6210\u529F',
+					actions: actions,
+					modal: false,
+					open: this.state.open,
+					onRequestClose: this.handleClose
+				},
+				'\u6CE8\u518C\u6210\u529F'
+			);
+		}
+	}]);
+
+	return Dialogs;
+}(_react2.default.Component);
+
+exports.default = Dialogs;
+
+/***/ }),
+/* 1054 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 1055 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(1054);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(45)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../node_modules/css-loader/index.js!./style.css", function() {
+			var newContent = require("!!../../../node_modules/css-loader/index.js!./style.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

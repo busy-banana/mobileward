@@ -6,7 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
 
-//var login = require('./public/js/login'); 
+var login = require('./public/js/login'); 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -18,7 +18,11 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 
-//app.post('/api/login',login.verify);
+app.post('/api/login',login.verify);
+
+app.use('/login',function(){
+	res.send(login.html)
+});
 
 app.listen(3000);
 console.log('Server is running..');

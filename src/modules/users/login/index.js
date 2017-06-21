@@ -6,13 +6,20 @@ import IconButton from 'material-ui/IconButton';
 import Img from '../../../../public/images/doctor.jpg';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Dialogs from '../../../components/dialog';
 import './style.css';
 
 export default class Login extends React.Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			open: true,
+		};
 	}
 
+	tip(){
+		alert('123');
+	}
 	render(){
 		const style = {
 			loginContainer: {
@@ -94,6 +101,7 @@ export default class Login extends React.Component{
 					style={style.loginBtn}
 					buttonStyle={style.btnStyle}
 					labelStyle={style.loginLabelStyle}
+					onTouchTap={this.tip}
 				/>
 				<RaisedButton
 					href="#/register"
@@ -101,6 +109,7 @@ export default class Login extends React.Component{
 					style={style.registerBtn}
 					labelStyle={style.registerLabelStyle}
 				/>
+				<Dialogs/>
 			</div>
 		)
 	}
