@@ -17,9 +17,10 @@ export default class Login extends React.Component{
 		};
 	}
 
-	tip(){
-		alert('123');
-	}
+		tip(){
+			alert('123');
+		}	
+	
 	render(){
 		const style = {
 			loginContainer: {

@@ -43,7 +43,6 @@ export default class PhysiologicalParams extends React.Component{
 					</div>
 				</div>
 				
-
 				
 			</div>
 		)

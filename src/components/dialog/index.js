@@ -11,6 +11,7 @@ export default class Dialogs extends React.Component{
 		};
 		this.handleClose = this.handleClose.bind(this);
 	}
+
 	handleClose(){
     	this.setState({open: false});
   	};
@@ -30,8 +31,10 @@ export default class Dialogs extends React.Component{
 				modal={false}
 				open={this.state.open}
 				onRequestClose={this.handleClose}
+				contentClassName="dialog-content"
+				actionsContainerClassName="dialog-actionsContainer"
+				bodyClassName="dialog-body"
         	>
-        		注册成功
         	</Dialog>
 		)
 	}
