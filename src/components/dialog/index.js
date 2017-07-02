@@ -26,14 +26,13 @@ export default class Dialogs extends React.Component{
 	    ];
 		return (
 			<Dialog
-				title="注册成功"
+				title={this.props.message}
 				actions={actions}
-				modal={false}
+				modal={true}
 				open={this.state.open}
 				onRequestClose={this.handleClose}
 				contentClassName="dialog-content"
 				actionsContainerClassName="dialog-actionsContainer"
-				bodyClassName="dialog-body"
         	>
         	</Dialog>
 		)

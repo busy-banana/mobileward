@@ -41348,7 +41348,7 @@ var Login = function (_React$Component) {
 					style: style.registerBtn,
 					labelStyle: style.registerLabelStyle
 				}),
-				_react2.default.createElement(_dialog2.default, null)
+				_react2.default.createElement(_dialog2.default, { message: '\u6CE8\u518C\u6210\u529F' })
 			);
 		}
 	}]);
@@ -42313,14 +42313,13 @@ var Dialogs = function (_React$Component) {
 				onTouchTap: this.handleClose
 			})];
 			return _react2.default.createElement(_Dialog2.default, {
-				title: '\u6CE8\u518C\u6210\u529F',
+				title: this.props.message,
 				actions: actions,
-				modal: false,
+				modal: true,
 				open: this.state.open,
 				onRequestClose: this.handleClose,
 				contentClassName: 'dialog-content',
-				actionsContainerClassName: 'dialog-actionsContainer',
-				bodyClassName: 'dialog-body'
+				actionsContainerClassName: 'dialog-actionsContainer'
 			});
 		}
 	}]);
@@ -46555,7 +46554,7 @@ exports = module.exports = __webpack_require__(40)(undefined);
 
 
 // module
-exports.push([module.i, ".dialog-content{\n\twidth: 600px !important;\n}\n\n.dialog-content h3{\n\tfont-size: 50px !important;\n}\n\n.dialog-actionsContainer span{\n\tfont-size: 35px !important;\n}\n\n.dialog-body{\n\theight: 200px;\n}", ""]);
+exports.push([module.i, ".dialog-content{\n\twidth: 600px !important;\n}\n\n.dialog-content h3{\n\tfont-size: 50px !important;\n    width: 100%;\n    display: inline-block;\n    margin: 60px !important;\n}\n\n.dialog-actionsContainer span{\n\tfont-size: 35px !important;\n\tdisplay: inline-block;\n    margin: 0 50px 100px 0;\n}", ""]);
 
 // exports
 

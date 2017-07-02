@@ -110,7 +110,7 @@ export default class Login extends React.Component{
 					style={style.registerBtn}
 					labelStyle={style.registerLabelStyle}
 				/>
-				<Dialogs/>
+				<Dialogs message="注册成功"/>
 			</div>
 		)
 	}
