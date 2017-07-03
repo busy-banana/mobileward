@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../../../components/navbar';
 import Backup from 'material-ui/svg-icons/action/backup';
+import CastConnected from 'material-ui/svg-icons/hardware/cast-connected';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import './style.css';
@@ -32,7 +33,7 @@ export default class MonitorTerminalList extends React.Component{
 					<ListItem
 						className="list-item"
 						primaryText="设备列表" 
-						leftIcon={<Backup />}
+						leftIcon={<CastConnected />}
 						href="#/physiologicalParams"
 						style={style.listItemStyle}
 					/>
@@ -48,7 +49,7 @@ export default class MonitorTerminalList extends React.Component{
 					<ListItem
 						className="list-item"
 						primaryText="设备列表" 
-						leftIcon={<Backup />}
+						leftIcon={<CastConnected />}
 						href="#/physiologicalParams"
 						style={style.listItemStyle}
 					/>
@@ -57,7 +58,7 @@ export default class MonitorTerminalList extends React.Component{
 					<ListItem
 						className="list-item"
 						primaryText="设备列表" 
-						leftIcon={<Backup />}
+						leftIcon={<CastConnected />}
 						href="#/physiologicalParams"
 						style={style.listItemStyle}
 					/>
@@ -73,7 +74,7 @@ export default class MonitorTerminalList extends React.Component{
 					<ListItem
 						className="list-item"
 						primaryText="设备列表" 
-						leftIcon={<Backup />}
+						leftIcon={<CastConnected />}
 						href="#/physiologicalParams"
 						style={style.listItemStyle}
 					/>

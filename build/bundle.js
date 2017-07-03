@@ -41234,8 +41234,10 @@ var Login = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 
 		_this.state = {
-			open: true
+			open: false,
+			message: "注册成功"
 		};
+		_this.handleClose = _this.handleClose.bind(_this);
 		return _this;
 	}
 
@@ -41243,6 +41245,13 @@ var Login = function (_React$Component) {
 		key: 'tip',
 		value: function tip() {
 			alert('123');
+		}
+	}, {
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({
+				open: false
+			});
 		}
 	}, {
 		key: 'render',
@@ -41348,7 +41357,11 @@ var Login = function (_React$Component) {
 					style: style.registerBtn,
 					labelStyle: style.registerLabelStyle
 				}),
-				_react2.default.createElement(_dialog2.default, { message: '\u6CE8\u518C\u6210\u529F' })
+				_react2.default.createElement(_dialog2.default, {
+					message: this.state.message,
+					onTouchTap: this.handleClose,
+					open: this.state.open
+				})
 			);
 		}
 	}]);
@@ -41562,6 +41575,10 @@ var _backup = __webpack_require__(839);
 
 var _backup2 = _interopRequireDefault(_backup);
 
+var _castConnected = __webpack_require__(1059);
+
+var _castConnected2 = _interopRequireDefault(_castConnected);
+
 var _List = __webpack_require__(218);
 
 var _Divider = __webpack_require__(216);
@@ -41619,7 +41636,7 @@ var MonitorTerminalList = function (_React$Component) {
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
 						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
 						href: '#/physiologicalParams',
 						style: style.listItemStyle
 					}),
@@ -41646,7 +41663,7 @@ var MonitorTerminalList = function (_React$Component) {
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
 						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
 						href: '#/physiologicalParams',
 						style: style.listItemStyle
 					}),
@@ -41658,7 +41675,7 @@ var MonitorTerminalList = function (_React$Component) {
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
 						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
 						href: '#/physiologicalParams',
 						style: style.listItemStyle
 					}),
@@ -41685,7 +41702,7 @@ var MonitorTerminalList = function (_React$Component) {
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
 						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
 						href: '#/physiologicalParams',
 						style: style.listItemStyle
 					}),
@@ -41774,26 +41791,6 @@ var _navbar = __webpack_require__(127);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
-var _person = __webpack_require__(119);
-
-var _person2 = _interopRequireDefault(_person);
-
-var _personOutline = __webpack_require__(226);
-
-var _personOutline2 = _interopRequireDefault(_personOutline);
-
-var _lockOpen = __webpack_require__(224);
-
-var _lockOpen2 = _interopRequireDefault(_lockOpen);
-
-var _lockOutline = __webpack_require__(378);
-
-var _lockOutline2 = _interopRequireDefault(_lockOutline);
-
-var _list = __webpack_require__(377);
-
-var _list2 = _interopRequireDefault(_list);
-
 var _TextField = __webpack_require__(118);
 
 var _TextField2 = _interopRequireDefault(_TextField);
@@ -41801,6 +41798,18 @@ var _TextField2 = _interopRequireDefault(_TextField);
 var _RaisedButton = __webpack_require__(220);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _SelectField = __webpack_require__(812);
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _MenuItem = __webpack_require__(807);
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _DatePicker = __webpack_require__(794);
+
+var _DatePicker2 = _interopRequireDefault(_DatePicker);
 
 __webpack_require__(1053);
 
@@ -41811,6 +41820,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/*import Person from 'material-ui/svg-icons/social/person';
+import PersonOutline from 'material-ui/svg-icons/social/person-outline';
+import LockOpen from 'material-ui/svg-icons/action/lock-open';
+import LockOutline from 'material-ui/svg-icons/action/lock-outline';
+import CreditCard from 'material-ui/svg-icons/action/credit-card';
+import Telephone from 'material-ui/svg-icons/action/settings-phone';
+import MobileTelephone from 'material-ui/svg-icons/hardware/phone-iphone';
+import People from 'material-ui/svg-icons/social/people-outline';
+import BubbleChart from 'material-ui/svg-icons/editor/bubble-chart';
+import Email from 'material-ui/svg-icons/communication/email';
+import ContactMail from 'material-ui/svg-icons/communication/contact-mail';
+import List from 'material-ui/svg-icons/action/list';*/
+
 
 var Register = function (_React$Component) {
 	_inherits(Register, _React$Component);
@@ -41818,10 +41840,30 @@ var Register = function (_React$Component) {
 	function Register(props) {
 		_classCallCheck(this, Register);
 
-		return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
+
+		_this.state = {
+			value: null,
+			birthday: null
+		};
+		_this.handleSelectFieldChange = _this.handleSelectFieldChange.bind(_this);
+		_this.handleDateChange = _this.handleDateChange.bind(_this);
+		return _this;
 	}
 
 	_createClass(Register, [{
+		key: 'handleSelectFieldChange',
+		value: function handleSelectFieldChange(event, index, value) {
+			this.setState({ value: value });
+		}
+	}, {
+		key: 'handleDateChange',
+		value: function handleDateChange(event, date) {
+			this.setState({
+				birthday: date
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var style = {
@@ -41836,16 +41878,16 @@ var Register = function (_React$Component) {
 					marginTop: '100px'
 				},
 				inputContainer: {
-					width: '89%',
+					width: '90%',
 					height: '100%',
 					fontSize: '35px',
-					float: 'right'
+					left: '50px'
 				},
-				svgIcon: {
-					width: '7%',
-					height: '100px',
-					marginLeft: '15px'
-				},
+				/*svgIcon: {
+    	width: '7%',
+       	height: '100px',
+    	marginLeft: '15px'
+    },*/
 				registerBtn: {
 					width: '80%',
 					height: '100px',
@@ -41866,9 +41908,16 @@ var Register = function (_React$Component) {
 				menuItemStyle: {
 					fontSize: '40px',
 					padding: '40px 0'
+				},
+				dateInputContainer: {
+					width: '90%',
+					height: '100%',
+					fontSize: '35px',
+					float: 'right',
+					lineHeight: '100px',
+					left: '10px'
 				}
 			};
-
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container' },
@@ -41876,7 +41925,6 @@ var Register = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ style: style.registerFirstInput },
-					_react2.default.createElement(_personOutline2.default, { style: style.svgIcon }),
 					_react2.default.createElement(_TextField2.default, {
 						floatingLabelText: '\u7528\u6237\u540D(\u5FC5\u586B)',
 						floatingLabelFocusStyle: style.labelFocusStyle,
@@ -41886,7 +41934,6 @@ var Register = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ style: style.registerContainer },
-					_react2.default.createElement(_lockOpen2.default, { style: style.svgIcon }),
 					_react2.default.createElement(_TextField2.default, {
 						type: 'password',
 						floatingLabelText: '\u5BC6\u7801(\u5FC5\u586B\uFF0C\u533A\u5206\u5927\u5C0F\u5199)',
@@ -41897,7 +41944,6 @@ var Register = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ style: style.registerContainer },
-					_react2.default.createElement(_lockOutline2.default, { style: style.svgIcon }),
 					_react2.default.createElement(_TextField2.default, {
 						type: 'password',
 						floatingLabelText: '\u786E\u8BA4\u5BC6\u7801',
@@ -41908,9 +41954,98 @@ var Register = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ style: style.registerContainer },
-					_react2.default.createElement(_person2.default, { style: style.svgIcon }),
 					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u6635\u79F0',
+						floatingLabelText: '\u59D3\u540D(\u5FC5\u586B)',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(
+						_SelectField2.default,
+						{
+							className: 'select-field',
+							floatingLabelText: '\u6027\u522B(\u5FC5\u9009)',
+							floatingLabelStyle: style.labelFocusStyle,
+							style: style.inputContainer,
+							menuItemStyle: style.menuItemStyle,
+							value: this.state.value,
+							onChange: this.handleSelectFieldChange
+						},
+						_react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '\u7537' }),
+						_react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '\u5973' })
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u8BC1\u4EF6\u7C7B\u578B',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u8BC1\u4EF6\u53F7\u7801',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u56FA\u5B9A\u7535\u8BDD',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u624B\u673A',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u7535\u5B50\u90AE\u7BB1',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u5FAE\u4FE1\u53F7',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u5730\u5740',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u90AE\u653F\u7F16\u7801',
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer
 					})
@@ -41923,6 +42058,18 @@ var Register = function (_React$Component) {
 					labelStyle: style.registerLabelStyle
 				})
 			);
+
+			/*<div style={style.registerContainer}>
+   	<DatePicker
+   		hintText="出生日期(必填)"
+   		autoOk={true}
+   		cancelLabel='取消'
+   		value={this.state.birthday}
+   		onChange={this.handleDateChange}
+   		textFieldStyle={style.dateInputContainer}
+   	/>
+   </div>
+   */
 		}
 	}]);
 
@@ -42290,34 +42437,22 @@ var Dialogs = function (_React$Component) {
 	function Dialogs(props) {
 		_classCallCheck(this, Dialogs);
 
-		var _this = _possibleConstructorReturn(this, (Dialogs.__proto__ || Object.getPrototypeOf(Dialogs)).call(this, props));
-
-		_this.state = {
-			open: true
-		};
-		_this.handleClose = _this.handleClose.bind(_this);
-		return _this;
+		return _possibleConstructorReturn(this, (Dialogs.__proto__ || Object.getPrototypeOf(Dialogs)).call(this, props));
 	}
 
 	_createClass(Dialogs, [{
-		key: 'handleClose',
-		value: function handleClose() {
-			this.setState({ open: false });
-		}
-	}, {
 		key: 'render',
 		value: function render() {
 			var actions = [_react2.default.createElement(_FlatButton2.default, {
 				label: '\u786E\u5B9A',
 				primary: true,
-				onTouchTap: this.handleClose
+				onTouchTap: this.props.onTouchTap
 			})];
 			return _react2.default.createElement(_Dialog2.default, {
 				title: this.props.message,
 				actions: actions,
 				modal: true,
-				open: this.state.open,
-				onRequestClose: this.handleClose,
+				open: this.props.open,
 				contentClassName: 'dialog-content',
 				actionsContainerClassName: 'dialog-actionsContainer'
 			});
@@ -93602,6 +93737,47 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 1056 */,
+/* 1057 */,
+/* 1058 */,
+/* 1059 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = __webpack_require__(23);
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = __webpack_require__(20);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HardwareCastConnected = function HardwareCastConnected(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm18-7H5v1.63c3.96 1.28 7.09 4.41 8.37 8.37H19V7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z' })
+  );
+};
+HardwareCastConnected = (0, _pure2.default)(HardwareCastConnected);
+HardwareCastConnected.displayName = 'HardwareCastConnected';
+HardwareCastConnected.muiName = 'SvgIcon';
+
+exports.default = HardwareCastConnected;
 
 /***/ })
 /******/ ]);

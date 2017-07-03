@@ -13,13 +13,21 @@ export default class Login extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			open: true,
+			open: false,
+			message: "注册成功",
 		};
+		this.handleClose = this.handleClose.bind(this);
 	}
 
-		tip(){
-			alert('123');
-		}	
+	tip(){
+		alert('123');
+	}	
+
+	handleClose(){
+		this.setState({
+			open: false,
+		});
+	}	
 	
 	render(){
 		const style = {
@@ -110,7 +118,11 @@ export default class Login extends React.Component{
 					style={style.registerBtn}
 					labelStyle={style.registerLabelStyle}
 				/>
-				<Dialogs message="注册成功"/>
+				<Dialogs
+					message={this.state.message}
+					onTouchTap={this.handleClose}
+					open={this.state.open}
+				/>
 			</div>
 		)
 	}
