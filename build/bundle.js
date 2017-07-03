@@ -41235,23 +41235,55 @@ var Login = function (_React$Component) {
 
 		_this.state = {
 			open: false,
-			message: "注册成功"
+			message: "注册成功",
+			username: "",
+			password: ""
 		};
 		_this.handleClose = _this.handleClose.bind(_this);
+		_this.login = _this.login.bind(_this);
+		_this.handleUsernameChange = _this.handleUsernameChange.bind(_this);
+		_this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
 		return _this;
 	}
 
 	_createClass(Login, [{
-		key: 'tip',
-		value: function tip() {
-			alert('123');
-		}
-	}, {
 		key: 'handleClose',
 		value: function handleClose() {
-			this.setState({
-				open: false
-			});
+			this.setState({ open: false });
+		}
+	}, {
+		key: 'handleUsernameChange',
+		value: function handleUsernameChange(event, value) {
+			this.setState({ username: value });
+		}
+	}, {
+		key: 'handlePasswordChange',
+		value: function handlePasswordChange(event, value) {
+			this.setState({ password: value });
+		}
+	}, {
+		key: 'login',
+		value: function login() {
+			if (this.state.username && this.state.password) {
+				fetch('/api/login', {
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						username: this.state.username,
+						password: this.state.password
+					})
+				}).then(function (res) {
+					res.json().then(function (data) {
+						console.log(data);
+					});
+				}).catch(function (err) {
+					return console.log("Fetch错误:" + err);
+				});
+			} else {
+				this.setState({ open: true, message: "用户名和密码不能为空" });
+			}
 		}
 	}, {
 		key: 'render',
@@ -41327,7 +41359,8 @@ var Login = function (_React$Component) {
 						floatingLabelText: '\u7528\u6237\u540D',
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
-						className: 'login-input'
+						className: 'login-input',
+						onChange: this.handleUsernameChange
 					}),
 					_react2.default.createElement('br', null)
 				),
@@ -41340,16 +41373,16 @@ var Login = function (_React$Component) {
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						type: 'password',
 						style: style.inputContainer,
-						className: 'login-input'
+						className: 'login-input',
+						onChange: this.handlePasswordChange
 					})
 				),
 				_react2.default.createElement(_RaisedButton2.default, {
-					href: '#/dashboard',
 					label: '\u767B\u5F55',
 					style: style.loginBtn,
 					buttonStyle: style.btnStyle,
 					labelStyle: style.loginLabelStyle,
-					onTouchTap: this.tip
+					onTouchTap: this.login
 				}),
 				_react2.default.createElement(_RaisedButton2.default, {
 					href: '#/register',
@@ -46689,7 +46722,7 @@ exports = module.exports = __webpack_require__(40)(undefined);
 
 
 // module
-exports.push([module.i, ".dialog-content{\n\twidth: 600px !important;\n}\n\n.dialog-content h3{\n\tfont-size: 50px !important;\n    width: 100%;\n    display: inline-block;\n    margin: 60px !important;\n}\n\n.dialog-actionsContainer span{\n\tfont-size: 35px !important;\n\tdisplay: inline-block;\n    margin: 0 50px 100px 0;\n}", ""]);
+exports.push([module.i, ".dialog-content{\n\twidth: 600px !important;\n}\n\n.dialog-content h3{\n\tfont-size: 45px !important;\n    width: 100%;\n    display: inline-block;\n\ttext-align: center;\n    padding: 24px 0 !important;\n    margin: 60px 0 !important;\n}\n\n.dialog-actionsContainer span{\n\tfont-size: 35px !important;\n\tdisplay: inline-block;\n    margin: 0 50px 100px 0;\n}", ""]);
 
 // exports
 

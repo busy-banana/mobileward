@@ -15,19 +15,51 @@ export default class Login extends React.Component{
 		this.state = {
 			open: false,
 			message: "注册成功",
+			username: "",
+			password: ""
 		};
 		this.handleClose = this.handleClose.bind(this);
+		this.login = this.login.bind(this);
+		this.handleUsernameChange = this.handleUsernameChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
-	tip(){
-		alert('123');
-	}	
-
 	handleClose(){
-		this.setState({
-			open: false,
-		});
-	}	
+		this.setState({open: false});
+	}
+
+	handleUsernameChange(event,value){
+		this.setState({username: value});
+	}
+
+	handlePasswordChange(event,value){
+		this.setState({password: value});
+	}
+
+	login(){
+		if(this.state.username && this.state.password){
+			fetch('/api/login',{
+				method: 'post',
+				headers: {
+			    	'Content-Type': 'application/json'
+			  	},
+			  	body: JSON.stringify({
+			    	username: this.state.username,
+			    	password: this.state.password,
+			  	})
+			}).then((res) => {
+					res.json().then(
+						(data) => {
+							console.log(data);
+						}
+					)
+			}).catch(
+				(err) => console.log("Fetch错误:"+err)
+			)
+		}else{
+			this.setState({open: true, message: "用户名和密码不能为空"});
+		}
+	}
 	
 	render(){
 		const style = {
@@ -91,6 +123,7 @@ export default class Login extends React.Component{
 						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
 						className="login-input"
+						onChange={this.handleUsernameChange}
 					/>
 					<br/>
 				</div>
@@ -102,15 +135,15 @@ export default class Login extends React.Component{
 						type="password"
 						style={style.inputContainer}
 						className="login-input"
+						onChange={this.handlePasswordChange}
 					/>
 				</div>
 				<RaisedButton
-					href="#/dashboard"
 					label="登录"
 					style={style.loginBtn}
 					buttonStyle={style.btnStyle}
 					labelStyle={style.loginLabelStyle}
-					onTouchTap={this.tip}
+					onTouchTap={this.login}
 				/>
 				<RaisedButton
 					href="#/register"
