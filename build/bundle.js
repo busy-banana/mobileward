@@ -41264,6 +41264,7 @@ var Login = function (_React$Component) {
 	}, {
 		key: 'login',
 		value: function login() {
+			console.log(this.state.password);
 			if (this.state.username && this.state.password) {
 				fetch('/api/login', {
 					method: 'post',

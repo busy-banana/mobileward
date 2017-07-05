@@ -37,6 +37,7 @@ export default class Login extends React.Component{
 	}
 
 	login(){
+		console.log(this.state.password);
 		if(this.state.username && this.state.password){
 			fetch('/api/login',{
 				method: 'post',
