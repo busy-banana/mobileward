@@ -11,12 +11,23 @@ export default class Register extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
+			disabled: true,
 			sex : null,
 			birthday: null,
 			username: '',
 			password: '',
 			confirmPwd: '',
 			name: '',
+			nameErrorText: '',
+			usernameErrorText: '',
+			pwdErrorText: '',
+			confirmPwdErrorText: '',
+			telephoneErrorText: '',
+			mobilePhoneErrorText: '',
+			emailErrorText: '',
+			weChatErrorText: '',
+			addressErrorText: '',
+			postcodeErrorText: '',
 			/*certificateType: null,
 			certificateNum: null,*/
 			telephone: null,
@@ -45,24 +56,58 @@ export default class Register extends React.Component{
 		this.register = this.register.bind(this);
 	}
 
+	handleUsernameChange(event, value){
+		if(!/^[a-zA-Z][a-zA-Z0-9_]{3,}$/.test(value) || value.length > 20){
+			this.setState({usernameErrorText: '4~20个字符(字母、数字、下划线)，以字母开头'});
+		}else{
+			this.setState({
+				usernameErrorText: '',
+				username: value
+			});
+		}
+	}
+
 	handleSexChange(event, index, value){
-		this.setState({sex: value});
+		this.setState({
+			sex: value,
+		});
+
 	}
 
 	handleBirthdayChange(event, value){
 		this.setState({birthday: value});
 	}
 
-	handleUsernameChange(event, value){
-		this.setState({username: value});
-	}
-
 	handlePasswordChange(event, value){
-		this.setState({password: value});
+		if(!/\S{6,}$/.test(value) || value.length > 20){
+			this.setState({pwdErrorText: '6~20个字符，区分大小写'});
+		}else if(value != this.state.confirmPwd){
+			this.setState({
+				pwdErrorText: '',
+				confirmPwdErrorText: '两次输入密码不一致',
+				password: value
+			});
+		}else{
+			this.setState({
+				pwdErrorText: '',
+				confirmPwdErrorText: '',
+				password: value
+			});
+		}
 	}
 
 	handleConfirmPwdChange(event, value){
-		this.setState({confirmPwd: value});
+		if(value != this.state.password){
+			this.setState({
+				confirmPwdErrorText: '两次输入密码不一致',
+				confirmPwd: value
+			});
+		}else{
+			this.setState({
+				confirmPwdErrorText: '',
+				confirmPwd: value
+			});
+		}
 	}
 
 	handleNameChange(event, value){
@@ -160,7 +205,6 @@ export default class Register extends React.Component{
 	}
 
 	render(){
-		console.log(this.state.registerDate);
 		const style = {
 			registerContainer: {
 	   			width: '100%',
@@ -223,7 +267,7 @@ export default class Register extends React.Component{
 						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleUsernameChange}
-          				errorText="asdad"
+          				errorText={this.state.usernameErrorText}
 					/>
 				</div>
 
@@ -234,6 +278,7 @@ export default class Register extends React.Component{
 						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handlePasswordChange}
+          				errorText={this.state.pwdErrorText}
 					/>
 				</div>
 
@@ -244,6 +289,7 @@ export default class Register extends React.Component{
 						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleConfirmPwdChange}
+          				errorText={this.state.confirmPwdErrorText}
 					/>
 				</div>
 
@@ -263,7 +309,7 @@ export default class Register extends React.Component{
 						floatingLabelStyle={style.labelFocusStyle}
 						style={style.inputContainer}
 						menuItemStyle={style.menuItemStyle}
-						value={this.state.value}
+						value={this.state.sex}
           				onChange={this.handleSexChange}
 					>
 						<MenuItem value={1} primaryText="男" />
@@ -331,6 +377,7 @@ export default class Register extends React.Component{
 					buttonStyle={style.btnStyle}
 					labelStyle={style.registerLabelStyle}
 					onTouchTap={this.register}
+					disabled={this.state.disabled}
 				/>
 			</div>
 		)

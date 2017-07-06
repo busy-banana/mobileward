@@ -41853,12 +41853,23 @@ var Register = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 
 		_this.state = {
+			disabled: true,
 			sex: null,
 			birthday: null,
 			username: '',
 			password: '',
 			confirmPwd: '',
 			name: '',
+			nameErrorText: '',
+			usernameErrorText: '',
+			pwdErrorText: '',
+			confirmPwdErrorText: '',
+			telephoneErrorText: '',
+			mobilePhoneErrorText: '',
+			emailErrorText: '',
+			weChatErrorText: '',
+			addressErrorText: '',
+			postcodeErrorText: '',
 			/*certificateType: null,
    certificateNum: null,*/
 			telephone: null,
@@ -41889,9 +41900,23 @@ var Register = function (_React$Component) {
 	}
 
 	_createClass(Register, [{
+		key: 'handleUsernameChange',
+		value: function handleUsernameChange(event, value) {
+			if (!/^[a-zA-Z][a-zA-Z0-9_]{3,}$/.test(value) || value.length > 20) {
+				this.setState({ usernameErrorText: '4~20个字符(字母、数字、下划线)，以字母开头' });
+			} else {
+				this.setState({
+					usernameErrorText: '',
+					username: value
+				});
+			}
+		}
+	}, {
 		key: 'handleSexChange',
 		value: function handleSexChange(event, index, value) {
-			this.setState({ sex: value });
+			this.setState({
+				sex: value
+			});
 		}
 	}, {
 		key: 'handleBirthdayChange',
@@ -41899,19 +41924,38 @@ var Register = function (_React$Component) {
 			this.setState({ birthday: value });
 		}
 	}, {
-		key: 'handleUsernameChange',
-		value: function handleUsernameChange(event, value) {
-			this.setState({ username: value });
-		}
-	}, {
 		key: 'handlePasswordChange',
 		value: function handlePasswordChange(event, value) {
-			this.setState({ password: value });
+			if (!/\S{6,}$/.test(value) || value.length > 20) {
+				this.setState({ pwdErrorText: '6~20个字符，区分大小写' });
+			} else if (value != this.state.confirmPwd) {
+				this.setState({
+					pwdErrorText: '',
+					confirmPwdErrorText: '两次输入密码不一致',
+					password: value
+				});
+			} else {
+				this.setState({
+					pwdErrorText: '',
+					confirmPwdErrorText: '',
+					password: value
+				});
+			}
 		}
 	}, {
 		key: 'handleConfirmPwdChange',
 		value: function handleConfirmPwdChange(event, value) {
-			this.setState({ confirmPwd: value });
+			if (value != this.state.password) {
+				this.setState({
+					confirmPwdErrorText: '两次输入密码不一致',
+					confirmPwd: value
+				});
+			} else {
+				this.setState({
+					confirmPwdErrorText: '',
+					confirmPwd: value
+				});
+			}
 		}
 	}, {
 		key: 'handleNameChange',
@@ -42017,7 +42061,6 @@ var Register = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			console.log(this.state.registerDate);
 			var style = {
 				registerContainer: {
 					width: '100%',
@@ -42082,7 +42125,7 @@ var Register = function (_React$Component) {
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
 						onChange: this.handleUsernameChange,
-						errorText: 'asdad'
+						errorText: this.state.usernameErrorText
 					})
 				),
 				_react2.default.createElement(
@@ -42093,7 +42136,8 @@ var Register = function (_React$Component) {
 						floatingLabelText: '\u5BC6\u7801(\u5FC5\u586B\uFF0C\u533A\u5206\u5927\u5C0F\u5199)',
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
-						onChange: this.handlePasswordChange
+						onChange: this.handlePasswordChange,
+						errorText: this.state.pwdErrorText
 					})
 				),
 				_react2.default.createElement(
@@ -42104,7 +42148,8 @@ var Register = function (_React$Component) {
 						floatingLabelText: '\u786E\u8BA4\u5BC6\u7801',
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
-						onChange: this.handleConfirmPwdChange
+						onChange: this.handleConfirmPwdChange,
+						errorText: this.state.confirmPwdErrorText
 					})
 				),
 				_react2.default.createElement(
@@ -42128,7 +42173,7 @@ var Register = function (_React$Component) {
 							floatingLabelStyle: style.labelFocusStyle,
 							style: style.inputContainer,
 							menuItemStyle: style.menuItemStyle,
-							value: this.state.value,
+							value: this.state.sex,
 							onChange: this.handleSexChange
 						},
 						_react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '\u7537' }),
@@ -42200,7 +42245,8 @@ var Register = function (_React$Component) {
 					style: style.registerBtn,
 					buttonStyle: style.btnStyle,
 					labelStyle: style.registerLabelStyle,
-					onTouchTap: this.register
+					onTouchTap: this.register,
+					disabled: this.state.disabled
 				})
 			);
 			/*<div style={style.registerContainer}>
