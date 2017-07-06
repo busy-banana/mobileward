@@ -22,12 +22,6 @@ export default class Register extends React.Component{
 			usernameErrorText: '',
 			pwdErrorText: '',
 			confirmPwdErrorText: '',
-			telephoneErrorText: '',
-			mobilePhoneErrorText: '',
-			emailErrorText: '',
-			weChatErrorText: '',
-			addressErrorText: '',
-			postcodeErrorText: '',
 			/*certificateType: null,
 			certificateNum: null,*/
 			telephone: null,
@@ -111,7 +105,14 @@ export default class Register extends React.Component{
 	}
 
 	handleNameChange(event, value){
-		this.setState({name: value});
+		if(!/^[\u4e00-\u9fa5]{2,6}$/.test(value)){
+			this.setState({nameErrorText: '请填写正确的中文名'});
+		}else{
+			this.setState({
+				nameErrorText: '',
+				name: value
+			});
+		}
 	}
 
 	/*handleCertificateTypeChange(event, value){
@@ -204,6 +205,11 @@ export default class Register extends React.Component{
 
 	}
 
+//生成用户序列号
+	getRandomSerialNum(){
+		return Math.floor(Math.random() * 10000000000);
+	}
+
 	render(){
 		const style = {
 			registerContainer: {
@@ -222,11 +228,6 @@ export default class Register extends React.Component{
 	    		fontSize: '35px',
 	    		left: '50px',
 			},
-			/*svgIcon: {
-				width: '7%',
-		    	height: '100px',
-				marginLeft: '15px'
-			},*/
 			registerBtn: {
 				width: '80%',
 				height: '100px',
@@ -255,6 +256,10 @@ export default class Register extends React.Component{
 	    		float: 'right',
 	    		lineHeight: '100px',
 	    		left: '10px'
+			},
+			errorTextStyle: {
+				fontSize: '35px',
+				marginTop: '10px'
 			}
 		};
 		return (
@@ -268,6 +273,7 @@ export default class Register extends React.Component{
 						style={style.inputContainer}
           				onChange={this.handleUsernameChange}
           				errorText={this.state.usernameErrorText}
+          				errorStyle={style.errorTextStyle}
 					/>
 				</div>
 
@@ -279,6 +285,7 @@ export default class Register extends React.Component{
 						style={style.inputContainer}
           				onChange={this.handlePasswordChange}
           				errorText={this.state.pwdErrorText}
+          				errorStyle={style.errorTextStyle}
 					/>
 				</div>
 
@@ -290,6 +297,7 @@ export default class Register extends React.Component{
 						style={style.inputContainer}
           				onChange={this.handleConfirmPwdChange}
           				errorText={this.state.confirmPwdErrorText}
+          				errorStyle={style.errorTextStyle}
 					/>
 				</div>
 
@@ -299,6 +307,8 @@ export default class Register extends React.Component{
 						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleNameChange}
+          				errorText={this.state.nameErrorText}
+          				errorStyle={style.errorTextStyle}
 					/>
 				</div>
 

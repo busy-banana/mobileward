@@ -41864,12 +41864,6 @@ var Register = function (_React$Component) {
 			usernameErrorText: '',
 			pwdErrorText: '',
 			confirmPwdErrorText: '',
-			telephoneErrorText: '',
-			mobilePhoneErrorText: '',
-			emailErrorText: '',
-			weChatErrorText: '',
-			addressErrorText: '',
-			postcodeErrorText: '',
 			/*certificateType: null,
    certificateNum: null,*/
 			telephone: null,
@@ -41960,7 +41954,14 @@ var Register = function (_React$Component) {
 	}, {
 		key: 'handleNameChange',
 		value: function handleNameChange(event, value) {
-			this.setState({ name: value });
+			if (!/^[\u4e00-\u9fa5]{2,6}$/.test(value)) {
+				this.setState({ nameErrorText: '请填写正确的中文名' });
+			} else {
+				this.setState({
+					nameErrorText: '',
+					name: value
+				});
+			}
 		}
 
 		/*handleCertificateTypeChange(event, value){
@@ -42058,6 +42059,14 @@ var Register = function (_React$Component) {
 				return console.log("Fetch错误:" + err);
 			});
 		}
+
+		//生成用户序列号
+
+	}, {
+		key: 'getRandomSerialNum',
+		value: function getRandomSerialNum() {
+			return Math.floor(Math.random() * 10000000000);
+		}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -42078,11 +42087,6 @@ var Register = function (_React$Component) {
 					fontSize: '35px',
 					left: '50px'
 				},
-				/*svgIcon: {
-    	width: '7%',
-       	height: '100px',
-    	marginLeft: '15px'
-    },*/
 				registerBtn: {
 					width: '80%',
 					height: '100px',
@@ -42111,6 +42115,10 @@ var Register = function (_React$Component) {
 					float: 'right',
 					lineHeight: '100px',
 					left: '10px'
+				},
+				errorTextStyle: {
+					fontSize: '35px',
+					marginTop: '10px'
 				}
 			};
 			return _react2.default.createElement(
@@ -42125,7 +42133,8 @@ var Register = function (_React$Component) {
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
 						onChange: this.handleUsernameChange,
-						errorText: this.state.usernameErrorText
+						errorText: this.state.usernameErrorText,
+						errorStyle: style.errorTextStyle
 					})
 				),
 				_react2.default.createElement(
@@ -42137,7 +42146,8 @@ var Register = function (_React$Component) {
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
 						onChange: this.handlePasswordChange,
-						errorText: this.state.pwdErrorText
+						errorText: this.state.pwdErrorText,
+						errorStyle: style.errorTextStyle
 					})
 				),
 				_react2.default.createElement(
@@ -42149,7 +42159,8 @@ var Register = function (_React$Component) {
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
 						onChange: this.handleConfirmPwdChange,
-						errorText: this.state.confirmPwdErrorText
+						errorText: this.state.confirmPwdErrorText,
+						errorStyle: style.errorTextStyle
 					})
 				),
 				_react2.default.createElement(
@@ -42159,7 +42170,9 @@ var Register = function (_React$Component) {
 						floatingLabelText: '\u59D3\u540D(\u5FC5\u586B)',
 						floatingLabelFocusStyle: style.labelFocusStyle,
 						style: style.inputContainer,
-						onChange: this.handleNameChange
+						onChange: this.handleNameChange,
+						errorText: this.state.nameErrorText,
+						errorStyle: style.errorTextStyle
 					})
 				),
 				_react2.default.createElement(
