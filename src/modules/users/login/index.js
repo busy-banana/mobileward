@@ -37,7 +37,6 @@ export default class Login extends React.Component{
 	}
 
 	login(){
-		console.log(this.state.password);
 		if(this.state.username && this.state.password){
 			fetch('/api/login',{
 				method: 'post',
@@ -49,15 +48,18 @@ export default class Login extends React.Component{
 			    	password: this.state.password,
 			  	})
 			}).then((res) => {
-					res.json().then(
-						(data) => {
-							console.log(data);
+				res.json().then(
+					(data) => {
+						if(data.datas == "登录成功"){
+							window.location.href = window.location.origin + '#/register';
+						}else{
+							this.setState({open: true, message: data.datas});
 						}
-					)
-			}).catch(
-				(err) => console.log("Fetch错误:"+err)
-			)
-		}else{
+					}
+				)
+		}).catch(
+			(err) => console.log("Fetch错误:"+err)
+		)}else{
 			this.setState({open: true, message: "用户名和密码不能为空"});
 		}
 	}

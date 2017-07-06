@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var login = require('./public/js/login'); 
+var register = require('./public/js/register'); 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.post('/api/login',login.verify);
+app.post('/api/register',register.addNewUser);
 
 app.listen(3000);
 console.log('Server is running..');
