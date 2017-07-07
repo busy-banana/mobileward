@@ -12,7 +12,7 @@ export default class Register extends React.Component{
 		super(props);
 		this.state = {
 			sex : '',
-			birthday: null,
+			birthday: '',
 			username: '',
 			password: '',
 			confirmPwd: '',
@@ -21,14 +21,14 @@ export default class Register extends React.Component{
 			usernameErrorText: '',
 			pwdErrorText: '',
 			confirmPwdErrorText: '',
-			/*certificateType: null,
-			certificateNum: null,*/
-			telephone: null,
-			mobilePhone: null,
+			/*certificateType: '',
+			certificateNum: '',*/
+			telephone: '',
+			mobilePhone: '',
 			email: '',
 			weChat: '',
 			address: '',
-			postcode: null,
+			postcode: '',
 		}
 		this.handleSexChange = this.handleSexChange.bind(this);
 		this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
@@ -191,13 +191,16 @@ export default class Register extends React.Component{
 		}).then((res) => {
 			res.json().then(
 				(data) => {
-/*					if(data.datas == "注册成功"){
+
+
+					if(data.datas == "注册成功"){
 						this.setState({open: true, message: data.datas});
 						window.location.href = window.location.origin + '#/login';
 					}else{
 						this.setState({open: true, message: data.datas});
-					}*/
-						console.log(data);
+					}
+
+
 				}
 			)
 		}).catch(
@@ -343,8 +346,8 @@ export default class Register extends React.Component{
 						value={this.state.sex}
           				onChange={this.handleSexChange}
 					>
-						<MenuItem value={1} primaryText="男" />
-						<MenuItem value={2} primaryText="女" />
+						<MenuItem value="male" primaryText="男" />
+						<MenuItem value="female" primaryText="女" />
 					</SelectField>
 				</div>
 

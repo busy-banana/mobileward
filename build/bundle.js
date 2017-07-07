@@ -41854,7 +41854,7 @@ var Register = function (_React$Component) {
 
 		_this.state = {
 			sex: '',
-			birthday: null,
+			birthday: '',
 			username: '',
 			password: '',
 			confirmPwd: '',
@@ -41863,14 +41863,14 @@ var Register = function (_React$Component) {
 			usernameErrorText: '',
 			pwdErrorText: '',
 			confirmPwdErrorText: '',
-			/*certificateType: null,
-   certificateNum: null,*/
-			telephone: null,
-			mobilePhone: null,
+			/*certificateType: '',
+   certificateNum: '',*/
+			telephone: '',
+			mobilePhone: '',
 			email: '',
 			weChat: '',
 			address: '',
-			postcode: null
+			postcode: ''
 		};
 		_this.handleSexChange = _this.handleSexChange.bind(_this);
 		_this.handleBirthdayChange = _this.handleBirthdayChange.bind(_this);
@@ -42021,6 +42021,8 @@ var Register = function (_React$Component) {
 	}, {
 		key: 'register',
 		value: function register() {
+			var _this2 = this;
+
 			var nDate = this.getRegisterDate();
 			var SerialNum = this.getRandomSerialNum();
 			fetch('/api/register', {
@@ -42047,13 +42049,13 @@ var Register = function (_React$Component) {
 				})
 			}).then(function (res) {
 				res.json().then(function (data) {
-					/*					if(data.datas == "注册成功"){
-     						this.setState({open: true, message: data.datas});
-     						window.location.href = window.location.origin + '#/login';
-     					}else{
-     						this.setState({open: true, message: data.datas});
-     					}*/
-					console.log(data);
+
+					if (data.datas == "注册成功") {
+						_this2.setState({ open: true, message: data.datas });
+						window.location.href = window.location.origin + '#/login';
+					} else {
+						_this2.setState({ open: true, message: data.datas });
+					}
 				});
 			}).catch(function (err) {
 				return console.log("Fetch错误:" + err);
@@ -42206,8 +42208,8 @@ var Register = function (_React$Component) {
 							value: this.state.sex,
 							onChange: this.handleSexChange
 						},
-						_react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '\u7537' }),
-						_react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '\u5973' })
+						_react2.default.createElement(_MenuItem2.default, { value: 'male', primaryText: '\u7537' }),
+						_react2.default.createElement(_MenuItem2.default, { value: 'female', primaryText: '\u5973' })
 					)
 				),
 				_react2.default.createElement(
