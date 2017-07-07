@@ -153,6 +153,7 @@ export default class Login extends React.Component{
 					label="注册"
 					style={style.registerBtn}
 					labelStyle={style.registerLabelStyle}
+					disableTouchRipple={true}
 				/>
 				<Dialogs
 					message={this.state.message}

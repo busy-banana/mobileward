@@ -41446,7 +41446,8 @@ var Login = function (_React$Component) {
 					href: '#/register',
 					label: '\u6CE8\u518C',
 					style: style.registerBtn,
-					labelStyle: style.registerLabelStyle
+					labelStyle: style.registerLabelStyle,
+					disableTouchRipple: true
 				}),
 				_react2.default.createElement(_dialog2.default, {
 					message: this.state.message,
