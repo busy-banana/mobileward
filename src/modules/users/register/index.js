@@ -5,12 +5,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
+import Dialogs from '../../../components/dialog';
 import './style.css';
 
 export default class Register extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
+			open: false,
+			message: '',
 			sex : '',
 			birthday: '',
 			username: '',
@@ -30,6 +33,7 @@ export default class Register extends React.Component{
 			address: '',
 			postcode: '',
 		}
+		this.handleClose = this.handleClose.bind(this);
 		this.handleSexChange = this.handleSexChange.bind(this);
 		this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -47,6 +51,11 @@ export default class Register extends React.Component{
 		this.getRegisterDate = this.getRegisterDate.bind(this);
 		this.getRandomSerialNum = this.getRandomSerialNum.bind(this);
 		this.register = this.register.bind(this);
+	}
+
+
+	handleClose(){
+		this.setState({open: false});
 	}
 
 	handleUsernameChange(event, value){
@@ -191,16 +200,12 @@ export default class Register extends React.Component{
 		}).then((res) => {
 			res.json().then(
 				(data) => {
-
-
+					this.setState({open: true, message: data.datas});
 					if(data.datas == "注册成功"){
-						this.setState({open: true, message: data.datas});
-						window.location.href = window.location.origin + '#/login';
-					}else{
-						this.setState({open: true, message: data.datas});
+						setTimeout(() => {
+							window.location.href = window.location.origin + '#/login';
+						},1000)
 					}
-
-
 				}
 			)
 		}).catch(
@@ -406,6 +411,12 @@ export default class Register extends React.Component{
 				</div>
 
 				{btnDOM}
+
+				<Dialogs
+					message={this.state.message}
+					onTouchTap={this.handleClose}
+					open={this.state.open}
+				/>
 			</div>
 		)
 				/*<div style={style.registerContainer}>

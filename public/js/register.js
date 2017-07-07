@@ -36,11 +36,9 @@ exports.addNewUser = function(req,res){
 						"PostCode",postCode,function(err,response){
 				if(err){
 					console.log("Error:" + err);
-					return;
 				}else{
 					res.send({datas:"注册成功"});
 				}
-				client.quit();
 			});
 		}
 	});
