@@ -7,7 +7,7 @@ import AddUserInfo from './modules/users/addUserInfo';
 import Dashboard from './modules/users/dashboard';
 import Message from './modules/users/message';
 import Home from './modules/users/home';
-import MonitorTerminalList from './modules/users/monitorTerminalList';
+import EquipmentList from './modules/users/equipmentList';
 import PhysiologicalParams from './modules/patients/physiologicalParams';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -32,7 +32,7 @@ const run = () => {
 				<Route path="/dashboard" components={Dashboard}/>
 				<Route path="/message" components={Message}/>
 				<Route path="/home" components={Home}/>
-				<Route path="/monitorTerminalList" components={MonitorTerminalList}/>
+				<Route path="/equipmentList" components={EquipmentList}/>
 				<Route path="/physiologicalParams" components={PhysiologicalParams}/>
 			</Router>
   		</MuiThemeProvider>

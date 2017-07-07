@@ -40667,257 +40667,6 @@ exports.default = PhysiologicalParams;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _navbar = __webpack_require__(126);
-
-var _navbar2 = _interopRequireDefault(_navbar);
-
-var _person = __webpack_require__(148);
-
-var _person2 = _interopRequireDefault(_person);
-
-var _personOutline = __webpack_require__(381);
-
-var _personOutline2 = _interopRequireDefault(_personOutline);
-
-var _lockOpen = __webpack_require__(379);
-
-var _lockOpen2 = _interopRequireDefault(_lockOpen);
-
-var _lockOutline = __webpack_require__(841);
-
-var _lockOutline2 = _interopRequireDefault(_lockOutline);
-
-var _list = __webpack_require__(840);
-
-var _list2 = _interopRequireDefault(_list);
-
-var _TextField = __webpack_require__(118);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _RaisedButton = __webpack_require__(220);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _SelectField = __webpack_require__(377);
-
-var _SelectField2 = _interopRequireDefault(_SelectField);
-
-var _MenuItem = __webpack_require__(375);
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _DatePicker = __webpack_require__(369);
-
-var _DatePicker2 = _interopRequireDefault(_DatePicker);
-
-__webpack_require__(1048);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AddUserInfo = function (_React$Component) {
-	_inherits(AddUserInfo, _React$Component);
-
-	function AddUserInfo(props) {
-		_classCallCheck(this, AddUserInfo);
-
-		var _this = _possibleConstructorReturn(this, (AddUserInfo.__proto__ || Object.getPrototypeOf(AddUserInfo)).call(this, props));
-
-		_this.state = {
-			value: null,
-			birthday: null
-		};
-		_this.handleSelectFieldChange = _this.handleSelectFieldChange.bind(_this);
-		_this.handleDateChange = _this.handleDateChange.bind(_this);
-		return _this;
-	}
-
-	_createClass(AddUserInfo, [{
-		key: 'handleSelectFieldChange',
-		value: function handleSelectFieldChange(event, index, value) {
-			this.setState({ value: value });
-		}
-	}, {
-		key: 'handleDateChange',
-		value: function handleDateChange(event, date) {
-			this.setState({
-				birthday: date
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var style = {
-				registerContainer: {
-					width: '90%',
-					height: '100px',
-					marginTop: '40px'
-				},
-				inputContainer: {
-					width: '90%',
-					height: '100%',
-					fontSize: '35px',
-					float: 'right'
-				},
-				dateInputContainer: {
-					width: '90%',
-					height: '100%',
-					fontSize: '35px',
-					float: 'right',
-					lineHeight: '90px'
-				},
-				registerBtn: {
-					width: '80%',
-					height: '100px',
-					margin: '10%'
-				},
-				btnStyle: {
-					backgroundColor: '#4642B6'
-				},
-				registerLabelStyle: {
-					fontSize: '42px',
-					color: '#fff',
-					top: '20px',
-					fontWeight: 'normal'
-				},
-				labelFocusStyle: {
-					lineHeight: '0'
-				},
-				menuItemStyle: {
-					fontSize: '40px',
-					padding: '40px 0'
-				}
-			};
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'container' },
-				_react2.default.createElement(_navbar2.default, { title: '\u586B\u5199\u4E2A\u4EBA\u4FE1\u606F', href: '#/login' }),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u59D3\u540D(\u5FC5\u586B)',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(
-						_SelectField2.default,
-						{
-							className: 'select-field',
-							floatingLabelText: '\u6027\u522B(\u5FC5\u9009)',
-							floatingLabelStyle: style.labelFocusStyle,
-							style: style.inputContainer,
-							menuItemStyle: style.menuItemStyle,
-							value: this.state.value,
-							onChange: this.handleSelectFieldChange
-						},
-						_react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: '\u7537' }),
-						_react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: '\u5973' })
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_DatePicker2.default, {
-						hintText: '\u51FA\u751F\u65E5\u671F(\u5FC5\u586B)',
-						autoOk: true,
-						cancelLabel: '\u53D6\u6D88',
-						value: this.state.birthday,
-						onChange: this.handleDateChange,
-						textFieldStyle: style.dateInputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u8BC1\u4EF6\u7C7B\u578B',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u8BC1\u4EF6\u53F7\u7801',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u624B\u673A',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u7535\u5B50\u90AE\u7BB1',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u5FAE\u4FE1\u53F7',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(
-					'div',
-					{ style: style.registerContainer },
-					_react2.default.createElement(_TextField2.default, {
-						floatingLabelText: '\u5730\u5740',
-						floatingLabelFocusStyle: style.labelFocusStyle,
-						style: style.inputContainer
-					})
-				),
-				_react2.default.createElement(_RaisedButton2.default, {
-					href: '#/login',
-					label: '\u6CE8\u518C',
-					style: style.registerBtn,
-					buttonStyle: style.btnStyle,
-					labelStyle: style.registerLabelStyle
-				})
-			);
-		}
-	}]);
-
-	return AddUserInfo;
-}(_react2.default.Component);
-
-exports.default = AddUserInfo;
-
 /***/ }),
 /* 444 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -41331,7 +41080,7 @@ var Login = function (_React$Component) {
 				}).then(function (res) {
 					res.json().then(function (data) {
 						if (data.datas == "登录成功") {
-							window.location.href = window.location.origin + '#/dashboard';
+							window.location.href = window.location.origin + '#/equipmentList';
 						} else {
 							_this2.setState({ open: true, message: data.datas });
 						}
@@ -41643,226 +41392,7 @@ var Dashboard = function (_React$Component) {
 exports.default = Dashboard;
 
 /***/ }),
-/* 448 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _navbar = __webpack_require__(126);
-
-var _navbar2 = _interopRequireDefault(_navbar);
-
-var _backup = __webpack_require__(837);
-
-var _backup2 = _interopRequireDefault(_backup);
-
-var _castConnected = __webpack_require__(843);
-
-var _castConnected2 = _interopRequireDefault(_castConnected);
-
-var _List = __webpack_require__(218);
-
-var _Divider = __webpack_require__(216);
-
-var _Divider2 = _interopRequireDefault(_Divider);
-
-__webpack_require__(1053);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MonitorTerminalList = function (_React$Component) {
-	_inherits(MonitorTerminalList, _React$Component);
-
-	function MonitorTerminalList(props) {
-		_classCallCheck(this, MonitorTerminalList);
-
-		return _possibleConstructorReturn(this, (MonitorTerminalList.__proto__ || Object.getPrototypeOf(MonitorTerminalList)).call(this, props));
-	}
-
-	_createClass(MonitorTerminalList, [{
-		key: 'render',
-		value: function render() {
-			var style = {
-				listItemStyle: {
-					height: '150px',
-					fontSize: '40px',
-					fontWeight: 'normal',
-					lineHeight: '120px'
-				}
-			};
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'container' },
-				_react2.default.createElement(_navbar2.default, { title: '\u76D1\u63A7\u7EC8\u7AEF\u5217\u8868', href: '#/dashboard' }),
-				_react2.default.createElement(
-					'div',
-					{ className: 'terminal-type' },
-					_react2.default.createElement(
-						'p',
-						null,
-						'\u8D85\u7EA7\u7BA1\u7406\u5458'
-					)
-				),
-				_react2.default.createElement(_Divider2.default, null),
-				_react2.default.createElement(
-					_List.List,
-					null,
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_castConnected2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(_Divider2.default, null),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'terminal-type' },
-					_react2.default.createElement(
-						'p',
-						null,
-						'\u666E\u901A\u7BA1\u7406\u5458'
-					)
-				),
-				_react2.default.createElement(_Divider2.default, null),
-				_react2.default.createElement(
-					_List.List,
-					null,
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_castConnected2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					),
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_castConnected2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(_Divider2.default, null),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'terminal-type' },
-					_react2.default.createElement(
-						'p',
-						null,
-						'\u4E34\u65F6\u7528\u6237'
-					)
-				),
-				_react2.default.createElement(_Divider2.default, null),
-				_react2.default.createElement(
-					_List.List,
-					null,
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_castConnected2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					),
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					),
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					),
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					),
-					_react2.default.createElement(_List.ListItem, {
-						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u5217\u8868',
-						leftIcon: _react2.default.createElement(_backup2.default, null),
-						href: '#/physiologicalParams',
-						style: style.listItemStyle
-					}),
-					_react2.default.createElement(_Divider2.default, null),
-					_react2.default.createElement(
-						'span',
-						{ className: 'user-name' },
-						'\u5F20\u4E09'
-					)
-				)
-			);
-		}
-	}]);
-
-	return MonitorTerminalList;
-}(_react2.default.Component);
-
-exports.default = MonitorTerminalList;
-
-/***/ }),
+/* 448 */,
 /* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42658,9 +42188,9 @@ var _home = __webpack_require__(445);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _monitorTerminalList = __webpack_require__(448);
+var _equipmentList = __webpack_require__(1057);
 
-var _monitorTerminalList2 = _interopRequireDefault(_monitorTerminalList);
+var _equipmentList2 = _interopRequireDefault(_equipmentList);
 
 var _physiologicalParams = __webpack_require__(442);
 
@@ -42703,7 +42233,7 @@ var run = function run() {
 			_react2.default.createElement(_reactRouter.Route, { path: '/dashboard', components: _dashboard2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/message', components: _message2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/home', components: _home2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/monitorTerminalList', components: _monitorTerminalList2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/equipmentList', components: _equipmentList2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/physiologicalParams', components: _physiologicalParams2.default })
 		)
 	), document.getElementById('app'));
@@ -46969,20 +46499,7 @@ exports.push([module.i, ".physiologicalParams-container{\n\twidth: 100%;\n\theig
 
 
 /***/ }),
-/* 511 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(40)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".select-field svg{\n\twidth: 80px !important;\n\theight: 80px !important;\n\tfill: #000 !important;\n\tposition: relative;\n    bottom: 30px;\n    right: 40px;\n}\n/*\n.date-picker{\n\tbackground: red;\n}*/", ""]);
-
-// exports
-
-
-/***/ }),
+/* 511 */,
 /* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -47039,20 +46556,7 @@ exports.push([module.i, ".bottom-navigation-item{\n\twidth: 33.3%;\n\tmax-width:
 
 
 /***/ }),
-/* 516 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(40)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: rgba(0, 0, 0, 0.5);\n    width: 80%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}", ""]);
-
-// exports
-
-
-/***/ }),
+/* 516 */,
 /* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -71328,82 +70832,8 @@ ActionInfoOutline.muiName = 'SvgIcon';
 exports.default = ActionInfoOutline;
 
 /***/ }),
-/* 840 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(21);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(19);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ActionList = function ActionList(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z' })
-  );
-};
-ActionList = (0, _pure2.default)(ActionList);
-ActionList.displayName = 'ActionList';
-ActionList.muiName = 'SvgIcon';
-
-exports.default = ActionList;
-
-/***/ }),
-/* 841 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(21);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(19);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ActionLockOutline = function ActionLockOutline(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM8.9 6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2H8.9V6zM18 20H6V10h12v10z' })
-  );
-};
-ActionLockOutline = (0, _pure2.default)(ActionLockOutline);
-ActionLockOutline.displayName = 'ActionLockOutline';
-ActionLockOutline.muiName = 'SvgIcon';
-
-exports.default = ActionLockOutline;
-
-/***/ }),
+/* 840 */,
+/* 841 */,
 /* 842 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -93842,32 +93272,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1048 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(511);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(41)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./style.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./style.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 1048 */,
 /* 1049 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -93972,32 +93377,7 @@ if(false) {
 }
 
 /***/ }),
-/* 1053 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(516);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// add the styles to the DOM
-var update = __webpack_require__(41)(content, {});
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./style.css", function() {
-			var newContent = require("!!../../../../node_modules/css-loader/index.js!./style.css");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 1053 */,
 /* 1054 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -94037,6 +93417,266 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 1057 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _navbar = __webpack_require__(126);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _backup = __webpack_require__(837);
+
+var _backup2 = _interopRequireDefault(_backup);
+
+var _castConnected = __webpack_require__(843);
+
+var _castConnected2 = _interopRequireDefault(_castConnected);
+
+var _List = __webpack_require__(218);
+
+var _Divider = __webpack_require__(216);
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+__webpack_require__(1059);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MonitorTerminalList = function (_React$Component) {
+	_inherits(MonitorTerminalList, _React$Component);
+
+	function MonitorTerminalList(props) {
+		_classCallCheck(this, MonitorTerminalList);
+
+		return _possibleConstructorReturn(this, (MonitorTerminalList.__proto__ || Object.getPrototypeOf(MonitorTerminalList)).call(this, props));
+	}
+
+	_createClass(MonitorTerminalList, [{
+		key: 'render',
+		value: function render() {
+			var style = {
+				listItemStyle: {
+					height: '150px',
+					fontSize: '40px',
+					fontWeight: 'normal',
+					lineHeight: '120px'
+				}
+			};
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container' },
+				_react2.default.createElement(_navbar2.default, { title: '\u76D1\u63A7\u7EC8\u7AEF\u5217\u8868', href: '#/dashboard' }),
+				_react2.default.createElement(
+					'div',
+					{ className: 'terminal-type' },
+					_react2.default.createElement(
+						'p',
+						null,
+						'\u8D85\u7EA7\u7BA1\u7406\u5458'
+					)
+				),
+				_react2.default.createElement(_Divider2.default, null),
+				_react2.default.createElement(
+					_List.List,
+					null,
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(_Divider2.default, null),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'terminal-type' },
+					_react2.default.createElement(
+						'p',
+						null,
+						'\u666E\u901A\u7BA1\u7406\u5458'
+					)
+				),
+				_react2.default.createElement(_Divider2.default, null),
+				_react2.default.createElement(
+					_List.List,
+					null,
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					),
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(_Divider2.default, null),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'terminal-type' },
+					_react2.default.createElement(
+						'p',
+						null,
+						'\u4E34\u65F6\u7528\u6237'
+					)
+				),
+				_react2.default.createElement(_Divider2.default, null),
+				_react2.default.createElement(
+					_List.List,
+					null,
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_castConnected2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					),
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_backup2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					),
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_backup2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					),
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_backup2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					),
+					_react2.default.createElement(_List.ListItem, {
+						className: 'list-item',
+						primaryText: '\u8BBE\u5907\u5217\u8868',
+						leftIcon: _react2.default.createElement(_backup2.default, null),
+						href: '#/physiologicalParams',
+						style: style.listItemStyle
+					}),
+					_react2.default.createElement(_Divider2.default, null),
+					_react2.default.createElement(
+						'span',
+						{ className: 'user-name' },
+						'\u5F20\u4E09'
+					)
+				)
+			);
+		}
+	}]);
+
+	return MonitorTerminalList;
+}(_react2.default.Component);
+
+exports.default = MonitorTerminalList;
+
+/***/ }),
+/* 1058 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(40)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: rgba(0, 0, 0, 0.5);\n    width: 80%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 1059 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(1058);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(41)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./style.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./style.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
