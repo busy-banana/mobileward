@@ -51,7 +51,7 @@ export default class Login extends React.Component{
 				res.json().then(
 					(data) => {
 						if(data.datas == "登录成功"){
-							window.location.href = window.location.origin + '#/register';
+							window.location.href = window.location.origin + '#/dashboard';
 						}else{
 							this.setState({open: true, message: data.datas});
 						}

@@ -41331,7 +41331,7 @@ var Login = function (_React$Component) {
 				}).then(function (res) {
 					res.json().then(function (data) {
 						if (data.datas == "登录成功") {
-							window.location.href = window.location.origin + '#/register';
+							window.location.href = window.location.origin + '#/dashboard';
 						} else {
 							_this2.setState({ open: true, message: data.datas });
 						}
