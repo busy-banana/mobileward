@@ -56,6 +56,9 @@ export default class Register extends React.Component{
 
 	handleClose(){
 		this.setState({open: false});
+		if(this.state.message == '注册成功'){
+			window.location.href = window.location.origin + '#/login';
+		}
 	}
 
 	handleUsernameChange(event, value){
@@ -201,11 +204,6 @@ export default class Register extends React.Component{
 			res.json().then(
 				(data) => {
 					this.setState({open: true, message: data.datas});
-					if(data.datas == "注册成功"){
-						setTimeout(() => {
-							window.location.href = window.location.origin + '#/login';
-						},1000)
-					}
 				}
 			)
 		}).catch(

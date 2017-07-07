@@ -41971,6 +41971,9 @@ var Register = function (_React$Component) {
 		key: 'handleClose',
 		value: function handleClose() {
 			this.setState({ open: false });
+			if (this.state.message == '注册成功') {
+				window.location.href = window.location.origin + '#/login';
+			}
 		}
 	}, {
 		key: 'handleUsernameChange',
@@ -42130,11 +42133,6 @@ var Register = function (_React$Component) {
 			}).then(function (res) {
 				res.json().then(function (data) {
 					_this2.setState({ open: true, message: data.datas });
-					if (data.datas == "注册成功") {
-						setTimeout(function () {
-							window.location.href = window.location.origin + '#/login';
-						}, 1000);
-					}
 				});
 			}).catch(function (err) {
 				return console.log("Fetch错误:" + err);
