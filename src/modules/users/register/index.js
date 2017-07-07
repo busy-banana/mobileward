@@ -11,8 +11,7 @@ export default class Register extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			disabled: true,
-			sex : null,
+			sex : '',
 			birthday: null,
 			username: '',
 			password: '',
@@ -30,7 +29,6 @@ export default class Register extends React.Component{
 			weChat: '',
 			address: '',
 			postcode: null,
-			registerDate: '',
 		}
 		this.handleSexChange = this.handleSexChange.bind(this);
 		this.handleBirthdayChange = this.handleBirthdayChange.bind(this);
@@ -47,6 +45,7 @@ export default class Register extends React.Component{
 		this.handleAddressChange = this.handleAddressChange.bind(this);
 		this.handlePostcodeChange = this.handlePostcodeChange.bind(this);
 		this.getRegisterDate = this.getRegisterDate.bind(this);
+		this.getRandomSerialNum = this.getRandomSerialNum.bind(this);
 		this.register = this.register.bind(this);
 	}
 
@@ -105,7 +104,7 @@ export default class Register extends React.Component{
 	}
 
 	handleNameChange(event, value){
-		if(!/^[\u4e00-\u9fa5]{2,6}$/.test(value)){
+		if(!/^[\u4e00-\u9fa5]{2,10}$/.test(value)){
 			this.setState({nameErrorText: '请填写正确的中文名'});
 		}else{
 			this.setState({
@@ -161,51 +160,52 @@ export default class Register extends React.Component{
 		nMin = nMin < 10 ? '0' + nMin : nMin;
 		nSec = nSec < 10 ? '0' + nSec : nSec;
 		nDate = nYear + '-' + nMonth + '-' + nDay + ' ' + nHour + ':' + nMin + ':' + nSec;
-		this.setState({registerDate: nDate});
+		return nDate;
 	}
 
 	register(){
-		this.getRegisterDate();
-		fetch('/api/login',{
+		const nDate = this.getRegisterDate();
+		const SerialNum = this.getRandomSerialNum();
+		fetch('/api/register',{
 			method: 'post',
 			headers: {
 		    	'Content-Type': 'application/json'
 		  	},
 		  	body: JSON.stringify({
 				sex : this.state.sex,
-				birthday: this.state.birthday,
 				username: this.state.username,
 				password: this.state.password,
 				name: this.state.name,
 				/*certificateType: this.state.certificateType,
-				certificateNum: this.state.certificateNum,*/
+				certificateNum: this.state.certificateNum,
+				birthday: this.state.birthday,*/
 				telephone: this.state.telephone,
 				mobilePhone: this.state.mobilePhone,
 				email: this.state.email,
 				weChat: this.state.weChat,
 				address: this.state.address,
 				postcode: this.state.postcode,
-				registerDate: this.state.registerDate,
+				registerDate: nDate,
+				SerialNumber: SerialNum
 		  	})
 		}).then((res) => {
 			res.json().then(
 				(data) => {
-					if(data.datas == "注册成功"){
+/*					if(data.datas == "注册成功"){
 						this.setState({open: true, message: data.datas});
 						window.location.href = window.location.origin + '#/login';
 					}else{
 						this.setState({open: true, message: data.datas});
-					}
+					}*/
+						console.log(data);
 				}
 			)
 		}).catch(
 			(err) => console.log("Fetch错误:"+err)
 		)
-
-
 	}
 
-//生成用户序列号
+	//生成用户序列号
 	getRandomSerialNum(){
 		return Math.floor(Math.random() * 10000000000);
 	}
@@ -262,6 +262,27 @@ export default class Register extends React.Component{
 				marginTop: '10px'
 			}
 		};
+		let btnDisabled = true;
+		if(this.state.nameErrorText == '' && this.state.usernameErrorText == '' && this.state.pwdErrorText == ''
+			&& this.state.confirmPwdErrorText == '' && this.state.username != ''  && this.state.sex != ''
+			&& this.state.name != '' && this.state.password != ''  && this.state.confirmPwd != ''){
+			btnDisabled = false;
+		}
+		const btnDOM =  btnDisabled ?
+			<RaisedButton
+				label="注册"
+				style={style.registerBtn}
+				labelStyle={style.registerLabelStyle}
+				onTouchTap={this.register}
+				disabled={true}
+			/> :
+			<RaisedButton
+				label="注册"
+				style={style.registerBtn}
+				buttonStyle={style.btnStyle}
+				labelStyle={style.registerLabelStyle}
+				onTouchTap={this.register}
+			/>;
 		return (
 			<div className="container">
 				<NavBar title="注册账号" href="#/login"/>
@@ -381,14 +402,7 @@ export default class Register extends React.Component{
 					/>
 				</div>
 
-				<RaisedButton
-					label="注册"
-					style={style.registerBtn}
-					buttonStyle={style.btnStyle}
-					labelStyle={style.registerLabelStyle}
-					onTouchTap={this.register}
-					disabled={this.state.disabled}
-				/>
+				{btnDOM}
 			</div>
 		)
 				/*<div style={style.registerContainer}>

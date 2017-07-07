@@ -3,9 +3,10 @@ var crypto = require('crypto');
 
 exports.addNewUser = function(req,res){
 	var sha1 = crypto.createHash('sha1');
+	console.log(req.body);
 	var username = req.body.username;
 	var password = sha1.update(req.body.password).digest('hex');
-
+/*
 	client.on("error", function(err){
     	console.log("Error:" + err);
 	});
@@ -26,7 +27,7 @@ exports.addNewUser = function(req,res){
 			return;
 		}
 		client.quit();
-	});
+	});*/
 }
 
 

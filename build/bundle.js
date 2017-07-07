@@ -41853,8 +41853,7 @@ var Register = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 
 		_this.state = {
-			disabled: true,
-			sex: null,
+			sex: '',
 			birthday: null,
 			username: '',
 			password: '',
@@ -41871,8 +41870,7 @@ var Register = function (_React$Component) {
 			email: '',
 			weChat: '',
 			address: '',
-			postcode: null,
-			registerDate: ''
+			postcode: null
 		};
 		_this.handleSexChange = _this.handleSexChange.bind(_this);
 		_this.handleBirthdayChange = _this.handleBirthdayChange.bind(_this);
@@ -41889,6 +41887,7 @@ var Register = function (_React$Component) {
 		_this.handleAddressChange = _this.handleAddressChange.bind(_this);
 		_this.handlePostcodeChange = _this.handlePostcodeChange.bind(_this);
 		_this.getRegisterDate = _this.getRegisterDate.bind(_this);
+		_this.getRandomSerialNum = _this.getRandomSerialNum.bind(_this);
 		_this.register = _this.register.bind(_this);
 		return _this;
 	}
@@ -41954,7 +41953,7 @@ var Register = function (_React$Component) {
 	}, {
 		key: 'handleNameChange',
 		value: function handleNameChange(event, value) {
-			if (!/^[\u4e00-\u9fa5]{2,6}$/.test(value)) {
+			if (!/^[\u4e00-\u9fa5]{2,10}$/.test(value)) {
 				this.setState({ nameErrorText: '请填写正确的中文名' });
 			} else {
 				this.setState({
@@ -42017,43 +42016,44 @@ var Register = function (_React$Component) {
 			nMin = nMin < 10 ? '0' + nMin : nMin;
 			nSec = nSec < 10 ? '0' + nSec : nSec;
 			nDate = nYear + '-' + nMonth + '-' + nDay + ' ' + nHour + ':' + nMin + ':' + nSec;
-			this.setState({ registerDate: nDate });
+			return nDate;
 		}
 	}, {
 		key: 'register',
 		value: function register() {
-			var _this2 = this;
-
-			this.getRegisterDate();
-			fetch('/api/login', {
+			var nDate = this.getRegisterDate();
+			var SerialNum = this.getRandomSerialNum();
+			fetch('/api/register', {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
 					sex: this.state.sex,
-					birthday: this.state.birthday,
 					username: this.state.username,
 					password: this.state.password,
 					name: this.state.name,
 					/*certificateType: this.state.certificateType,
-     certificateNum: this.state.certificateNum,*/
+     certificateNum: this.state.certificateNum,
+     birthday: this.state.birthday,*/
 					telephone: this.state.telephone,
 					mobilePhone: this.state.mobilePhone,
 					email: this.state.email,
 					weChat: this.state.weChat,
 					address: this.state.address,
 					postcode: this.state.postcode,
-					registerDate: this.state.registerDate
+					registerDate: nDate,
+					SerialNumber: SerialNum
 				})
 			}).then(function (res) {
 				res.json().then(function (data) {
-					if (data.datas == "注册成功") {
-						_this2.setState({ open: true, message: data.datas });
-						window.location.href = window.location.origin + '#/login';
-					} else {
-						_this2.setState({ open: true, message: data.datas });
-					}
+					/*					if(data.datas == "注册成功"){
+     						this.setState({open: true, message: data.datas});
+     						window.location.href = window.location.origin + '#/login';
+     					}else{
+     						this.setState({open: true, message: data.datas});
+     					}*/
+					console.log(data);
 				});
 			}).catch(function (err) {
 				return console.log("Fetch错误:" + err);
@@ -42121,6 +42121,23 @@ var Register = function (_React$Component) {
 					marginTop: '10px'
 				}
 			};
+			var btnDisabled = true;
+			if (this.state.nameErrorText == '' && this.state.usernameErrorText == '' && this.state.pwdErrorText == '' && this.state.confirmPwdErrorText == '' && this.state.username != '' && this.state.sex != '' && this.state.name != '' && this.state.password != '' && this.state.confirmPwd != '') {
+				btnDisabled = false;
+			}
+			var btnDOM = btnDisabled ? _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6CE8\u518C',
+				style: style.registerBtn,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: this.register,
+				disabled: true
+			}) : _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6CE8\u518C',
+				style: style.registerBtn,
+				buttonStyle: style.btnStyle,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: this.register
+			});
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container' },
@@ -42253,14 +42270,7 @@ var Register = function (_React$Component) {
 						onChange: this.handlePostcodeChange
 					})
 				),
-				_react2.default.createElement(_RaisedButton2.default, {
-					label: '\u6CE8\u518C',
-					style: style.registerBtn,
-					buttonStyle: style.btnStyle,
-					labelStyle: style.registerLabelStyle,
-					onTouchTap: this.register,
-					disabled: this.state.disabled
-				})
+				btnDOM
 			);
 			/*<div style={style.registerContainer}>
    	<DatePicker
