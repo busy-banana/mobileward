@@ -1,6 +1,9 @@
 import React from 'react';
-import NavBar from '../../../components/navbar';
-import Backup from 'material-ui/svg-icons/action/backup';
+import AppBar from 'material-ui/AppBar';
+import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
+import Person from 'material-ui/svg-icons/social/person';
+import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
+import Message from 'material-ui/svg-icons/communication/message';
 import CastConnected from 'material-ui/svg-icons/hardware/cast-connected';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
@@ -18,105 +21,139 @@ export default class MonitorTerminalList extends React.Component{
 				fontSize: '40px',
 				fontWeight: 'normal',
 				lineHeight: '120px',
-			}
+			},
+			bottomNavigation: {
+				position: 'fixed',
+				bottom: '0',
+				height: '10%',
+				backgroundColor: '#fafafa',
+			   	borderTop: '1px solid #e0e0e0',
+			},
 		}
 
 		return (
 			<div className="container">
-				<NavBar title="监控终端列表" href="#/dashboard"/>
+				<AppBar
+					title={<span className="navbar-title">监控终端列表</span>}
+					className="app-bar"
+					iconStyleLeft={{visibility:'hidden'}}
+				/>
 
-				<div className="terminal-type">
-					<p>超级管理员</p>
-				</div>
-				<Divider />
-				<List>
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<CastConnected />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
+				<div className="equipmentList">
+					<div className="terminal-type">
+						<p>超级管理员</p>
+					</div>
 					<Divider />
-					<span className="user-name">张三</span>
-				</List>
+					<List>
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected color="#4642B6"/>}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<Divider />
+						<span className="user-name">张三</span>
+					</List>
 
-				<div className="terminal-type">
-					<p>普通管理员</p>
-				</div>
-				<Divider />
-				<List>
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<CastConnected />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
-					<span className="user-name">张三</span>
-
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<CastConnected />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
+					<div className="terminal-type">
+						<p>普通管理员</p>
+					</div>
 					<Divider />
-					<span className="user-name">张三</span>
-				</List>
+					<List>
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected color="#4642B6"/>}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<span className="user-name">张三</span>
 
-				<div className="terminal-type">
-					<p>临时用户</p>
-				</div>
-				<Divider />
-				<List>
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<CastConnected />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
-					<span className="user-name">张三</span>
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected color="#4642B6"/>}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<Divider />
+						<span className="user-name">张三</span>
+					</List>
 
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<Backup />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
-					<span className="user-name">张三</span>
-
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<Backup />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
-					<span className="user-name">张三</span>
-
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<Backup />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
-					<span className="user-name">张三</span>
-
-					<ListItem
-						className="list-item"
-						primaryText="设备列表" 
-						leftIcon={<Backup />}
-						href="#/physiologicalParams"
-						style={style.listItemStyle}
-					/>
+					<div className="terminal-type">
+						<p>临时用户</p>
+					</div>
 					<Divider />
-					<span className="user-name">张三</span>
-				</List>
+					<List>
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected />}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<span className="user-name">张三</span>
+
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected />}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<span className="user-name">张三</span>
+
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected />}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<span className="user-name">张三</span>
+
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected />}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<span className="user-name">张三</span>
+
+						<ListItem
+							className="list-item"
+							primaryText="设备列表" 
+							leftIcon={<CastConnected />}
+							href="#/dashboard"
+							style={style.listItemStyle}
+						/>
+						<Divider />
+						<span className="user-name">张三</span>
+					</List>
+				</div>
+
+				<BottomNavigation selectedIndex={0} style={style.bottomNavigation}>
+					<BottomNavigationItem
+						className="bottom-navigation-item"
+						label="终端列表"
+						icon={<DashboardIcon/>}
+						disabled={true}
+					/>
+					<BottomNavigationItem
+						className="bottom-navigation-item"
+						label="消息"
+						icon={<Message/>}
+						onTouchTap={() => {window.location = "#/message"}}
+					/>
+					<BottomNavigationItem
+						className="bottom-navigation-item"
+						label="我"
+						icon={<Person/>}
+						onTouchTap={() => {window.location = "#/home"}}
+					/>
+		        </BottomNavigation>
 			</div>
 		)
 	}

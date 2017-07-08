@@ -81,9 +81,9 @@ export default class Dashboard extends React.Component{
 				<BottomNavigation selectedIndex={1} style={style.bottomNavigation}>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
-						label="功能"
+						label="终端列表"
 						icon={<DashboardIcon/>}
-						onTouchTap={() => {window.location = "#/dashboard"}}
+						onTouchTap={() => {window.location = "#/equipmentList"}}
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"

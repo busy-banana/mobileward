@@ -27,3 +27,21 @@
     bottom: 102px;
     right: 120px;
 }
+
+.bottom-navigation-item{
+    width: 33.3%;
+    max-width: none !important;
+}
+
+.bottom-navigation-item svg{
+    height: 60px !important;
+}
+
+.bottom-navigation-item div{
+    font-size: 30px !important;
+}
+
+.equipmentList{
+    height: 80%;
+    overflow: auto;
+}

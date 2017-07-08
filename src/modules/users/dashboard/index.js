@@ -1,9 +1,5 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
-import Person from 'material-ui/svg-icons/social/person';
-import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
-import Message from 'material-ui/svg-icons/communication/message';
+import NavBar from '../../../components/navbar';
 import {List, ListItem} from 'material-ui/List';
 import PhotoLibrary from 'material-ui/svg-icons/image/photo-library';
 import History from 'material-ui/svg-icons/action/history';
@@ -20,13 +16,6 @@ export default class Dashboard extends React.Component{
 
 	render(){
 		const style = {
-			bottomNavigation: {
-				position: 'fixed',
-				bottom: '0',
-				height: '170px',
-				backgroundColor: '#fafafa',
-			   	borderTop: '1px solid #e0e0e0',
-			},
 			listItemStyle: {
 				height: '150px',
 				fontSize: '40px',
@@ -37,18 +26,14 @@ export default class Dashboard extends React.Component{
 
 		return (
 			<div className="container">
-				<AppBar
-					title={<span className="navbar-title">功能</span>}
-					className="app-bar"
-					iconStyleLeft={{visibility:'hidden'}}
-				/>
+				<NavBar title="功能" href="#/equipmentList"/>
 
 				<List style={{marginTop: '100px'}}>
 					<ListItem
 						className="list-item"
 						primaryText="生理参数" 
 						leftIcon={<PhotoLibrary />}
-						href="#/monitorTerminalList"
+						href="#/physiologicalParams"
 						style={style.listItemStyle}
 					/>
 					<Divider />
@@ -81,27 +66,6 @@ export default class Dashboard extends React.Component{
 					/>
 					<Divider />
 				</List>
-
-				<BottomNavigation selectedIndex={0} style={style.bottomNavigation}>
-					<BottomNavigationItem
-						className="bottom-navigation-item"
-						label="功能"
-						icon={<DashboardIcon/>}
-						disabled={true}
-					/>
-					<BottomNavigationItem
-						className="bottom-navigation-item"
-						label="消息"
-						icon={<Message/>}
-						onTouchTap={() => {window.location = "#/message"}}
-					/>
-					<BottomNavigationItem
-						className="bottom-navigation-item"
-						label="我"
-						icon={<Person/>}
-						onTouchTap={() => {window.location = "#/home"}}
-					/>
-		        </BottomNavigation>
 			</div>
 		)
 	}
