@@ -46,25 +46,19 @@ export default class Dashboard extends React.Component{
 					<Divider />
 					<ListItem 
 						className="list-item"
-						primaryText="诊断信息" 
-						leftIcon={<InfoOutline />} 
-						style={style.listItemStyle}
-					/>
-					<Divider />
-					<ListItem 
-						className="list-item"
-						primaryText="视频监控" 
-						leftIcon={<Videocam />} 
-						style={style.listItemStyle}
-					/>
-					<Divider />
-					<ListItem 
-						className="list-item"
-						primaryText="人组信息" 
+						primaryText="成员信息" 
 						leftIcon={<People />} 
 						style={style.listItemStyle}
 					/>
 					<Divider />
+					<ListItem 
+						className="list-item"
+						primaryText="设备信息" 
+						leftIcon={<People />} 
+						style={style.listItemStyle}
+					/>
+					<Divider />
+
 				</List>
 			</div>
 		)
