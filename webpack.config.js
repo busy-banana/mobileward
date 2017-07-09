@@ -1,5 +1,6 @@
 // webpack.config.js
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
 	entry: './src/app.js',
@@ -26,5 +27,12 @@ module.exports = {
             	loader: 'url-loader'
         	}
     	]
-  	}
+  	},
+  /*plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]*/
 }

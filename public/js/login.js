@@ -2,6 +2,7 @@ var client = require('./redis');
 var crypto = require('crypto');
 
 exports.verify = function(req,res){
+	console.log(req);
 	var sha1 = crypto.createHash('sha1');
 	var username = req.body.username;
 	var password = sha1.update(req.body.password).digest('hex');

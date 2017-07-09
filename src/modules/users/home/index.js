@@ -24,14 +24,14 @@ export default class Dashboard extends React.Component{
 		return (
 			<div className="container">
 				<AppBar
-					title={<span className="navbar-title">我</span>}
+					title={<span className="navbar-title">个人中心</span>}
 					className="app-bar"
 					iconStyleLeft={{visibility:'hidden'}}
 				/>
 				<BottomNavigation selectedIndex={2} style={style.bottomNavigation}>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
-						label="终端列表"
+						label="设备列表"
 						icon={<DashboardIcon/>}
 						onTouchTap={() => {window.location = "#/equipmentList"}}
 					/>
@@ -43,7 +43,7 @@ export default class Dashboard extends React.Component{
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
-						label="我"
+						label="个人中心"
 						icon={<Person/>}
 						disabled={true}
 					/>

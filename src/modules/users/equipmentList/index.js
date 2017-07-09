@@ -34,7 +34,7 @@ export default class MonitorTerminalList extends React.Component{
 		return (
 			<div className="container">
 				<AppBar
-					title={<span className="navbar-title">监控终端列表</span>}
+					title={<span className="navbar-title">设备列表</span>}
 					className="app-bar"
 					iconStyleLeft={{visibility:'hidden'}}
 				/>
@@ -137,7 +137,7 @@ export default class MonitorTerminalList extends React.Component{
 				<BottomNavigation selectedIndex={0} style={style.bottomNavigation}>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
-						label="终端列表"
+						label="设备列表"
 						icon={<DashboardIcon/>}
 						disabled={true}
 					/>
@@ -149,7 +149,7 @@ export default class MonitorTerminalList extends React.Component{
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
-						label="我"
+						label="个人中心"
 						icon={<Person/>}
 						onTouchTap={() => {window.location = "#/home"}}
 					/>
