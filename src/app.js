@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import AppContainer from './modules/appContainer';
 import Login from './modules/users/login';
 import Register from './modules/users/register';
 import AddUserInfo from './modules/users/addUserInfo';
@@ -26,14 +27,17 @@ const run = () => {
 	ReactDOM.render(
   		<MuiThemeProvider muiTheme={muiTheme}>
 			<Router history={hashHistory}>
-				<Route path="/login" components={Login}/>
-				<Route path="/register" components={Register}/>
-				<Route path="/addUserInfo" components={AddUserInfo}/>
-				<Route path="/dashboard" components={Dashboard}/>
-				<Route path="/message" components={Message}/>
-				<Route path="/home" components={Home}/>
-				<Route path="/equipmentList" components={EquipmentList}/>
-				<Route path="/physiologicalParams" components={PhysiologicalParams}/>
+				<Route path="/" component={AppContainer}>
+					<IndexRoute component={Login}/>
+					<Route path="/login" components={Login}/>
+					<Route path="/register" components={Register}/>
+					<Route path="/addUserInfo" components={AddUserInfo}/>
+					<Route path="/dashboard" components={Dashboard}/>
+					<Route path="/message" components={Message}/>
+					<Route path="/home" components={Home}/>
+					<Route path="/equipmentList" components={EquipmentList}/>
+					<Route path="/physiologicalParams" components={PhysiologicalParams}/>
+				</Route>
 			</Router>
   		</MuiThemeProvider>
 		, document.getElementById('app'));

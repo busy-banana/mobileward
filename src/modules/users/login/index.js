@@ -7,6 +7,7 @@ import Img from '../../../../public/images/doctor.jpg';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialogs from '../../../components/dialog';
+import Http from '../../../actions';
 import './style.css';
 
 export default class Login extends React.Component{
@@ -38,7 +39,7 @@ export default class Login extends React.Component{
 
 	login(){
 		if(this.state.username && this.state.password){
-			fetch('/api/login',{
+			/*fetch('/api/login',{
 				method: 'post',
 				headers: {
 			    	'Content-Type': 'application/json'
@@ -59,7 +60,36 @@ export default class Login extends React.Component{
 				)
 		}).catch(
 			(err) => console.log("Fetch错误:"+err)
-		)}else{
+		)*/
+			Http.http('post',
+				{url:'/api/login',
+				params:{username: this.state.username,password: this.state.password}},
+				(data) => {
+					if(data.datas == "登录成功"){
+						window.location.href = window.location.origin + '#/equipmentList';
+					}else{
+						this.setState({open: true, message: data.datas});
+					}
+
+				}
+
+
+			);
+
+
+			/*request({
+				url: '/api/login',
+				method: 'post',
+				data: {username: this.state.username,password: this.state.password},
+				success: function (data){
+					if(data.datas == "登录成功"){
+						window.location.href = window.location.origin + '#/equipmentList';
+					}else{
+						this.setState({open: true, message: data.datas});
+					}
+				}
+			});
+*/		}else{
 			this.setState({open: true, message: "用户名和密码不能为空"});
 		}
 	}
@@ -146,7 +176,7 @@ export default class Login extends React.Component{
 					style={style.loginBtn}
 					buttonStyle={style.btnStyle}
 					labelStyle={style.loginLabelStyle}
-					onTouchTap={this.login}
+					onTouchTap={(e) => {e.preventDefault();this.login()}}
 				/>
 				<RaisedButton
 					href="#/register"
