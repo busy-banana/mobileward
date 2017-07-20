@@ -15,38 +15,36 @@ exports.getEquipmentList = function (req,res){
 			console.log("[GetBindSet] Error:" + err);
 		}else if(obj){
 			obj.forEach((item) => {
-				resDataJson.equipmentSN = item;
-				client.HMGET("UserDevHash_"+SerialNumber+"_"+item,"Type","BindTime",(err,obj) => {
+				client.HMGET("UserDevHash_"+SerialNumber+"_"+item,"Type","BindTime",(err,data1) => {
 					if(err){
 						console.log("[GetBindType] Error:" + err);
 					}else{
-						resDataJson.bindType = obj[0];
-						resDataJson.bindTime = obj[1];
-					}
-				});
-				//获取设备状态、名称、患者序列号
-				client.HMGET("DevHash_"+item,"Status","EquipmentName","PatientSN",(err,obj) => {
-					if(err){
-						console.log("[GetEquipmentStatus] Error:" + err);
-					}else{
-						resDataJson.equipmentStatus = obj[0];
-						resDataJson.equipmentName = obj[1];
-						resDataJson.patientSN = obj[2];
-						
-						//获取患者姓名
-						client.hget("PInfo_"+obj[2],"Name",(err,obj) => {
+						//获取设备状态、名称、患者序列号
+						client.HMGET("DevHash_"+item,"Status","EquipmentName","PatientSN",(err,data2) => {
 							if(err){
-								console.log("[GetPatientName] Error:" + err);
+								console.log("[GetEquipmentStatus] Error:" + err);
 							}else{
-								resDataJson.patientName = obj;
-				console.log(resDataJson);
+								
+								//获取患者姓名
+								client.hget("PInfo_"+data2[2],"Name",(err,data3) => {
+									if(err){
+										console.log("[GetPatientName] Error:" + err);
+									}else{
+										resDataJson.equipmentSN = item;
+										resDataJson.equipmentStatus = data2[0];
+										resDataJson.equipmentName = data2[1];
+										resDataJson.patientSN = data2[2];
+										resDataJson.patientName = data3;
+										resDataJson.bindType = data1[0];
+										resDataJson.bindTime = data1[1];
+										resData.push(resDataJson);
+									}
+								});
 							}
 						});
 					}
 				});
 			});
-
-
 		}else{
 			//用户未绑定任何设备
 			res.send(00);
