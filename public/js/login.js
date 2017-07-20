@@ -1,11 +1,10 @@
-var client = require('./redis');
-var crypto = require('crypto');
+const client = require('./redis');
+const crypto = require('crypto');
 
 exports.verify = function(req,res){
-	console.log(req);
-	var sha1 = crypto.createHash('sha1');
-	var username = req.body.username;
-	var password = sha1.update(req.body.password).digest('hex');
+	const sha1 = crypto.createHash('sha1');
+	const username = req.body.username,
+		  password = sha1.update(req.body.password).digest('hex');
 
 	client.on("error", function(err){
     	console.log("Error:" + err);

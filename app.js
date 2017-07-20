@@ -8,6 +8,7 @@ var app = express();
 
 var login = require('./public/js/login'); 
 var register = require('./public/js/register'); 
+var getEquipmentInfo = require('./public/js/getEquipmentInfo'); 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.post('/api/login',login.verify);
 app.post('/api/register',register.addNewUser);
+app.post('/api/getEquipmentList',getEquipmentInfo.getEquipmentList);
 
 app.listen(3000);
 console.log('Server is running..');

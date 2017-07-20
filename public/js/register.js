@@ -1,9 +1,9 @@
-var client = require('./redis');
-var crypto = require('crypto');
+const client = require('./redis');
+const crypto = require('crypto');
 
 exports.addNewUser = function(req,res){
-	var sha1 = crypto.createHash('sha1');
-	var username = req.body.username,
+	const sha1 = crypto.createHash('sha1');
+	const username = req.body.username,
 		password = sha1.update(req.body.password).digest('hex'),
 		sex = req.body.sex,
 		name = req.body.name,
@@ -17,12 +17,12 @@ exports.addNewUser = function(req,res){
 		SerialNumber = req.body.SerialNumber;
 
 	client.on("error", function(err){
-    	console.log("Error:" + err);
+    	console.log("[Redis] Error:" + err);
 	});
 
 	client.hget(username,"Password",function(err,obj){
 		if(err){
-			console.log("Error:" + err);
+			console.log("[Get PWD] Error:" + err);
 		}else if(obj){
 			res.send({datas:"用户名已存在"});
 		}else{

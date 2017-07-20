@@ -1,12 +1,12 @@
 import request from 'reqwest';
 
-export default class Http{
+class Http{
 
 	http(method, options, onResponse){
 		request({
 			url: options.url,
-			method: method,
-			data: options.params,
+			method: method || 'get',
+			data: options.params || {},
 			type: options.type || 'json',
 			headers: {
 				'Accept': 'application/json;charset=UTF-8'
@@ -15,9 +15,10 @@ export default class Http{
 				onResponse(data);
 			},
 			error: (err) => {
-				console.log(err);
+				console.log('HTTP Error:'+err);
 			}
 		})
 	}
 
 }
+export default new Http('Http');

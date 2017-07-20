@@ -6,12 +6,32 @@ import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
 import Message from 'material-ui/svg-icons/communication/message';
 import CastConnected from 'material-ui/svg-icons/hardware/cast-connected';
 import {List, ListItem} from 'material-ui/List';
+import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
+import Add from 'material-ui/svg-icons/content/add';
+import Http from '../../../actions';
 import './style.css';
 
 export default class MonitorTerminalList extends React.Component{
 	constructor(props){
 		super(props);
+	}
+
+
+	componentWillMount(){
+		this.getEquipmentList();
+	}
+
+	getEquipmentList(){
+		Http.http('post',{
+				url:'/api/getEquipmentList',
+				params:{SerialNumber:88888888}
+			},
+			(data) => {
+				console.log(data);
+			}
+		);
+
 	}
 
 	render(){
@@ -37,6 +57,13 @@ export default class MonitorTerminalList extends React.Component{
 					title={<span className="navbar-title">设备列表</span>}
 					className="app-bar"
 					iconStyleLeft={{visibility:'hidden'}}
+					iconElementRight={
+						<IconButton 
+							className="add-equipment-btn"
+							href="#/addEquipment">
+							<Add className="add-equipment" />
+						</IconButton>
+					}
 				/>
 
 				<div className="equipmentList">

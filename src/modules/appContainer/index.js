@@ -6,8 +6,9 @@ export default class AppContainer extends React.Component{
 	}
 
 	render() {
+		const style = {width: '100%',height: '100%'};
 		return (
-			<div>
+			<div style={style}>
 				{this.props.children}
 			</div>
 		)

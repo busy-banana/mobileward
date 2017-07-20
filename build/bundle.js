@@ -40696,9 +40696,21 @@ var _castConnected2 = _interopRequireDefault(_castConnected);
 
 var _List = __webpack_require__(217);
 
+var _IconButton = __webpack_require__(89);
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
 var _Divider = __webpack_require__(215);
 
 var _Divider2 = _interopRequireDefault(_Divider);
+
+var _add = __webpack_require__(1057);
+
+var _add2 = _interopRequireDefault(_add);
+
+var _actions = __webpack_require__(1056);
+
+var _actions2 = _interopRequireDefault(_actions);
 
 __webpack_require__(1045);
 
@@ -40720,6 +40732,21 @@ var MonitorTerminalList = function (_React$Component) {
 	}
 
 	_createClass(MonitorTerminalList, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.getEquipmentList();
+		}
+	}, {
+		key: 'getEquipmentList',
+		value: function getEquipmentList() {
+			_actions2.default.http('post', {
+				url: '/api/getEquipmentList',
+				params: { SerialNumber: 88888888 }
+			}, function (data) {
+				console.log(data);
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			var style = {
@@ -40748,7 +40775,14 @@ var MonitorTerminalList = function (_React$Component) {
 						'\u8BBE\u5907\u5217\u8868'
 					),
 					className: 'app-bar',
-					iconStyleLeft: { visibility: 'hidden' }
+					iconStyleLeft: { visibility: 'hidden' },
+					iconElementRight: _react2.default.createElement(
+						_IconButton2.default,
+						{
+							className: 'add-equipment-btn',
+							href: '#/addEquipment' },
+						_react2.default.createElement(_add2.default, { className: 'add-equipment' })
+					)
 				}),
 				_react2.default.createElement(
 					'div',
@@ -41149,50 +41183,16 @@ var Login = function (_React$Component) {
 			var _this2 = this;
 
 			if (this.state.username && this.state.password) {
-				/*fetch('/api/login',{
-    	method: 'post',
-    	headers: {
-        	'Content-Type': 'application/json'
-      	},
-      	body: JSON.stringify({
-        	username: this.state.username,
-        	password: this.state.password,
-      	})
-    }).then((res) => {
-    	res.json().then(
-    		(data) => {
-    			if(data.datas == "登录成功"){
-    				window.location.href = window.location.origin + '#/equipmentList';
-    			}else{
-    				this.setState({open: true, message: data.datas});
-    			}
-    		}
-    	)
-    }).catch(
-    (err) => console.log("Fetch错误:"+err)
-    )*/
-				_actions2.default.http('post', { url: '/api/login',
-					params: { username: this.state.username, password: this.state.password } }, function (data) {
+				_actions2.default.http('post', {
+					url: '/api/login',
+					params: { username: this.state.username, password: this.state.password }
+				}, function (data) {
 					if (data.datas == "登录成功") {
 						window.location.href = window.location.origin + '#/equipmentList';
 					} else {
 						_this2.setState({ open: true, message: data.datas });
 					}
 				});
-
-				/*request({
-    	url: '/api/login',
-    	method: 'post',
-    	data: {username: this.state.username,password: this.state.password},
-    	success: function (data){
-    		if(data.datas == "登录成功"){
-    			window.location.href = window.location.origin + '#/equipmentList';
-    		}else{
-    			this.setState({open: true, message: data.datas});
-    		}
-    	}
-    });
-    */
 			} else {
 				this.setState({ open: true, message: "用户名和密码不能为空" });
 			}
@@ -41545,6 +41545,10 @@ var _dialog = __webpack_require__(266);
 
 var _dialog2 = _interopRequireDefault(_dialog);
 
+var _actions = __webpack_require__(1056);
+
+var _actions2 = _interopRequireDefault(_actions);
+
 __webpack_require__(1049);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -41747,13 +41751,10 @@ var Register = function (_React$Component) {
 
 			var nDate = this.getRegisterDate();
 			var SerialNum = this.getRandomSerialNum();
-			fetch('/api/register', {
-				method: 'post',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					sex: this.state.sex,
+			_actions2.default.http('post', {
+				url: '/api/register',
+				params: {
+					sex: this.state.sesx,
 					username: this.state.username,
 					password: this.state.password,
 					name: this.state.name,
@@ -41768,13 +41769,9 @@ var Register = function (_React$Component) {
 					postcode: this.state.postcode,
 					registerDate: nDate,
 					SerialNumber: SerialNum
-				})
-			}).then(function (res) {
-				res.json().then(function (data) {
-					_this2.setState({ open: true, message: data.datas });
-				});
-			}).catch(function (err) {
-				return console.log("Fetch错误:" + err);
+				}
+			}, function (data) {
+				_this2.setState({ open: true, message: data.datas });
 			});
 		}
 
@@ -46638,7 +46635,7 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: rgba(0, 0, 0, 0.5);\n    width: 80%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}", ""]);
+exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: rgba(0, 0, 0, 0.5);\n    width: 80%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}\n\n.add-equipment-btn{\n    width: 140px !important;\n    height: 155px !important;\n}\n\n.add-equipment{\n    width: 70px !important;\n    height: 70px !important;\n    padding: 32px;\n}\n", ""]);
 
 // exports
 
@@ -94350,9 +94347,10 @@ var AppContainer = function (_React$Component) {
 	_createClass(AppContainer, [{
 		key: 'render',
 		value: function render() {
+			var style = { width: '100%', height: '100%' };
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ style: style },
 				this.props.children
 			);
 		}
@@ -94395,8 +94393,8 @@ var Http = function () {
 		value: function http(method, options, onResponse) {
 			(0, _reqwest2.default)({
 				url: options.url,
-				method: method,
-				data: options.params,
+				method: method || 'get',
+				data: options.params || {},
 				type: options.type || 'json',
 				headers: {
 					'Accept': 'application/json;charset=UTF-8'
@@ -94405,7 +94403,7 @@ var Http = function () {
 					onResponse(data);
 				},
 				error: function error(err) {
-					console.log(err);
+					console.log('HTTP Error:' + err);
 				}
 			});
 		}
@@ -94414,7 +94412,45 @@ var Http = function () {
 	return Http;
 }();
 
-exports.default = Http;
+exports.default = new Http('Http');
+
+/***/ }),
+/* 1057 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = __webpack_require__(23);
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = __webpack_require__(22);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ContentAdd = function ContentAdd(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' })
+  );
+};
+ContentAdd = (0, _pure2.default)(ContentAdd);
+ContentAdd.displayName = 'ContentAdd';
+ContentAdd.muiName = 'SvgIcon';
+
+exports.default = ContentAdd;
 
 /***/ })
 /******/ ]);

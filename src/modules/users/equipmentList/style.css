@@ -45,3 +45,14 @@
     height: 80%;
     overflow: auto;
 }
+
+.add-equipment-btn{
+    width: 140px !important;
+    height: 155px !important;
+}
+
+.add-equipment{
+    width: 70px !important;
+    height: 70px !important;
+    padding: 32px;
+}

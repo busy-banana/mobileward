@@ -6,6 +6,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
 import Dialogs from '../../../components/dialog';
+import Http from '../../../actions';
 import './style.css';
 
 export default class Register extends React.Component{
@@ -178,36 +179,29 @@ export default class Register extends React.Component{
 	register(){
 		const nDate = this.getRegisterDate();
 		const SerialNum = this.getRandomSerialNum();
-		fetch('/api/register',{
-			method: 'post',
-			headers: {
-		    	'Content-Type': 'application/json'
-		  	},
-		  	body: JSON.stringify({
-				sex : this.state.sex,
-				username: this.state.username,
-				password: this.state.password,
-				name: this.state.name,
-				/*certificateType: this.state.certificateType,
-				certificateNum: this.state.certificateNum,
-				birthday: this.state.birthday,*/
-				telephone: this.state.telephone,
-				mobilePhone: this.state.mobilePhone,
-				email: this.state.email,
-				weChat: this.state.weChat,
-				address: this.state.address,
-				postcode: this.state.postcode,
-				registerDate: nDate,
-				SerialNumber: SerialNum
-		  	})
-		}).then((res) => {
-			res.json().then(
-				(data) => {
-					this.setState({open: true, message: data.datas});
+		Http.http('post',{
+				url: '/api/register',
+				params: {
+					sex : this.state.sesx,
+					username: this.state.username,
+					password: this.state.password,
+					name: this.state.name,
+					/*certificateType: this.state.certificateType,
+					certificateNum: this.state.certificateNum,
+					birthday: this.state.birthday,*/
+					telephone: this.state.telephone,
+					mobilePhone: this.state.mobilePhone,
+					email: this.state.email,
+					weChat: this.state.weChat,
+					address: this.state.address,
+					postcode: this.state.postcode,
+					registerDate: nDate,
+					SerialNumber: SerialNum
 				}
-			)
-		}).catch(
-			(err) => console.log("Fetch错误:"+err)
+			},
+			(data) => {
+				this.setState({open: true, message: data.datas});
+			}
 		)
 	}
 
