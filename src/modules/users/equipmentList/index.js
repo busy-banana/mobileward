@@ -28,9 +28,14 @@ export default class MonitorTerminalList extends React.Component{
 				params:{SerialNumber:88888888}
 			},
 			(data) => {
-				console.log(data);
+				console.log(data[1]);
 			}
 		);
+	}
+	
+	//处理数据
+	handleData(data){
+		
 
 	}
 
@@ -71,6 +76,9 @@ export default class MonitorTerminalList extends React.Component{
 						<p>超级管理员</p>
 					</div>
 					<Divider />
+
+
+
 					<List>
 						<ListItem
 							className="list-item"
@@ -79,14 +87,20 @@ export default class MonitorTerminalList extends React.Component{
 							href="#/dashboard"
 							style={style.listItemStyle}
 						/>
-						<Divider />
 						<span className="user-name">张三</span>
+						<Divider />
 					</List>
+
+
+
 
 					<div className="terminal-type">
 						<p>普通管理员</p>
 					</div>
 					<Divider />
+
+
+
 					<List>
 						<ListItem
 							className="list-item"
@@ -97,30 +111,23 @@ export default class MonitorTerminalList extends React.Component{
 						/>
 						<span className="user-name">张三</span>
 
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected color="#4642B6"/>}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
+						
 						<Divider />
-						<span className="user-name">张三</span>
 					</List>
+
+
+
+
 
 					<div className="terminal-type">
 						<p>临时用户</p>
 					</div>
 					<Divider />
+
+
 					<List>
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected />}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
+
+
 
 						<ListItem
 							className="list-item"
@@ -130,34 +137,11 @@ export default class MonitorTerminalList extends React.Component{
 							style={style.listItemStyle}
 						/>
 						<span className="user-name">张三</span>
-
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected />}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
-
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected />}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
-
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected />}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
 						<Divider />
-						<span className="user-name">张三</span>
+
+
+
+
 					</List>
 				</div>
 

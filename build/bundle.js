@@ -40743,9 +40743,15 @@ var MonitorTerminalList = function (_React$Component) {
 				url: '/api/getEquipmentList',
 				params: { SerialNumber: 88888888 }
 			}, function (data) {
-				console.log(data);
+				console.log(data[1]);
 			});
 		}
+
+		//处理数据
+
+	}, {
+		key: 'handleData',
+		value: function handleData(data) {}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -40807,12 +40813,12 @@ var MonitorTerminalList = function (_React$Component) {
 							href: '#/dashboard',
 							style: style.listItemStyle
 						}),
-						_react2.default.createElement(_Divider2.default, null),
 						_react2.default.createElement(
 							'span',
 							{ className: 'user-name' },
 							'\u5F20\u4E09'
-						)
+						),
+						_react2.default.createElement(_Divider2.default, null)
 					),
 					_react2.default.createElement(
 						'div',
@@ -40839,19 +40845,7 @@ var MonitorTerminalList = function (_React$Component) {
 							{ className: 'user-name' },
 							'\u5F20\u4E09'
 						),
-						_react2.default.createElement(_List.ListItem, {
-							className: 'list-item',
-							primaryText: '\u8BBE\u5907\u5217\u8868',
-							leftIcon: _react2.default.createElement(_castConnected2.default, { color: '#4642B6' }),
-							href: '#/dashboard',
-							style: style.listItemStyle
-						}),
-						_react2.default.createElement(_Divider2.default, null),
-						_react2.default.createElement(
-							'span',
-							{ className: 'user-name' },
-							'\u5F20\u4E09'
-						)
+						_react2.default.createElement(_Divider2.default, null)
 					),
 					_react2.default.createElement(
 						'div',
@@ -40878,55 +40872,7 @@ var MonitorTerminalList = function (_React$Component) {
 							{ className: 'user-name' },
 							'\u5F20\u4E09'
 						),
-						_react2.default.createElement(_List.ListItem, {
-							className: 'list-item',
-							primaryText: '\u8BBE\u5907\u5217\u8868',
-							leftIcon: _react2.default.createElement(_castConnected2.default, null),
-							href: '#/dashboard',
-							style: style.listItemStyle
-						}),
-						_react2.default.createElement(
-							'span',
-							{ className: 'user-name' },
-							'\u5F20\u4E09'
-						),
-						_react2.default.createElement(_List.ListItem, {
-							className: 'list-item',
-							primaryText: '\u8BBE\u5907\u5217\u8868',
-							leftIcon: _react2.default.createElement(_castConnected2.default, null),
-							href: '#/dashboard',
-							style: style.listItemStyle
-						}),
-						_react2.default.createElement(
-							'span',
-							{ className: 'user-name' },
-							'\u5F20\u4E09'
-						),
-						_react2.default.createElement(_List.ListItem, {
-							className: 'list-item',
-							primaryText: '\u8BBE\u5907\u5217\u8868',
-							leftIcon: _react2.default.createElement(_castConnected2.default, null),
-							href: '#/dashboard',
-							style: style.listItemStyle
-						}),
-						_react2.default.createElement(
-							'span',
-							{ className: 'user-name' },
-							'\u5F20\u4E09'
-						),
-						_react2.default.createElement(_List.ListItem, {
-							className: 'list-item',
-							primaryText: '\u8BBE\u5907\u5217\u8868',
-							leftIcon: _react2.default.createElement(_castConnected2.default, null),
-							href: '#/dashboard',
-							style: style.listItemStyle
-						}),
-						_react2.default.createElement(_Divider2.default, null),
-						_react2.default.createElement(
-							'span',
-							{ className: 'user-name' },
-							'\u5F20\u4E09'
-						)
+						_react2.default.createElement(_Divider2.default, null)
 					)
 				),
 				_react2.default.createElement(
