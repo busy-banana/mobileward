@@ -42,7 +42,10 @@ export default class MonitorTerminalList extends React.Component{
 				<ListItem
 					className="list-item"
 					primaryText={data.equipmentName}
-					leftIcon={<CastConnected color={data.equipmentStatus == 2 ? "" : "#4642B6"}/>}
+					leftIcon={
+						<CastConnected
+							color={data.equipmentStatus==0 || data.equipmentStatus==1  ? "#4642B6" : ""}
+						/>}
 					href="#/dashboard"
 					style={{height: '150px',
 							fontSize: '40px',
@@ -56,7 +59,10 @@ export default class MonitorTerminalList extends React.Component{
 
 	render(){
 		let datas = this.state.datas;
-		let superAdminDOM ='',commonAdminDOM ='',tempUserDOM ='',arr0 =[],arr1 =[],arr2 =[];
+		let superAdminDOM ='',
+			commonAdminDOM ='',
+			tempUserDOM ='',
+			arr0 = [], arr1 = [], arr2 = [];
 		const emptyDOM = (
 			<p className="empyt-list">该权限下暂未绑定设备</p>
 		);
@@ -77,15 +83,15 @@ export default class MonitorTerminalList extends React.Component{
 						arr0.unshift(item);
 					}else if(item.bindType == 1){
 						arr1.unshift(item);
-					}else{
+					}else if(item.bindType == 2){
 						arr2.unshift(item);
 					}
-				}else if(item.equipmentStatus == 2){
+				}else{
 					if(item.bindType == 0){
 						arr0.push(item);
 					}else if(item.bindType == 1){
 						arr1.push(item);
-					}else{
+					}else if(item.bindType == 2){
 						arr2.push(item);
 					}
 				}

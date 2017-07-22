@@ -40665,17 +40665,13 @@ var _history = __webpack_require__(836);
 
 var _history2 = _interopRequireDefault(_history);
 
-var _infoOutline = __webpack_require__(837);
-
-var _infoOutline2 = _interopRequireDefault(_infoOutline);
-
-var _videocam = __webpack_require__(839);
-
-var _videocam2 = _interopRequireDefault(_videocam);
-
 var _people = __webpack_require__(377);
 
 var _people2 = _interopRequireDefault(_people);
+
+var _computer = __webpack_require__(1058);
+
+var _computer2 = _interopRequireDefault(_computer);
 
 var _Divider = __webpack_require__(216);
 
@@ -40736,14 +40732,14 @@ var Dashboard = function (_React$Component) {
 					_react2.default.createElement(_Divider2.default, null),
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
-						primaryText: '\u6210\u5458\u4FE1\u606F',
-						leftIcon: _react2.default.createElement(_people2.default, null),
+						primaryText: '\u8BBE\u5907\u4FE1\u606F',
+						leftIcon: _react2.default.createElement(_computer2.default, null),
 						style: style.listItemStyle
 					}),
 					_react2.default.createElement(_Divider2.default, null),
 					_react2.default.createElement(_List.ListItem, {
 						className: 'list-item',
-						primaryText: '\u8BBE\u5907\u4FE1\u606F',
+						primaryText: '\u6210\u5458\u4FE1\u606F',
 						leftIcon: _react2.default.createElement(_people2.default, null),
 						style: style.listItemStyle
 					}),
@@ -40868,7 +40864,9 @@ var MonitorTerminalList = function (_React$Component) {
 				_react2.default.createElement(_List.ListItem, {
 					className: 'list-item',
 					primaryText: data.equipmentName,
-					leftIcon: _react2.default.createElement(_castConnected2.default, { color: data.equipmentStatus == 2 ? "" : "#4642B6" }),
+					leftIcon: _react2.default.createElement(_castConnected2.default, {
+						color: data.equipmentStatus == 0 || data.equipmentStatus == 1 ? "#4642B6" : ""
+					}),
 					href: '#/dashboard',
 					style: { height: '150px',
 						fontSize: '40px',
@@ -40916,15 +40914,15 @@ var MonitorTerminalList = function (_React$Component) {
 							arr0.unshift(item);
 						} else if (item.bindType == 1) {
 							arr1.unshift(item);
-						} else {
+						} else if (item.bindType == 2) {
 							arr2.unshift(item);
 						}
-					} else if (item.equipmentStatus == 2) {
+					} else {
 						if (item.bindType == 0) {
 							arr0.push(item);
 						} else if (item.bindType == 1) {
 							arr1.push(item);
-						} else {
+						} else if (item.bindType == 2) {
 							arr2.push(item);
 						}
 					}
@@ -46717,7 +46715,7 @@ exports = module.exports = __webpack_require__(41)(undefined);
 
 
 // module
-exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: #4642B6;\n    width: 80%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}\n\n.add-equipment-btn{\n    width: 140px !important;\n    height: 155px !important;\n}\n\n.add-equipment{\n    width: 70px !important;\n    height: 70px !important;\n    padding: 32px;\n}\n\n.empyt-list{\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 32px;\n    margin: 60px 0;\n    text-align: center;\n}", ""]);
+exports.push([module.i, ".list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.terminal-type{\n\tmargin: 30px 0;\n}\n\n.terminal-type p{\n\tfont-size: 35px;\n    margin: 0 auto;\n    color: #4642B6;\n    width: 300px;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 40px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}\n\n.add-equipment-btn{\n    width: 140px !important;\n    height: 155px !important;\n}\n\n.add-equipment{\n    width: 70px !important;\n    height: 70px !important;\n    padding: 32px;\n}\n\n.empyt-list{\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 32px;\n    margin: 60px 0;\n    text-align: center;\n}", ""]);
 
 // exports
 
@@ -71024,44 +71022,7 @@ ActionHistory.muiName = 'SvgIcon';
 exports.default = ActionHistory;
 
 /***/ }),
-/* 837 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(23);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(22);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ActionInfoOutline = function ActionInfoOutline(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z' })
-  );
-};
-ActionInfoOutline = (0, _pure2.default)(ActionInfoOutline);
-ActionInfoOutline.displayName = 'ActionInfoOutline';
-ActionInfoOutline.muiName = 'SvgIcon';
-
-exports.default = ActionInfoOutline;
-
-/***/ }),
+/* 837 */,
 /* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -71100,44 +71061,7 @@ ActionLockOpen.muiName = 'SvgIcon';
 exports.default = ActionLockOpen;
 
 /***/ }),
-/* 839 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _pure = __webpack_require__(23);
-
-var _pure2 = _interopRequireDefault(_pure);
-
-var _SvgIcon = __webpack_require__(22);
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var AvVideocam = function AvVideocam(props) {
-  return _react2.default.createElement(
-    _SvgIcon2.default,
-    props,
-    _react2.default.createElement('path', { d: 'M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z' })
-  );
-};
-AvVideocam = (0, _pure2.default)(AvVideocam);
-AvVideocam.displayName = 'AvVideocam';
-AvVideocam.muiName = 'SvgIcon';
-
-exports.default = AvVideocam;
-
-/***/ }),
+/* 839 */,
 /* 840 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -94429,6 +94353,45 @@ module.exports = function() {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 1057 */,
+/* 1058 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = __webpack_require__(23);
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = __webpack_require__(22);
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HardwareComputer = function HardwareComputer(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z' })
+  );
+};
+HardwareComputer = (0, _pure2.default)(HardwareComputer);
+HardwareComputer.displayName = 'HardwareComputer';
+HardwareComputer.muiName = 'SvgIcon';
+
+exports.default = HardwareComputer;
 
 /***/ })
 /******/ ]);

@@ -3,9 +3,8 @@ import NavBar from '../../../components/navbar';
 import {List, ListItem} from 'material-ui/List';
 import PhotoLibrary from 'material-ui/svg-icons/image/photo-library';
 import History from 'material-ui/svg-icons/action/history';
-import InfoOutline from 'material-ui/svg-icons/action/info-outline';
-import Videocam from 'material-ui/svg-icons/av/videocam';
 import People from 'material-ui/svg-icons/social/people';
+import Computer from 'material-ui/svg-icons/hardware/computer';
 import Divider from 'material-ui/Divider';
 import './style.css';
 
@@ -46,14 +45,14 @@ export default class Dashboard extends React.Component{
 					<Divider />
 					<ListItem 
 						className="list-item"
-						primaryText="成员信息" 
-						leftIcon={<People />} 
+						primaryText="设备信息" 
+						leftIcon={<Computer />} 
 						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
 						className="list-item"
-						primaryText="设备信息" 
+						primaryText="成员信息" 
 						leftIcon={<People />} 
 						style={style.listItemStyle}
 					/>
