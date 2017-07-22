@@ -41917,7 +41917,7 @@ var Register = function (_React$Component) {
 				}
 			};
 			var btnDisabled = true;
-			if (this.state.nameErrorText == '' && this.state.usernameErrorText == '' && this.state.pwdErrorText == '' && this.state.confirmPwdErrorText == '' && this.state.username != '' && this.state.sex != '' && this.state.name != '' && this.state.password != '' && this.state.confirmPwd != '') {
+			if (this.state.nameErrorText == '' && this.state.usernameErrorText == '' && this.state.pwdErrorText == '' && this.state.confirmPwdErrorText == '' && this.state.username && this.state.sex && this.state.name && this.state.password && this.state.confirmPwd) {
 				btnDisabled = false;
 			}
 			var btnDOM = btnDisabled ? _react2.default.createElement(_RaisedButton2.default, {
@@ -42369,6 +42369,10 @@ var _dashboard = __webpack_require__(441);
 
 var _dashboard2 = _interopRequireDefault(_dashboard);
 
+var _addEquipment = __webpack_require__(1059);
+
+var _addEquipment2 = _interopRequireDefault(_addEquipment);
+
 var _message = __webpack_require__(445);
 
 var _message2 = _interopRequireDefault(_message);
@@ -42424,6 +42428,7 @@ var run = function run() {
 				_react2.default.createElement(_reactRouter.Route, { path: '/register', components: _register2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/addUserInfo', components: _addUserInfo2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/dashboard', components: _dashboard2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/addEquipment', components: _addEquipment2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/message', components: _message2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/home', components: _home2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/equipmentList', components: _equipmentList2.default }),
@@ -94392,6 +94397,251 @@ HardwareComputer.displayName = 'HardwareComputer';
 HardwareComputer.muiName = 'SvgIcon';
 
 exports.default = HardwareComputer;
+
+/***/ }),
+/* 1059 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _navbar = __webpack_require__(167);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _TextField = __webpack_require__(146);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = __webpack_require__(375);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _dialog = __webpack_require__(267);
+
+var _dialog2 = _interopRequireDefault(_dialog);
+
+var _actions = __webpack_require__(166);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+__webpack_require__(1061);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Dashboard = function (_React$Component) {
+	_inherits(Dashboard, _React$Component);
+
+	function Dashboard(props) {
+		_classCallCheck(this, Dashboard);
+
+		var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
+
+		_this.state = {
+			message: '',
+			open: false,
+			equipmentSN: '', //设备序列号
+			equipmentBN: '', //设备绑定码
+			snErrorText: '', //设备序列号错误提示文字
+			bnErrorText: '' };
+		_this.handleEquipmentSNChange = _this.handleEquipmentSNChange.bind(_this);
+		_this.handleEquipmentBNChange = _this.handleEquipmentBNChange.bind(_this);
+		_this.addEquipment = _this.addEquipment.bind(_this);
+
+		return _this;
+	}
+
+	_createClass(Dashboard, [{
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({ open: false });
+			if (this.state.message == '添加成功') {
+				window.location.href = window.location.origin + '#/equipmentList';
+			}
+		}
+	}, {
+		key: 'handleEquipmentSNChange',
+		value: function handleEquipmentSNChange(event, value) {
+			this.setState({ equipmentSN: value });
+		}
+	}, {
+		key: 'handleEquipmentBNChange',
+		value: function handleEquipmentBNChange(event, value) {
+			this.setState({ equipmentBN: value });
+		}
+	}, {
+		key: 'addEquipment',
+		value: function addEquipment() {
+			_actions2.default.http('post', {
+				url: '/api/addEquipment',
+				params: {
+					equipmentSN: this.state.equipmentSN,
+					equipmentBN: this.state.equipmentBN
+				}
+			}, function (data) {
+				console.log(data);
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var style = {
+				inputContainer: {
+					width: '90%',
+					height: '100%',
+					fontSize: '35px',
+					left: '50px'
+				},
+				errorTextStyle: {
+					fontSize: '35px',
+					marginTop: '10px'
+				},
+				registerContainer: {
+					width: '100%',
+					height: '100px',
+					marginTop: '40px'
+				},
+				registerBtn: {
+					width: '80%',
+					height: '100px',
+					margin: '10%'
+				},
+				registerLabelStyle: {
+					fontSize: '42px',
+					color: '#fff',
+					top: '20px',
+					fontWeight: 'normal'
+				},
+				btnStyle: {
+					backgroundColor: '#4642B6'
+				},
+				labelFocusStyle: {
+					lineHeight: '0'
+				}
+			};
+
+			var btnDisabled = true;
+			if (this.state.equipmentSN && this.state.equipmentBN) {
+				btnDisabled = false;
+			}
+
+			var btnDOM = btnDisabled ? _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6DFB\u52A0',
+				style: style.registerBtn,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: this.addEquipment,
+				disabled: true
+			}) : _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6DFB\u52A0',
+				style: style.registerBtn,
+				buttonStyle: style.btnStyle,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: this.addEquipment
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container' },
+				_react2.default.createElement(_navbar2.default, { title: '\u6DFB\u52A0\u8BBE\u5907', href: '#/equipmentList' }),
+				_react2.default.createElement(
+					'p',
+					{ className: 'add-tips' },
+					'\u6DFB\u52A0\u8BBE\u5907\u540E\u9ED8\u8BA4\u6210\u4E3A\u8D85\u7EA7\u7BA1\u7406\u5458'
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u8BBE\u5907\u5E8F\u5217\u53F7',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer,
+						onChange: this.handleEquipmentSNChange,
+						errorText: this.state.snErrorText,
+						errorStyle: style.errorTextStyle
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						floatingLabelText: '\u8BBE\u5907\u7ED1\u5B9A\u7801',
+						floatingLabelFocusStyle: style.labelFocusStyle,
+						style: style.inputContainer,
+						onChange: this.handleEquipmentBNChange,
+						errorText: this.state.bnErrorText,
+						errorStyle: style.errorTextStyle
+					})
+				),
+				btnDOM,
+				_react2.default.createElement(_dialog2.default, {
+					message: this.state.message,
+					onTouchTap: this.handleClose,
+					open: this.state.open
+				})
+			);
+		}
+	}]);
+
+	return Dashboard;
+}(_react2.default.Component);
+
+exports.default = Dashboard;
+
+/***/ }),
+/* 1060 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(41)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".add-tips{\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 35px;\n    text-align: center;\n    margin: 60px 0 80px 0;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 1061 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(1060);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(45)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./style.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./style.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

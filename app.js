@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.post('/api/login',login.verify);
 app.post('/api/register',register.addNewUser);
 app.post('/api/getEquipmentList',getEquipmentInfo.getEquipmentList);
+app.post('/api/addEquipment',getEquipmentInfo.addEquipment);
 
 app.listen(3000);
 console.log('Server is running..');

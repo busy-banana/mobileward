@@ -264,8 +264,8 @@ export default class Register extends React.Component{
 		};
 		let btnDisabled = true;
 		if(this.state.nameErrorText == '' && this.state.usernameErrorText == '' && this.state.pwdErrorText == ''
-			&& this.state.confirmPwdErrorText == '' && this.state.username != ''  && this.state.sex != ''
-			&& this.state.name != '' && this.state.password != ''  && this.state.confirmPwd != ''){
+			&& this.state.confirmPwdErrorText == '' && this.state.username && this.state.sex
+			&& this.state.name && this.state.password && this.state.confirmPwd){
 			btnDisabled = false;
 		}
 		const btnDOM =  btnDisabled ?

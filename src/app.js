@@ -6,6 +6,7 @@ import Login from './modules/users/login';
 import Register from './modules/users/register';
 import AddUserInfo from './modules/users/addUserInfo';
 import Dashboard from './modules/users/dashboard';
+import AddEquipment from './modules/users/addEquipment';
 import Message from './modules/users/message';
 import Home from './modules/users/home';
 import EquipmentList from './modules/users/equipmentList';
@@ -33,6 +34,7 @@ const run = () => {
 					<Route path="/register" components={Register}/>
 					<Route path="/addUserInfo" components={AddUserInfo}/>
 					<Route path="/dashboard" components={Dashboard}/>
+					<Route path="/addEquipment" components={AddEquipment}/>
 					<Route path="/message" components={Message}/>
 					<Route path="/home" components={Home}/>
 					<Route path="/equipmentList" components={EquipmentList}/>

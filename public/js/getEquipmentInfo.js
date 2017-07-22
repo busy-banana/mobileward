@@ -65,7 +65,6 @@ exports.getEquipmentList = function (req,res){
 					if(err){
 						console.log(err);
 					}else{
-						console.log(result)
 						res.send(result);
 					}
 				}
@@ -75,6 +74,17 @@ exports.getEquipmentList = function (req,res){
 			res.send(00);
 		}
 	});
+}
+
+exports.addEquipment = function (req,res){
+	const equipmentSN = req.body.equipmentSN;
+	const equipmentBN = req.body.equipmentBN;
+
+	client.on("error",function(err){
+		console.log("[Redis] Error:"+err);
+	});
+
+	查询设备是否存在->查询设备是否已绑定->改UserDev->改UserDevHash
 }
 
 
