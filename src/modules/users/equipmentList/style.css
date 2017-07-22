@@ -15,7 +15,7 @@
 .terminal-type p{
 	font-size: 35px;
     margin: 0 auto;
-    color: rgba(0, 0, 0, 0.5);
+    color: #4642B6;
     width: 80%;
     text-align: center;
 }
@@ -55,4 +55,11 @@
     width: 70px !important;
     height: 70px !important;
     padding: 32px;
+}
+
+.empyt-list{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 32px;
+    margin: 60px 0;
+    text-align: center;
 }

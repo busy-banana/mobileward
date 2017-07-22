@@ -15,8 +15,10 @@ import './style.css';
 export default class MonitorTerminalList extends React.Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			datas : ''
+		}
 	}
-
 
 	componentWillMount(){
 		this.getEquipmentList();
@@ -28,25 +30,37 @@ export default class MonitorTerminalList extends React.Component{
 				params:{SerialNumber:88888888}
 			},
 			(data) => {
-				console.log(data[1]);
+				this.setState({datas:data});
 			}
 		);
 	}
 	
 	//处理数据
 	handleData(data){
-		
-
+		return (
+			<div key={data.equipmentSN}>
+				<ListItem
+					className="list-item"
+					primaryText={data.equipmentName}
+					leftIcon={<CastConnected color={data.equipmentStatus == 2 ? "" : "#4642B6"}/>}
+					href="#/dashboard"
+					style={{height: '150px',
+							fontSize: '40px',
+							fontWeight: 'normal',
+							lineHeight: '120px',}}
+				/>
+				<span className="user-name">{data.patientName}</span>
+			</div>
+		);		
 	}
 
 	render(){
+		let datas = this.state.datas;
+		let superAdminDOM ='',commonAdminDOM ='',tempUserDOM ='',arr0 =[],arr1 =[],arr2 =[];
+		const emptyDOM = (
+			<p className="empyt-list">该权限下暂未绑定设备</p>
+		);
 		const style = {
-			listItemStyle: {
-				height: '150px',
-				fontSize: '40px',
-				fontWeight: 'normal',
-				lineHeight: '120px',
-			},
 			bottomNavigation: {
 				position: 'fixed',
 				bottom: '0',
@@ -55,7 +69,38 @@ export default class MonitorTerminalList extends React.Component{
 			   	borderTop: '1px solid #e0e0e0',
 			},
 		}
-
+		if(datas){
+			//把数据按管理员类型分类放入数组中
+			datas.map((item) => {
+				if(item.equipmentStatus == 0 || item.equipmentStatus == 1){
+					if(item.bindType == 0){
+						arr0.unshift(item);
+					}else if(item.bindType == 1){
+						arr1.unshift(item);
+					}else{
+						arr2.unshift(item);
+					}
+				}else if(item.equipmentStatus == 2){
+					if(item.bindType == 0){
+						arr0.push(item);
+					}else if(item.bindType == 1){
+						arr1.push(item);
+					}else{
+						arr2.push(item);
+					}
+				}
+			});
+			superAdminDOM = arr0 && arr0.length ? arr0.map((item) => {
+				return this.handleData(item);
+			}) : emptyDOM;
+			commonAdminDOM = arr1 && arr1.length ? arr1.map((item) => {
+				return this.handleData(item);
+			}) : emptyDOM;
+			tempUserDOM = arr2 && arr2.length ? arr2.map((item) => {
+				return this.handleData(item);
+			}) : emptyDOM;
+		}
+	
 		return (
 			<div className="container">
 				<AppBar
@@ -76,73 +121,28 @@ export default class MonitorTerminalList extends React.Component{
 						<p>超级管理员</p>
 					</div>
 					<Divider />
-
-
-
 					<List>
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected color="#4642B6"/>}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
-						<Divider />
+						{superAdminDOM}
 					</List>
-
-
-
+					<Divider />
 
 					<div className="terminal-type">
 						<p>普通管理员</p>
 					</div>
 					<Divider />
-
-
-
 					<List>
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected color="#4642B6"/>}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
-
-						
-						<Divider />
+						{commonAdminDOM}
 					</List>
-
-
-
-
+					<Divider />
 
 					<div className="terminal-type">
 						<p>临时用户</p>
 					</div>
 					<Divider />
-
-
 					<List>
-
-
-
-						<ListItem
-							className="list-item"
-							primaryText="设备列表" 
-							leftIcon={<CastConnected />}
-							href="#/dashboard"
-							style={style.listItemStyle}
-						/>
-						<span className="user-name">张三</span>
-						<Divider />
-
-
-
-
+						{tempUserDOM}
 					</List>
+					<Divider />
 				</div>
 
 				<BottomNavigation selectedIndex={0} style={style.bottomNavigation}>
