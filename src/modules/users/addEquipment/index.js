@@ -39,18 +39,24 @@ export default class Dashboard extends React.Component{
     }
     
     addEquipment(){
-        Http.http('post',{
-				url: '/api/addEquipment',
-				params: {
-					equipmentSN : this.state.equipmentSN,
-					equipmentBN: this.state.equipmentBN,
+		if(this.state.equipmentSN && this.state.equipmentBN){
+			Http.http('post',{
+					url: '/api/addEquipment',
+					params: {
+						equipmentSN : this.state.equipmentSN,
+						equipmentBN: this.state.equipmentBN,
+						serialNumber: 88888888,
+					}
+				},
+				(data) => {
+					console.log(data)
 				}
-			},
-			(data) => {
-                console.log(data)
-            }
-		)
-    }
+			)
+		}else{
+			return '';
+		}
+	}
+	
 
 	render(){
 		const style = {

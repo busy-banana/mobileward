@@ -3,8 +3,8 @@ const crypto = require('crypto');
 
 exports.verify = function(req,res){
 	const sha1 = crypto.createHash('sha1');
-	const username = req.body.username,
-		  password = sha1.update(req.body.password).digest('hex');
+	const username = req.body.username || '',
+		  password = sha1.update(req.body.password).digest('hex') || '';
 
 	client.on("error", function(err){
     	console.log("Error:" + err);

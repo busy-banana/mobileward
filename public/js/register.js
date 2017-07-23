@@ -3,18 +3,18 @@ const crypto = require('crypto');
 
 exports.addNewUser = function(req,res){
 	const sha1 = crypto.createHash('sha1');
-	const username = req.body.username,
-		password = sha1.update(req.body.password).digest('hex'),
-		sex = req.body.sex,
-		name = req.body.name,
-		telephone = req.body.telephone,
-		mobilePhone = req.body.mobilePhone,
-		email = req.body.email,
-		weChat = req.body.weChat,
-		address = req.body.address,
-		postCode = req.body.postcode,
-		registerDate = req.body.registerDate,
-		SerialNumber = req.body.SerialNumber;
+	const username = req.body.username || '',
+		password = sha1.update(req.body.password).digest('hex') || '',
+		sex = req.body.sex || '',
+		name = req.body.name || '',
+		telephone = req.body.telephone || '',
+		mobilePhone = req.body.mobilePhone || '',
+		email = req.body.email || '',
+		weChat = req.body.weChat || '',
+		address = req.body.address || '',
+		postCode = req.body.postcode || '',
+		registerDate = req.body.registerDate || '',
+		SerialNumber = req.body.SerialNumber || '';
 
 	client.on("error", function(err){
     	console.log("[Redis] Error:" + err);

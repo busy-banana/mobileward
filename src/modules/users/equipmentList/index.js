@@ -27,7 +27,7 @@ export default class MonitorTerminalList extends React.Component{
 	getEquipmentList(){
 		Http.http('post',{
 				url:'/api/getEquipmentList',
-				params:{SerialNumber:88888888}
+				params:{serialNumber:88888888}
 			},
 			(data) => {
 				this.setState({datas:data});
