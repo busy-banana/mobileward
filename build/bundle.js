@@ -41073,7 +41073,7 @@ var MonitorTerminalList = function (_React$Component) {
 				{ key: data.equipmentSN },
 				_react2.default.createElement(_List.ListItem, {
 					className: 'list-item',
-					primaryText: data.equipmentName,
+					primaryText: data.equipmentName ? data.equipmentName : '(' + data.equipmentSN + ')',
 					leftIcon: _react2.default.createElement(_castConnected2.default, {
 						color: data.equipmentStatus == 0 || data.equipmentStatus == 1 ? "#4642B6" : ""
 					}),

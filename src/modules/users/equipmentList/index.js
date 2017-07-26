@@ -41,7 +41,7 @@ export default class MonitorTerminalList extends React.Component{
 			<div key={data.equipmentSN}>
 				<ListItem
 					className="list-item"
-					primaryText={data.equipmentName}
+					primaryText={data.equipmentName ? data.equipmentName : '('+data.equipmentSN+')'}
 					leftIcon={
 						<CastConnected
 							color={data.equipmentStatus==0 || data.equipmentStatus==1  ? "#4642B6" : ""}

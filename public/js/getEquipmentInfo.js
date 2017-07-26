@@ -30,7 +30,8 @@ exports.getEquipmentList = function (req,res){
 	//依赖访问redis获取的数据，需要同步执行，否则无法返回有效数据
 	client.SMEMBERS("UserDev_"+SerialNumber,function(err,obj){
 		if(err){
-			return console.log("[GetBindSet] Error:" + err);
+			console.log("[GetBindSet] Error:" + err);
+			return;
 		}else if(obj){
 			async.map(obj, (item,callback) => {
 				async.waterfall([
@@ -107,7 +108,8 @@ exports.addEquipment = function (req,res){
 	//00:绑定成功   01:设备已绑定  02:设备序列号不存在  04:设备绑定码不正确   05:系统异常
 	client.HMGET("DeviceBindHash_"+equipmentSN,"Bind","BindID",(err,obj) => {
 		if(err){
-			return console.log("[GetBindStatus] Error:" + err);
+			console.log("[GetBindStatus] Error:" + err);
+			return;
 		}else if(obj[0] != null && obj[1] != null){
 			if(obj[0] == 1){
 				res.send('01');
@@ -145,37 +147,3 @@ exports.addEquipment = function (req,res){
 		}
 	})
 }
-
-
-
-				/*obj.forEach((item) => {
-				client.HMGET("UserDevHash_"+SerialNumber+"_"+item,"Type","BindTime",(err,data1) => {
-					if(err){
-						return console.log("[GetBindType] Error:" + err);
-					}else{
-						//获取设备状态、名称、患者序列号
-						client.HMGET("DevHash_"+item,"Status","EquipmentName","PatientSN",(err,data2) => {
-							if(err){
-								return console.log("[GetEquipmentStatus] Error:" + err);
-							}else{
-								
-								//获取患者姓名
-								client.hget("PInfo_"+data2[2],"Name",(err,data3) => {
-									if(err){
-										return console.log("[GetPatientName] Error:" + err);
-									}else{
-										resDataJson.equipmentSN = item;
-										resDataJson.equipmentStatus = data2[0];
-										resDataJson.equipmentName = data2[1];
-										resDataJson.patientSN = data2[2];
-										resDataJson.patientName = data3;
-										resDataJson.bindType = data1[0];
-										resDataJson.bindTime = data1[1];
-										resData.push(resDataJson);
-									}
-								});
-							}
-						});
-					}
-				});
-			})*/
