@@ -41497,19 +41497,27 @@ var Home = function (_React$Component) {
 		value: function render() {
 			var imgDOM = _react2.default.createElement(
 				'div',
-				null,
-				_react2.default.createElement('img', { className: 'home-portrait', src: _doctor2.default }),
+				{ className: 'clearfix' },
 				_react2.default.createElement(
-					'p',
-					{ className: 'home-name' },
-					localStorage.getItem('name'),
-					' '
+					'div',
+					{ className: 'home-img-left' },
+					_react2.default.createElement('img', { className: 'home-portrait', src: _doctor2.default })
 				),
 				_react2.default.createElement(
-					'p',
-					{ className: 'home-username' },
-					'\u7528\u6237\u540D\uFF1A',
-					localStorage.getItem('username') || '--'
+					'div',
+					null,
+					_react2.default.createElement(
+						'p',
+						{ className: 'home-name' },
+						localStorage.getItem('name'),
+						' '
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'home-username' },
+						'\u7528\u6237\u540D\uFF1A',
+						localStorage.getItem('username') || '--'
+					)
 				)
 			);
 
@@ -41557,7 +41565,7 @@ var Home = function (_React$Component) {
 						className: 'list-item',
 						primaryText: '\u4FEE\u6539\u5BC6\u7801',
 						leftIcon: _react2.default.createElement(_lockOutline2.default, null),
-						href: '#/home/changePWD',
+						href: '#/home/changePwd',
 						style: style.listItemStyle
 					}),
 					_react2.default.createElement(_Divider2.default, null),
@@ -42906,7 +42914,7 @@ var run = function run() {
 				_react2.default.createElement(_reactRouter.Route, { path: '/message', components: _message2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/home', components: _home2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/home/about', components: _About2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: '/home/changePWD', components: _changePwd2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/home/changePwd', components: _changePwd2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/equipmentList', components: _equipmentList2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/physiologicalParams', components: _physiologicalParams2.default })
 			)
@@ -47238,7 +47246,7 @@ exports = module.exports = __webpack_require__(37)(undefined);
 
 
 // module
-exports.push([module.i, ".select-field svg{\n\twidth: 80px !important;\n\theight: 80px !important;\n\tfill: #000 !important;\n\tposition: relative;\n    bottom: 30px;\n    right: 40px;\n}\n\n.bottom-navigation-item{\n\twidth: 33.3%;\n\tmax-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.home-portrait{\n  \twidth: 200px;\n  \theight: 200px;\n\tborder-radius: 100px;\n\t-moz-border-radius: 100px;\n\t-webkit-border-radius: 100px;\n\tbox-shadow: 5px 5px 10px #aaa;\n\t-moz-box-shadow: 5px 5px 10px #aaa; \n\t-webkit-box-shadow:  5px 5px 10px #aaa;\n\tdisplay: block;\n\tmargin: 20px auto;\n}\n\n.home-name{\n\tfont-size: 40px;\n\ttext-align: center;\n}\n\n.home-username{\n\tfont-size: 30px;\n\ttext-align: center;\n\tmargin-bottom: 50px;\n}\n\n.list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n    margin-right: 90px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}", ""]);
+exports.push([module.i, ".select-field svg{\n\twidth: 80px !important;\n\theight: 80px !important;\n\tfill: #000 !important;\n\tposition: relative;\n    bottom: 30px;\n    right: 40px;\n}\n\n.bottom-navigation-item{\n\twidth: 33.3%;\n\tmax-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 60px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 30px !important;\n}\n\n.home-portrait{\n  \twidth: 200px;\n  \theight: 200px;\n\tborder-radius: 100px;\n\t-moz-border-radius: 100px;\n\t-webkit-border-radius: 100px;\n\tbox-shadow: 5px 5px 10px #aaa;\n\t-moz-box-shadow: 5px 5px 10px #aaa; \n\t-webkit-box-shadow:  5px 5px 10px #aaa;\n\tmargin: 20px;\n}\n\n.home-name{\n\tfont-size: 50px;\n    padding: 40px 0 10px 0;\n}\n\n.home-username{\n\tfont-size: 36px;\n    color: rgba(0, 0, 0, 0.5);\n\tmargin-bottom: 50px;\n}\n\n.list-item svg{\n\twidth: 50px !important;\n\theight: 50px !important;\n\ttop: 40px !important;\n    margin-right: 90px !important;\n}\n\n.list-item div{\n    margin-left: 80px;\n}\n\n.clearfix:after{\n    content: \"\";\n    display: block;\n\tclear: both;\n}\n\n.home-img-left{\n\tfloat: left;\n\tmargin-right: 30px;\n}", ""]);
 
 // exports
 

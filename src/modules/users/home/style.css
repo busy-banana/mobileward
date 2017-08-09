@@ -29,18 +29,17 @@
 	box-shadow: 5px 5px 10px #aaa;
 	-moz-box-shadow: 5px 5px 10px #aaa; 
 	-webkit-box-shadow:  5px 5px 10px #aaa;
-	display: block;
-	margin: 20px auto;
+	margin: 20px;
 }
 
 .home-name{
-	font-size: 40px;
-	text-align: center;
+	font-size: 50px;
+    padding: 40px 0 10px 0;
 }
 
 .home-username{
-	font-size: 30px;
-	text-align: center;
+	font-size: 36px;
+    color: rgba(0, 0, 0, 0.5);
 	margin-bottom: 50px;
 }
 
@@ -53,4 +52,15 @@
 
 .list-item div{
     margin-left: 80px;
+}
+
+.clearfix:after{
+    content: "";
+    display: block;
+	clear: both;
+}
+
+.home-img-left{
+	float: left;
+	margin-right: 30px;
 }

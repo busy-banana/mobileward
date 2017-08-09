@@ -27,11 +27,15 @@ export default class Home extends React.Component{
 
 	render(){
 		const imgDOM = (
-				<div>
+			<div className="clearfix">
+				<div className="home-img-left">
 					<img className="home-portrait" src={Img}/>
+				</div>				
+				<div>
 					<p className="home-name">{localStorage.getItem('name')} </p>
 					<p className="home-username">用户名：{localStorage.getItem('username') || '--'}</p>
 				</div>				
+			</div>				
 		)
 
 		const style = {
@@ -73,7 +77,7 @@ export default class Home extends React.Component{
 						className="list-item"
 						primaryText="修改密码" 
 						leftIcon={<Lock />}
-						href="#/home/changePWD"
+						href="#/home/changePwd"
 						style={style.listItemStyle}
 					/>
 					<Divider />

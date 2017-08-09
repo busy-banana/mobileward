@@ -40,7 +40,7 @@ const run = () => {
 					<Route path="/message" components={Message}/>
 					<Route path="/home" components={Home}/>
 					<Route path="/home/about" components={About}/>					
-					<Route path="/home/changePWD" components={ChangePWD}/>					
+					<Route path="/home/changePwd" components={ChangePWD}/>					
 					<Route path="/equipmentList" components={EquipmentList}/>
 					<Route path="/physiologicalParams" components={PhysiologicalParams}/>
 				</Route>
