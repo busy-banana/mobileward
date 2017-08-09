@@ -20,6 +20,14 @@ export default class Dashboard extends React.Component{
         this.handleEquipmentSNChange = this.handleEquipmentSNChange.bind(this);
         this.handleEquipmentBNChange = this.handleEquipmentBNChange.bind(this);
         this.addEquipment = this.addEquipment.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		// ['handleEquipmentSNChange',
+		//  'handleEquipmentBNChange',
+		//  'addEquipment',
+		//  'handleClose'
+		// ].forEach((item) => {
+		// 	this[item] = this[item].bind(this);
+		// });
 
     }
     
@@ -39,17 +47,30 @@ export default class Dashboard extends React.Component{
     }
     
     addEquipment(){
-		if(this.state.equipmentSN && this.state.equipmentBN){
+		let SN = localStorage.getItem('serialNumber');
+		if(this.state.equipmentSN && this.state.equipmentBN && SN){
 			Http.http('post',{
 					url: '/api/addEquipment',
 					params: {
 						equipmentSN : this.state.equipmentSN,
 						equipmentBN: this.state.equipmentBN,
-						serialNumber: 88888888,
+						serialNumber: SN,
 					}
 				},
+				//00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
 				(data) => {
-					console.log(data)
+					if(data == "00"){
+						this.setState({open: true, message: '添加成功'});
+					}else if(data == "01"){
+						this.setState({open: true, message: '该设备已被绑定'});
+					}else if(data == "02"){
+						this.setState({open: true, message: '设备序列号不正确'});
+					}else if(data == "03"){
+						this.setState({open: true, message: '设备绑定码不正确'});
+					}else{
+						this.setState({open: true, message: '系统异常，请稍后再试'});
+					}
+					//console.log(data);
 				}
 			)
 		}else{
@@ -104,7 +125,7 @@ export default class Dashboard extends React.Component{
 				label="添加"
 				style={style.registerBtn}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={this.addEquipment}
+				onTouchTap={(e) => {e.preventDefault();this.addEquipment()}}
 				disabled={true}
 			/> :
 			<RaisedButton
@@ -112,7 +133,7 @@ export default class Dashboard extends React.Component{
 				style={style.registerBtn}
 				buttonStyle={style.btnStyle}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={this.addEquipment}
+				onTouchTap={(e) => {e.preventDefault();this.addEquipment()}}
 			/>;
 
 		return (
@@ -144,7 +165,7 @@ export default class Dashboard extends React.Component{
 				
                 <Dialogs
 					message={this.state.message}
-					onTouchTap={this.handleClose}
+					onTouchTap={(e) => {e.preventDefault();this.handleClose()}}
 					open={this.state.open}
 				/>
 			</div>

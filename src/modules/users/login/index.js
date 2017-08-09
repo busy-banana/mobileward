@@ -44,7 +44,18 @@ export default class Login extends React.Component{
 					params:{username: this.state.username,password: this.state.password}
 				},
 				(data) => {
+					//console.log(data);
 					if(data.datas == "登录成功"){
+						if(!window.localStorage){
+							//不支持localStorage，考虑降级方案
+							//不支持localStorage，考虑降级方案
+							//不支持localStorage，考虑降级方案
+						}else{
+							localStorage.setItem('username',this.state.username);//缓存用户名
+							localStorage.setItem('serialNumber',data.SN);//缓存用户序列号
+							localStorage.setItem('cacheTime',new Date().getTime());//缓存添加时间，后期清除用
+							localStorage.setItem('name',data.Name);//缓存用户姓名
+						}
 						window.location.href = window.location.origin + '#/equipmentList';
 					}else{
 						this.setState({open: true, message: data.datas});

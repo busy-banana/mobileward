@@ -10,7 +10,7 @@ exports.verify = function(req,res){
     	console.log("Error:" + err);
 	});
 
-	client.hget(username,"Password",function(err,obj){
+	client.hget(username,"Password",(err,obj) => {
 		if(err){
 			console.log("Error:" + err);
 		}else if(!obj){
@@ -18,8 +18,21 @@ exports.verify = function(req,res){
 		}else if(obj && obj != password){
 			res.send({datas:"密码错误"});
 		}else{
-			client.hset(username+"_Status","Status",1);
-			res.send({datas:"登录成功"});
+			client.hget(username+"_SN","SerialNumber",(err,obj) => {
+				if(err){
+					console.log("Error:" + err);
+				}else{
+					let SN = obj;
+					client.hget("User_"+SN,"Name",(err,obj) => {
+						if(err){
+							console.log("Error:" + err);
+						}else{
+							client.hset(username+"_Status","Status",1);
+							res.send({datas:"登录成功",SN:SN,Name:obj});
+						}
+					});
+				}
+			});
 		}
 	});
 }

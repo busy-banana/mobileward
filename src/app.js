@@ -9,6 +9,8 @@ import Dashboard from './modules/users/dashboard';
 import AddEquipment from './modules/users/addEquipment';
 import Message from './modules/users/message';
 import Home from './modules/users/home';
+import ChangePWD from './modules/users/changePwd';
+import About from './modules/manage/About';
 import EquipmentList from './modules/users/equipmentList';
 import PhysiologicalParams from './modules/patients/physiologicalParams';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -37,6 +39,8 @@ const run = () => {
 					<Route path="/addEquipment" components={AddEquipment}/>
 					<Route path="/message" components={Message}/>
 					<Route path="/home" components={Home}/>
+					<Route path="/home/about" components={About}/>					
+					<Route path="/home/changePWD" components={ChangePWD}/>					
 					<Route path="/equipmentList" components={EquipmentList}/>
 					<Route path="/physiologicalParams" components={PhysiologicalParams}/>
 				</Route>

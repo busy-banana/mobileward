@@ -25,9 +25,10 @@ export default class MonitorTerminalList extends React.Component{
 	}
 
 	getEquipmentList(){
+		let SN = localStorage.getItem('serialNumber');
 		Http.http('post',{
 				url:'/api/getEquipmentList',
-				params:{serialNumber:88888888}
+				params:{serialNumber: SN}
 			},
 			(data) => {
 				this.setState({datas:data});

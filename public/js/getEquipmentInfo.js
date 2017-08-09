@@ -90,7 +90,7 @@ exports.getEquipmentList = function (req,res){
 			);
 		}else{
 			//用户未绑定任何设备
-			res.send('00');
+			res.send("00");
 		}
 	});
 }
@@ -105,45 +105,48 @@ exports.addEquipment = function (req,res){
     	console.log("[Redis] Error:" + err);
 	});
 
-	//00:绑定成功   01:设备已绑定  02:设备序列号不存在  04:设备绑定码不正确   05:系统异常
-	client.HMGET("DeviceBindHash_"+equipmentSN,"Bind","BindID",(err,obj) => {
+	//00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
+	client.HMGET("DeviceBindHash",equipmentSN,equipmentSN+"_BindID",(err,obj) => {
 		if(err){
 			console.log("[GetBindStatus] Error:" + err);
 			return;
 		}else if(obj[0] != null && obj[1] != null){
 			if(obj[0] == 1){
-				res.send('01');
+				res.send("01");
 				return;
 			}else if(obj[0] == 0){
 				if(obj[1] == equipmentBN){
-					client.SADD("UserDev_"+SerialNumber,equipmentSN,(err,obj) => {
+					client.HSET("DeviceBindHash",equipmentSN,1,(err,obj) => {
 						if(err){
-							return console.log("[AddEquipmentSN] Error:" + err);
-						}else if(obj == 1){
-							client.HMSET("UserDevHash_"+SerialNumber+"_"+equipmentSN,"Type",0,"BindTime",bindTime,
-								(err,obj) =>{
-									if(err){
-										return console.log("[AddBindType] Error:" + err);
-									}else if(obj == 1){
-										res.send('00')
-									}else{
-										res.send('05');
-										
-									}
-								}
-							)
-							console.log(obj);
+							return console.log("[UpdateDeviceStatus] Error:" + err);
 						}else{
-							res.send('05');
+							client.SADD("UserDev_"+SerialNumber,equipmentSN,(err,obj) => {
+								if(err){
+									return console.log("[AddEquipmentSN] Error:" + err);
+								}else if(obj == 1){
+									client.HMSET("UserDevHash_"+SerialNumber+"_"+equipmentSN,"Type",0,"BindTime",bindTime,
+										(err,obj) =>{
+											if(err){
+												return console.log("[AddBindType] Error:" + err);
+											}else if(obj == 'OK'){
+												res.send("00")
+											}else{
+												res.send("99")
+											}
+										}
+									)
+								}else{
+									res.send("99");
+								}
+							})
 						}
 					})
-					res.send('00');
 				}else{
-					res.send('04');
+					res.send("03");
 				}
 			}
 		}else{
-			res.send('02');
+			res.send("02");
 		}
 	})
 }

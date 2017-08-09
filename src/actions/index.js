@@ -7,7 +7,7 @@ class Http{
 			url: options.url,
 			method: method || 'get',
 			data: options.params || {},
-			type: options.type || 'json',
+			type: options.type,
 			headers: {
 				'Accept': 'application/json;charset=UTF-8'
 			},

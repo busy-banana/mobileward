@@ -1,0 +1,23 @@
+.about-portrait{
+    width: 200px;
+  	height: 200px;
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	box-shadow: 5px 5px 10px #aaa;
+	-moz-box-shadow: 5px 5px 10px #aaa; 
+	-webkit-box-shadow:  5px 5px 10px #aaa;
+	display: block;
+	margin: 60px auto;
+}
+
+.about-title{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.about-copyright{
+    font-size: 30px;
+    text-align: center;
+}
