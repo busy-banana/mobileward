@@ -11,6 +11,7 @@ import About from 'material-ui/svg-icons/action/info-outline';
 import Logout from 'material-ui/svg-icons/action/input';
 import Message from 'material-ui/svg-icons/communication/message';
 import Img from '../../../../public/images/doctor.jpg';
+import Http from '../../../actions';
 import './style.css';
 
 export default class Home extends React.Component{
@@ -20,9 +21,21 @@ export default class Home extends React.Component{
 	}
 
 	logout(){
-		localStorage.clear();
-		window.location = "#/login";
-		//发请求改登录状态
+		const username = localStorage.getItem('username');
+		Http.http('post',{
+			url: '/api/logout',
+			params: {
+				username: username,
+			}
+		},
+		(data) => {
+			if(data == '00'){
+				localStorage.clear();
+				window.location = "#/login";
+			}else{
+				return false;
+			}
+		})
 	}
 
 	render(){
@@ -32,7 +45,7 @@ export default class Home extends React.Component{
 					<img className="home-portrait" src={Img}/>
 				</div>				
 				<div>
-					<p className="home-name">{localStorage.getItem('name')} </p>
+					<p className="home-name">{localStorage.getItem('name') || '--'} </p>
 					<p className="home-username">用户名：{localStorage.getItem('username') || '--'}</p>
 				</div>				
 			</div>				

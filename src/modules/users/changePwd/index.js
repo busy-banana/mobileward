@@ -70,35 +70,30 @@ export default class ChangePWD extends React.Component{
 	}
     
     changePwd(){
-		let SN = localStorage.getItem('serialNumber');
-		if(this.state.equipmentSN && this.state.equipmentBN && SN){
-			Http.http('post',{
-					url: '/api/addEquipment',
-					params: {
-						equipmentSN : this.state.equipmentSN,
-						equipmentBN: this.state.equipmentBN,
-						serialNumber: SN,
-					}
-				},
-				//00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
-				(data) => {
-					if(data == "00"){
-						this.setState({open: true, message: '添加成功'});
-					}else if(data == "01"){
-						this.setState({open: true, message: '该设备已被绑定'});
-					}else if(data == "02"){
-						this.setState({open: true, message: '设备序列号不正确'});
-					}else if(data == "03"){
-						this.setState({open: true, message: '设备绑定码不正确'});
-					}else{
-						this.setState({open: true, message: '系统异常，请稍后再试'});
-					}
-					//console.log(data);
-				}
-			)
-		}else{
-			return '';
-		}
+        Http.http('post',{
+                url: '/api/changePwd',
+                params: {
+                    equipmentSN : this.state.equipmentSN,
+                    equipmentBN: this.state.equipmentBN,
+                    serialNumber: SN,
+                }
+            },
+            //00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
+            (data) => {
+                if(data == "00"){
+                    this.setState({open: true, message: '添加成功'});
+                }else if(data == "01"){
+                    this.setState({open: true, message: '该设备已被绑定'});
+                }else if(data == "02"){
+                    this.setState({open: true, message: '设备序列号不正确'});
+                }else if(data == "03"){
+                    this.setState({open: true, message: '设备绑定码不正确'});
+                }else{
+                    this.setState({open: true, message: '系统异常，请稍后再试'});
+                }
+                //console.log(data);
+            }
+        )
 	}
 	
 

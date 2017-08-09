@@ -37,4 +37,23 @@ exports.verify = function(req,res){
 	});
 }
 
+exports.logout = function(req,res){
+	const username = req.body.username;
+
+	client.on("error", function(err){
+    	console.log("Error:" + err);
+	});
+
+	client.hset(username+"_Status","Status",0,(err,obj) => {
+		console.log(obj)
+		if(err){
+			console.log("Error:" + err);
+		}else if(!obj){
+			res.send("00");
+		}else{
+			res.send("99");
+		}
+	});
+}
+
 
