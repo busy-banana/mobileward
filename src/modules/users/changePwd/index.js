@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialogs from '../../../components/dialog';
 import Http from '../../../actions';
+import AppContainer from '../../appContainer';
 import './style.css';
 
 export default class ChangePWD extends React.Component{
@@ -23,13 +24,13 @@ export default class ChangePWD extends React.Component{
         this.handleConfirmPwdChange = this.handleConfirmPwdChange.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.changePwd = this.changePwd.bind(this);
-    }
-    
+	}
+	
     handleClose(){
 		this.setState({open: false});
 		if(this.state.message == '修改成功，请重新登录'){
             localStorage.clear();
-			window.location.href = window.location.origin + '#/login';
+			this.go('#/login');
 		}
     }
     
@@ -68,30 +69,25 @@ export default class ChangePWD extends React.Component{
 			});
 		}
 	}
-    
+	
     changePwd(){
         Http.http('post',{
                 url: '/api/changePwd',
                 params: {
-                    equipmentSN : this.state.equipmentSN,
-                    equipmentBN: this.state.equipmentBN,
-                    serialNumber: SN,
+					username: localStorage.getItem('username'),
+                    oldPassword : this.state.oldPassword,
+                    newPassword: this.state.newPassword,
                 }
             },
-            //00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
             (data) => {
+				//00:修改成功 01:原密码输入不正确 99:系统异常
                 if(data == "00"){
-                    this.setState({open: true, message: '添加成功'});
+                    this.setState({open: true, message: '修改成功，请重新登录'});
                 }else if(data == "01"){
-                    this.setState({open: true, message: '该设备已被绑定'});
-                }else if(data == "02"){
-                    this.setState({open: true, message: '设备序列号不正确'});
-                }else if(data == "03"){
-                    this.setState({open: true, message: '设备绑定码不正确'});
-                }else{
-                    this.setState({open: true, message: '系统异常，请稍后再试'});
-                }
-                //console.log(data);
+                    this.setState({open: true, message: '原密码输入不正确'});
+                }else if(data == "99"){
+                    this.setState({open: true, message: '系统异常，请稍微再试'});
+				}
             }
         )
 	}

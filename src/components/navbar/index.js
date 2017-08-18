@@ -21,6 +21,7 @@ export default class NavBar extends React.Component{
 							<NavigationArrowBack className="navigation-arrow-back" />
 						</IconButton>
 					}
+					iconElementRight={this.props.rightElement}
 				/>
 		)
 	}

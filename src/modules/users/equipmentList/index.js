@@ -10,9 +10,10 @@ import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import Add from 'material-ui/svg-icons/content/add';
 import Http from '../../../actions';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class MonitorTerminalList extends React.Component{
+export default class MonitorTerminalList extends AppContainer{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -47,7 +48,7 @@ export default class MonitorTerminalList extends React.Component{
 						<CastConnected
 							color={data.equipmentStatus==0 || data.equipmentStatus==1  ? "#4642B6" : ""}
 						/>}
-					href="#/dashboard"
+					onTouchTap={(e) => {e.preventDefault();this.go(`#/dashboard?SN=${data.equipmentSN}`)}}
 					style={{height: '150px',
 							fontSize: '40px',
 							fontWeight: 'normal',
@@ -163,13 +164,13 @@ export default class MonitorTerminalList extends React.Component{
 						className="bottom-navigation-item"
 						label="消息"
 						icon={<Message/>}
-						onTouchTap={() => {window.location = "#/message"}}
+						onTouchTap={() => {this.go("#/message")}}
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
 						label="个人中心"
 						icon={<Person/>}
-						onTouchTap={() => {window.location = "#/home"}}
+						onTouchTap={() => {this.go("#/home")}}
 					/>
 		        </BottomNavigation>
 			</div>

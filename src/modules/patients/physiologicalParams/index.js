@@ -1,9 +1,10 @@
 import React from 'react';
 import NavBar from '../../../components/navbar';
 import { LineChart, Line, XAxis, YAxis} from 'recharts';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class PhysiologicalParams extends React.Component{
+export default class PhysiologicalParams extends AppContainer{
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -31,7 +32,7 @@ export default class PhysiologicalParams extends React.Component{
 		//const testData = [{x: 0,value: 1},{x: 5,value: 2},{x: 10,value: 2.5},{x: 15,value: 2.3},{x: 20,value: 1.6}]
 		return(
 			<div className="physiologicalParams-container">
-				<NavBar title="生理参数" href="#/dashboard"/>
+				<NavBar title="生理参数" href={`#/dashboard?SN=${this.getParams(1)}`}/>
 
 				<div className="xy-waveform">
 					<p>血压</p>

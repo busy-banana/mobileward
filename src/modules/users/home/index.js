@@ -12,12 +12,33 @@ import Logout from 'material-ui/svg-icons/action/input';
 import Message from 'material-ui/svg-icons/communication/message';
 import Img from '../../../../public/images/doctor.jpg';
 import Http from '../../../actions';
+import Dialogs from '../../../components/dialog';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Home extends React.Component{
+export default class Home extends AppContainer{
 	constructor(props){
 		super(props);
+		 this.state = {
+            message: '',
+			open: false
+		 }
 		this.logout = this.logout.bind(this);
+		this.changePwd = this.changePwd.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+	}
+
+	handleClose(){
+		this.setState({open: false});
+    }
+
+	changePwd(){
+		const username = localStorage.getItem('username');
+		if(!username){
+			this.setState({open: true, message: '用户未登录'});
+		}else{
+			this.go("#/home/changePwd");
+		}
 	}
 
 	logout(){
@@ -31,7 +52,7 @@ export default class Home extends React.Component{
 		(data) => {
 			if(data == '00'){
 				localStorage.clear();
-				window.location = "#/login";
+				this.go("#/login");
 			}else{
 				return false;
 			}
@@ -90,7 +111,7 @@ export default class Home extends React.Component{
 						className="list-item"
 						primaryText="修改密码" 
 						leftIcon={<Lock />}
-						href="#/home/changePwd"
+						onTouchTap={this.changePwd}
 						style={style.listItemStyle}
 					/>
 					<Divider />
@@ -117,13 +138,13 @@ export default class Home extends React.Component{
 						className="bottom-navigation-item"
 						label="设备列表"
 						icon={<DashboardIcon/>}
-						onTouchTap={() => {window.location = "#/equipmentList"}}
+						onTouchTap={() => {this.go("#/equipmentList")}}
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
 						label="消息"
 						icon={<Message/>}
-						onTouchTap={() => {window.location = "#/message"}}
+						onTouchTap={() => {this.go("#/message")}}
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
@@ -132,6 +153,12 @@ export default class Home extends React.Component{
 						disabled={true}
 					/>
 		        </BottomNavigation>
+				
+				<Dialogs
+					message={this.state.message}
+					onTouchTap={(e) => {e.preventDefault();this.handleClose()}}
+					open={this.state.open}
+				/>
 			</div>
 		)
 	}

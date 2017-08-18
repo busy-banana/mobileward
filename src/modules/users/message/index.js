@@ -10,9 +10,10 @@ import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import AlarmAdd from 'material-ui/svg-icons/action/alarm-add';
 import NotificationsActive from 'material-ui/svg-icons/social/notifications-active';
 import Divider from 'material-ui/Divider';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Dashboard extends React.Component{
+export default class Dashboard extends AppContainer{
 	constructor(props){
 		super(props);
 	}
@@ -83,7 +84,7 @@ export default class Dashboard extends React.Component{
 						className="bottom-navigation-item"
 						label="设备列表"
 						icon={<DashboardIcon/>}
-						onTouchTap={() => {window.location = "#/equipmentList"}}
+						onTouchTap={() => {this.go("#/equipmentList")}}
 					/>
 					<BottomNavigationItem
 						className="bottom-navigation-item"
@@ -95,7 +96,7 @@ export default class Dashboard extends React.Component{
 						className="bottom-navigation-item"
 						label="个人中心"
 						icon={<Person/>}
-						onTouchTap={() => {window.location = "#/home"}}
+						onTouchTap={() => {this.go("#/home")}}
 					/>
 		        </BottomNavigation>
 			</div>

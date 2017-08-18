@@ -150,3 +150,33 @@ exports.addEquipment = function (req,res){
 		}
 	})
 }
+
+exports.getEquipmentInfo = function(req,res){
+	const SerialNumber = req.body.serialNumber || '';
+
+	client.on("error", function(err){
+    	console.log("[Redis] Error:" + err);
+	});
+
+	client.HMGET("DevHash_"+SerialNumber,"Status","PatientSN","EquipmentName","AdminUserSN","UserBrowseStatus","ModuleSet","ConnectionTime",(err,obj) => {
+		if(err){
+			console.log("[GetEquipmentInfo] Error:" + err);
+			return;
+		}else if(obj){
+			res.send({
+				resCode:"00",
+				datas:{
+					status:obj[0],
+					patientSN:obj[1],
+					equipmentName:obj[2],
+					adminUserSN:obj[3],
+					userBrowseStatus:obj[4],
+					moduleSet:obj[5],
+					connectionTime:obj[6]
+				}
+			});
+		}else{
+			res.send({resCode:"99"});
+		}
+	})
+}

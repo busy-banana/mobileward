@@ -6,11 +6,13 @@ import History from 'material-ui/svg-icons/action/history';
 import People from 'material-ui/svg-icons/social/people';
 import Computer from 'material-ui/svg-icons/hardware/computer';
 import Divider from 'material-ui/Divider';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Dashboard extends React.Component{
+export default class Dashboard extends AppContainer{
 	constructor(props){
 		super(props);
+		this.SN = this.getParams(1);
 	}
 
 	render(){
@@ -32,11 +34,11 @@ export default class Dashboard extends React.Component{
 						className="list-item"
 						primaryText="生理参数" 
 						leftIcon={<PhotoLibrary />}
-						href="#/physiologicalParams"
+						href={`#/dashboard/physiologicalParams?SN=${this.SN}`}
 						style={style.listItemStyle}
 					/>
 					<Divider />
-					<ListItem 
+					<ListItem
 						className="list-item"
 						primaryText="历史回顾" 
 						leftIcon={<History />} 
@@ -45,9 +47,10 @@ export default class Dashboard extends React.Component{
 					<Divider />
 					<ListItem 
 						className="list-item"
-						primaryText="设备信息" 
+						primaryText="设备信息"
 						leftIcon={<Computer />} 
 						style={style.listItemStyle}
+						href={`#/dashboard/equipmentInfo?SN=${this.SN}`}
 					/>
 					<Divider />
 					<ListItem 

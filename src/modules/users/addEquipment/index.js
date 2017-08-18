@@ -4,9 +4,10 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialogs from '../../../components/dialog';
 import Http from '../../../actions';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Dashboard extends React.Component{
+export default class Dashboard extends AppContainer{
 	constructor(props){
         super(props);
         this.state = {
@@ -34,7 +35,7 @@ export default class Dashboard extends React.Component{
     handleClose(){
 		this.setState({open: false});
 		if(this.state.message == '添加成功'){
-			window.location.href = window.location.origin + '#/equipmentList';
+			this.go('#/equipmentList');
 		}
     }
     

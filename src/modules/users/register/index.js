@@ -7,9 +7,10 @@ import MenuItem from 'material-ui/MenuItem';
 import DatePicker from 'material-ui/DatePicker';
 import Dialogs from '../../../components/dialog';
 import Http from '../../../actions';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Register extends React.Component{
+export default class Register extends AppContainer{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -58,7 +59,7 @@ export default class Register extends React.Component{
 	handleClose(){
 		this.setState({open: false});
 		if(this.state.message == '注册成功'){
-			window.location.href = window.location.origin + '#/login';
+			this.go('#/login');
 		}
 	}
 
@@ -77,7 +78,6 @@ export default class Register extends React.Component{
 		this.setState({
 			sex: value,
 		});
-
 	}
 
 	handleBirthdayChange(event, value){
@@ -182,7 +182,7 @@ export default class Register extends React.Component{
 		Http.http('post',{
 				url: '/api/register',
 				params: {
-					sex : this.state.sesx,
+					sex : this.state.sex,
 					username: this.state.username,
 					password: this.state.password,
 					name: this.state.name,

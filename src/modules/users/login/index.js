@@ -8,9 +8,10 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialogs from '../../../components/dialog';
 import Http from '../../../actions';
+import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class Login extends React.Component{
+export default class Login extends AppContainer{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -56,7 +57,7 @@ export default class Login extends React.Component{
 							localStorage.setItem('cacheTime',new Date().getTime());//缓存添加时间，后期清除用
 							localStorage.setItem('name',data.Name);//缓存用户姓名
 						}
-						window.location.href = window.location.origin + '#/equipmentList';
+						this.go('#/equipmentList');
 					}else{
 						this.setState({open: true, message: data.datas});
 					}
