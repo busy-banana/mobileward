@@ -1,7 +1,13 @@
-.equipment-list-left{
-
+.equipment-list-right{
+    color: rgba(0,0,0,0.5);
+    font-size: 38px;
+    float: right;
+    position: relative;
+    bottom: 102px;
+    right: 120px;
 }
 
-.equipment-list-right{
-
+.equipment-list-left div{
+    margin-left: 80px;
+    color: rgba(0,0,0,0.5);
 }

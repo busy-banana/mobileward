@@ -11,6 +11,7 @@ import Divider from 'material-ui/Divider';
 import Add from 'material-ui/svg-icons/content/add';
 import Http from '../../../actions';
 import AppContainer from '../../appContainer';
+import Dialogs from '../../../components/dialog';
 import './style.css';
 
 export default class MonitorTerminalList extends AppContainer{
@@ -19,6 +20,12 @@ export default class MonitorTerminalList extends AppContainer{
 		this.state = {
 			datas : ''
 		}
+		this.addEquipment = this.addEquipment.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+	}
+
+	handleClose(){
+		this.setState({open: false});
 	}
 
 	componentWillMount(){
@@ -35,6 +42,15 @@ export default class MonitorTerminalList extends AppContainer{
 				this.setState({datas:data});
 			}
 		);
+	}
+
+	addEquipment(){
+		const username = localStorage.getItem('username');
+		if(!username){
+			this.setState({open: true, message: '用户未登录'});
+		}else{
+			this.go("#/addEquipment");
+		}
 	}
 	
 	//处理数据
@@ -118,7 +134,7 @@ export default class MonitorTerminalList extends AppContainer{
 					iconElementRight={
 						<IconButton 
 							className="add-equipment-btn"
-							href="#/addEquipment">
+							onTouchTap ={(e) => {e.preventDefault();this.addEquipment()}}>
 							<Add className="add-equipment" />
 						</IconButton>
 					}
@@ -173,6 +189,12 @@ export default class MonitorTerminalList extends AppContainer{
 						onTouchTap={() => {this.go("#/home")}}
 					/>
 		        </BottomNavigation>
+
+				<Dialogs
+					message={this.state.message}
+					onTouchTap={this.handleClose}
+					open={this.state.open}
+				/>
 			</div>
 		)
 	}

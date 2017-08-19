@@ -50,10 +50,20 @@ export default class EquipmentInfo extends AppContainer{
         }
     }
 
+    handleEquipmentStatus(i){
+        let status = '';
+        switch(i){
+            case '0': status = '未连接';break;
+            case '1': status = '已连接';break;
+            case '2': status = '数据传输中';break;
+            case '3': status = '设备异常';break;
+        }
+        return status;
+    }
+
     render(){
         let datas = this.state.datas;
-
-        console.log(datas)
+        let status = this.handleEquipmentStatus(datas.status);
         return(
             <div className="container">
                 <NavBar title="设备信息" href={`#/dashboard?SN=${this.SN}`}/>
@@ -63,7 +73,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备名称"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.equipmentName}</span>
                     <Divider/>
@@ -72,16 +82,16 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备状态"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
-                    <span className="equipment-list-right">{datas.status}</span>
+                    <span className="equipment-list-right">{status}</span>
                     <Divider/>
 
                     <ListItem
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备序列号"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{this.SN}</span>
                     <Divider/>
@@ -90,7 +100,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="超级管理员序列号"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.adminUserSN}</span>
                     <Divider/>
@@ -99,7 +109,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="患者序列号"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.patientSN}</span>
                     <Divider/>
@@ -108,16 +118,16 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="数据浏览状态"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
-                    <span className="equipment-list-right">{datas.userBrowseStatus}</span>
+                    <span className="equipment-list-right">{datas.userBrowseStatus==1?'有用户浏览':'无用户浏览' }</span>
                     <Divider/>
 
                     <ListItem
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备加载模块"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.moduleSet}</span>
                     <Divider/>
@@ -126,11 +136,17 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备连接时间"
-                        style={{height: '150px',fontSize: '40px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.connectionTime}</span>
                     <Divider/>
                 </List>
+
+                <Dialogs
+					message={this.state.message}
+					onTouchTap={this.handleClose}
+					open={this.state.open}
+				/>
             </div>
         )
     }
