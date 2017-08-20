@@ -30,6 +30,7 @@ export default class Login extends AppContainer{
         this.isCacheExit();
 	}
 	
+	//判断localStorage是否包含用户登录信息，有则跳过登录。
 	isCacheExit(){
 		let user = localStorage.getItem('username');
 		if(user && user != null){

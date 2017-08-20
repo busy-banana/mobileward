@@ -42571,6 +42571,24 @@ var Login = function (_AppContainer) {
 	}
 
 	_createClass(Login, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.isCacheExit();
+		}
+
+		//判断localStorage是否包含用户登录信息，有则跳过登录。
+
+	}, {
+		key: 'isCacheExit',
+		value: function isCacheExit() {
+			var user = localStorage.getItem('username');
+			if (user && user != null) {
+				this.go('#/equipmentList');
+			} else {
+				return null;
+			}
+		}
+	}, {
 		key: 'handleClose',
 		value: function handleClose() {
 			this.setState({ open: false });
