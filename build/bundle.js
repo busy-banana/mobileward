@@ -96329,9 +96329,21 @@ var _actions = __webpack_require__(55);
 
 var _actions2 = _interopRequireDefault(_actions);
 
+var _IconButton = __webpack_require__(65);
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
 var _dialog = __webpack_require__(56);
 
 var _dialog2 = _interopRequireDefault(_dialog);
+
+var _add = __webpack_require__(852);
+
+var _add2 = _interopRequireDefault(_add);
+
+var _person = __webpack_require__(227);
+
+var _person2 = _interopRequireDefault(_person);
 
 __webpack_require__(1078);
 
@@ -96398,31 +96410,19 @@ var EquipmentInfo = function (_AppContainer) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
-
             var datas = this.state.datas;
+            var rightBtn = _react2.default.createElement(
+                _IconButton2.default,
+                {
+                    className: 'add-equipment-btn',
+                    onTouchTap: this.addMember },
+                _react2.default.createElement(_add2.default, { className: 'add-equipment' })
+            );
             return _react2.default.createElement(
                 'div',
                 { className: 'container' },
-                _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u4FE1\u606F', href: '#/dashboard?SN=' + this.SN }),
-                _react2.default.createElement(AppBar, {
-                    title: _react2.default.createElement(
-                        'span',
-                        { className: 'navbar-title' },
-                        '\u8BBE\u5907\u5217\u8868'
-                    ),
-                    className: 'app-bar',
-                    iconStyleLeft: { visibility: 'hidden' },
-                    iconElementRight: _react2.default.createElement(
-                        IconButton,
-                        {
-                            className: 'add-equipment-btn',
-                            onTouchTap: function onTouchTap(e) {
-                                e.preventDefault();_this3.addEquipment();
-                            } },
-                        _react2.default.createElement(Add, { className: 'add-equipment' })
-                    )
-                }),
+                _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u4FE1\u606F', href: '#/dashboard?SN=' + this.SN, rightElement: rightBtn }),
+                _react2.default.createElement(_person2.default, { className: 'person-icon' }),
                 _react2.default.createElement(_dialog2.default, {
                     message: this.state.message,
                     onTouchTap: this.handleClose,
@@ -96446,7 +96446,7 @@ exports = module.exports = __webpack_require__(30)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".person-icon{\n    width: 100px;\n    height: 100px;\n}", ""]);
 
 // exports
 

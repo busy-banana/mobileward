@@ -4,7 +4,10 @@ import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import AppContainer from '../../appContainer';
 import Http from '../../../actions';
+import IconButton from 'material-ui/IconButton';
 import Dialogs from '../../../components/dialog';
+import Add from 'material-ui/svg-icons/content/add';
+import Person from 'material-ui/svg-icons/social/person';
 import './style.css';
 
 export default class EquipmentInfo extends AppContainer{
@@ -52,23 +55,18 @@ export default class EquipmentInfo extends AppContainer{
 
     render(){
         let datas = this.state.datas;
+        const rightBtn = (
+			<IconButton 
+				className="add-equipment-btn"
+				onTouchTap={this.addMember}>
+				<Add className="add-equipment" />
+			</IconButton>
+		);
         return(
             <div className="container">
-                <NavBar title="成员信息" href={`#/dashboard?SN=${this.SN}`}/>
-                <AppBar
-					title={<span className="navbar-title">设备列表</span>}
-					className="app-bar"
-					iconStyleLeft={{visibility:'hidden'}}
-					iconElementRight={
-						<IconButton 
-							className="add-equipment-btn"
-							onTouchTap ={(e) => {e.preventDefault();this.addEquipment()}}>
-							<Add className="add-equipment" />
-						</IconButton>
-					}
-				/>
-                
+                <NavBar title="成员信息" href={`#/dashboard?SN=${this.SN}`} rightElement={rightBtn}/>
 
+                <Person className="person-icon"/>
                 <Dialogs
 					message={this.state.message}
 					onTouchTap={this.handleClose}
