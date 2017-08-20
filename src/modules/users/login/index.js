@@ -26,6 +26,19 @@ export default class Login extends AppContainer{
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
+	componentWillMount(){
+        this.isCacheExit();
+	}
+	
+	isCacheExit(){
+		let user = localStorage.getItem('username');
+		if(user && user != null){
+			this.go('#/equipmentList');
+		}else{
+			return null;
+		}
+	}
+
 	handleClose(){
 		this.setState({open: false});
 	}
@@ -37,6 +50,7 @@ export default class Login extends AppContainer{
 	handlePasswordChange(event,value){
 		this.setState({password: value});
 	}
+	
 
 	login(){
 		if(this.state.username && this.state.password){

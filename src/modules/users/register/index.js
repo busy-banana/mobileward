@@ -273,7 +273,7 @@ export default class Register extends AppContainer{
 				label="注册"
 				style={style.registerBtn}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={this.register}
+				onTouchTap={(e) => {e.preventDefault();this.register()}}
 				disabled={true}
 			/> :
 			<RaisedButton
@@ -281,13 +281,13 @@ export default class Register extends AppContainer{
 				style={style.registerBtn}
 				buttonStyle={style.btnStyle}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={this.register}
+				onTouchTap={(e) => {e.preventDefault();this.register()}}
 			/>;
 		return (
 			<div className="container">
 				<NavBar title="注册账号" href="#/login"/>
 
-				<div style={style.registerFirstInput}>
+				<div style={style.registerContainer}>
 					<TextField
 						floatingLabelText="用户名(必填)"
 						floatingLabelFocusStyle={style.labelFocusStyle}

@@ -247,7 +247,7 @@ export default class UserInfo extends AppContainer{
             <div className="container">
 				<NavBar title="个人信息" href="#/home" rightElement={rightBtn}/>
 
-				<div style={style.registerFirstInput}>
+				<div style={style.registerContainer}>
 					<TextField
 						floatingLabelText="姓名(必填)"
 						floatingLabelFocusStyle={style.labelFocusStyle}
