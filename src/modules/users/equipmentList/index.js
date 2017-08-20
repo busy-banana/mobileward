@@ -18,7 +18,9 @@ export default class MonitorTerminalList extends AppContainer{
 	constructor(props){
 		super(props);
 		this.state = {
-			datas : ''
+			datas : '',
+			open: false,
+			message: ''
 		}
 		this.addEquipment = this.addEquipment.bind(this);
 		this.handleClose = this.handleClose.bind(this);

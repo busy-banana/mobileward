@@ -58,6 +58,7 @@ export default class Dashboard extends AppContainer{
 						primaryText="成员信息" 
 						leftIcon={<People />} 
 						style={style.listItemStyle}
+						href={`#/dashboard/memberInfo?SN=${this.SN}`}
 					/>
 					<Divider />
 

@@ -1,10 +1,10 @@
 .equipment-list-right{
-    color: rgba(0,0,0,0.5);
-    font-size: 38px;
+    color:#4642B6;
+    font-size: 36px;
     float: right;
     position: relative;
     bottom: 102px;
-    right: 120px;
+    right: 150px;
 }
 
 .equipment-list-left div{

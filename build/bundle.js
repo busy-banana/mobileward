@@ -41684,7 +41684,8 @@ var Dashboard = function (_AppContainer) {
 						className: 'list-item',
 						primaryText: '\u6210\u5458\u4FE1\u606F',
 						leftIcon: _react2.default.createElement(_people2.default, null),
-						style: style.listItemStyle
+						style: style.listItemStyle,
+						href: '#/dashboard/memberInfo?SN=' + this.SN
 					}),
 					_react2.default.createElement(_Divider2.default, null)
 				)
@@ -41781,7 +41782,9 @@ var MonitorTerminalList = function (_AppContainer) {
 		var _this = _possibleConstructorReturn(this, (MonitorTerminalList.__proto__ || Object.getPrototypeOf(MonitorTerminalList)).call(this, props));
 
 		_this.state = {
-			datas: ''
+			datas: '',
+			open: false,
+			message: ''
 		};
 		_this.addEquipment = _this.addEquipment.bind(_this);
 		_this.handleClose = _this.handleClose.bind(_this);
@@ -43999,6 +44002,10 @@ var _equipmentInfo = __webpack_require__(444);
 
 var _equipmentInfo2 = _interopRequireDefault(_equipmentInfo);
 
+var _memberInfo = __webpack_require__(1076);
+
+var _memberInfo2 = _interopRequireDefault(_memberInfo);
+
 var _equipmentList = __webpack_require__(449);
 
 var _equipmentList2 = _interopRequireDefault(_equipmentList);
@@ -44052,8 +44059,9 @@ var run = function run() {
 				_react2.default.createElement(_reactRouter.Route, { path: '/home/userInfo', components: _userInfo2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/home/changePwd', components: _changePwd2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/equipmentList', components: _equipmentList2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/dashboard/physiologicalParams', components: _physiologicalParams2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: '/dashboard/equipmentInfo', components: _equipmentInfo2.default }),
-				_react2.default.createElement(_reactRouter.Route, { path: '/dashboard/physiologicalParams', components: _physiologicalParams2.default })
+				_react2.default.createElement(_reactRouter.Route, { path: '/dashboard/memberInfo', components: _memberInfo2.default })
 			)
 		)
 	), document.getElementById('app'));
@@ -48327,7 +48335,7 @@ exports = module.exports = __webpack_require__(30)(undefined);
 
 
 // module
-exports.push([module.i, ".equipment-list-right{\n    color: rgba(0,0,0,0.5);\n    font-size: 38px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 120px;\n}\n\n.equipment-list-left div{\n    margin-left: 80px;\n    color: rgba(0,0,0,0.5);\n}", ""]);
+exports.push([module.i, ".equipment-list-right{\n    color:#4642B6;\n    font-size: 36px;\n    float: right;\n    position: relative;\n    bottom: 102px;\n    right: 150px;\n}\n\n.equipment-list-left div{\n    margin-left: 80px;\n    color: rgba(0,0,0,0.5);\n}", ""]);
 
 // exports
 
@@ -96283,6 +96291,191 @@ module.exports = function() {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 1074 */,
+/* 1075 */,
+/* 1076 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _navbar = __webpack_require__(57);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
+var _List = __webpack_require__(124);
+
+var _Divider = __webpack_require__(123);
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _appContainer = __webpack_require__(38);
+
+var _appContainer2 = _interopRequireDefault(_appContainer);
+
+var _actions = __webpack_require__(55);
+
+var _actions2 = _interopRequireDefault(_actions);
+
+var _dialog = __webpack_require__(56);
+
+var _dialog2 = _interopRequireDefault(_dialog);
+
+__webpack_require__(1078);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EquipmentInfo = function (_AppContainer) {
+    _inherits(EquipmentInfo, _AppContainer);
+
+    function EquipmentInfo(props) {
+        _classCallCheck(this, EquipmentInfo);
+
+        var _this = _possibleConstructorReturn(this, (EquipmentInfo.__proto__ || Object.getPrototypeOf(EquipmentInfo)).call(this, props));
+
+        _this.state = {
+            datas: '',
+            open: false,
+            message: ''
+        };
+        _this.SN = _this.getParams(1);
+        _this.handleClose = _this.handleClose.bind(_this);
+        return _this;
+    }
+
+    _createClass(EquipmentInfo, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.getMemberInfo();
+        }
+    }, {
+        key: 'handleClose',
+        value: function handleClose() {
+            this.setState({ open: false });
+        }
+    }, {
+        key: 'getMemberInfo',
+        value: function getMemberInfo() {
+            var _this2 = this;
+
+            if (this.SN) {
+                _actions2.default.http('post', {
+                    url: '/api/getEquipmentInfo',
+                    params: {
+                        serialNumber: this.SN
+                    }
+                }, function (data) {
+                    if (data.resCode == "00") {
+                        _this2.setState({
+                            datas: data.datas
+                        });
+                    } else {
+                        _this2.setState({ open: true, message: '系统异常' });
+                    }
+                });
+            } else {
+                return null;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var datas = this.state.datas;
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u4FE1\u606F', href: '#/dashboard?SN=' + this.SN }),
+                _react2.default.createElement(AppBar, {
+                    title: _react2.default.createElement(
+                        'span',
+                        { className: 'navbar-title' },
+                        '\u8BBE\u5907\u5217\u8868'
+                    ),
+                    className: 'app-bar',
+                    iconStyleLeft: { visibility: 'hidden' },
+                    iconElementRight: _react2.default.createElement(
+                        IconButton,
+                        {
+                            className: 'add-equipment-btn',
+                            onTouchTap: function onTouchTap(e) {
+                                e.preventDefault();_this3.addEquipment();
+                            } },
+                        _react2.default.createElement(Add, { className: 'add-equipment' })
+                    )
+                }),
+                _react2.default.createElement(_dialog2.default, {
+                    message: this.state.message,
+                    onTouchTap: this.handleClose,
+                    open: this.state.open
+                })
+            );
+        }
+    }]);
+
+    return EquipmentInfo;
+}(_appContainer2.default);
+
+exports.default = EquipmentInfo;
+
+/***/ }),
+/* 1077 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(30)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 1078 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(1077);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(33)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!./style.css", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!./style.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);
