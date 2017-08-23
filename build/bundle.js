@@ -43344,7 +43344,12 @@ var Register = function (_AppContainer) {
 	}, {
 		key: 'getRandomSerialNum',
 		value: function getRandomSerialNum() {
-			return Math.floor(Math.random() * 10000000000);
+			var num = '';
+			for (var i = 0; i < 10; i++) {
+				num += Math.floor(Math.random() * 10);
+			}
+			return num;
+			// return Math.floor(Math.random() * 10000000000);
 		}
 	}, {
 		key: 'render',

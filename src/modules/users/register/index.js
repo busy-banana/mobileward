@@ -207,7 +207,12 @@ export default class Register extends AppContainer{
 
 	//生成用户序列号
 	getRandomSerialNum(){
-		return Math.floor(Math.random() * 10000000000);
+		let num = ''; 
+		for(var i=0;i<10;i++){ 
+			num += Math.floor(Math.random()*10);
+		}
+		return num;
+		// return Math.floor(Math.random() * 10000000000);
 	}
 
 	render(){

@@ -27,7 +27,7 @@ module.exports = {
             	loader: 'url-loader'
         	}
     	]
-//   	},
+  	},
 //   plugins: [
 //     new webpack.optimize.UglifyJsPlugin({
 //       compress: {
