@@ -67,10 +67,10 @@ export default class MonitorTerminalList extends AppContainer{
 							color={data.equipmentStatus==0 || data.equipmentStatus==1  ? "#4642B6" : ""}
 						/>}
 					onTouchTap={(e) => {e.preventDefault();this.go(`#/dashboard?SN=${data.equipmentSN}`)}}
-					style={{height: '150px',
-							fontSize: '40px',
+					style={{height: '65px',
+							fontSize: '1rem',
 							fontWeight: 'normal',
-							lineHeight: '120px',}}
+							lineHeight: '30px',}}
 				/>
 				<span className="user-name">{data.patientName}</span>
 			</div>
@@ -130,9 +130,9 @@ export default class MonitorTerminalList extends AppContainer{
 		return (
 			<div className="container">
 				<AppBar
-					title={<span className="navbar-title">设备列表</span>}
+					title={<span className="center-navbar-title">设备列表</span>}
 					className="app-bar"
-					iconStyleLeft={{visibility:'hidden'}}
+					iconStyleLeft={{display:'none'}}
 					iconElementRight={
 						<IconButton 
 							className="add-equipment-btn"

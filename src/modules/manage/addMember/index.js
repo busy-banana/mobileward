@@ -20,7 +20,6 @@ export default class EquipmentInfo extends AppContainer{
         }
         this.SN = this.getParams(1);
         this.handleClose = this.handleClose.bind(this);
-        this.addMember = this.addMember.bind(this);
     }
 
     componentWillMount(){
@@ -29,15 +28,6 @@ export default class EquipmentInfo extends AppContainer{
 
 	handleClose(){
 		this.setState({open: false});
-    }
-    
-    addMember(){
-		const username = localStorage.getItem('username');
-		if(!username){
-			this.setState({open: true, message: '用户未登录'});
-		}else{
-			this.go(`#/dashboard/addMember?SN=${this.SN}`);
-		}
 	}
 
     getMemberInfo(){

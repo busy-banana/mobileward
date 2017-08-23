@@ -87,47 +87,47 @@ export default class Login extends AppContainer{
 		const style = {
 			loginContainer: {
 	   			width: '100%',
-	    		height: '100px'
+				height: '40px',
+				marginBottom: '2px'
 			},
 			inputContainer: {
 				width: '89%',
 	    		height: '100%',
-	    		fontSize: '35px',
+	    		fontSize: '1rem',
 	    		float: 'right'
 			},
 			svgIcon: {
 				width: '7%',
-		    	height: '100px',
-				marginLeft: '15px'
+		    	height: '40px',
+				marginLeft: '2%'
 			},
 			loginBtn: {
 				width: '80%',
-				height: '100px',
-				margin: '10%'
+				height: '40px',
+				margin: '10% 10% 0 10%'
 			},
 			btnStyle: {
 				backgroundColor: '#4642B6',
 			},
 			loginLabelStyle: {
-				fontSize: '42px',
+				fontSize: '1.15rem',
 				color: '#fff',
-				top: '20px',
+				top: '6px',
 				fontWeight: 'normal'
 			},
 			registerBtn: {
-				width: '20%',
-				height: '100px',
-				marginLeft: '40%',
-				boxShadow: 'none',
-				marginTop: '20%'
+				width: '28%',
+				height: '3rem',
+				margin: '40px 36%',
+				boxShadow: 'none'
 			},
 			registerLabelStyle: {
-				fontSize: '42px',
-				top: '20px',
+				fontSize: '1.15rem',
+				top: '8px',
 				fontWeight: 'normal',
 			},
 			labelFocusStyle: {
-				lineHeight:'0',
+				lineHeight:'40px',
 			}
 		};
 		return(

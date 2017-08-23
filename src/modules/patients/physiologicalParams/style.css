@@ -8,13 +8,13 @@
 	width: 70%;
 	height: 22%;
 	overflow: hidden;
-	border-right: 2px solid #fff;
-	border-bottom: 2px solid #fff;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
 }
 
 .xy-waveform p{
 	color: #71F515;
-	font-size: 3em;
+	font-size: 1.2rem;
 	text-align: center;
 }
 .waveform-line{

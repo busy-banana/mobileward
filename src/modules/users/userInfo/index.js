@@ -169,51 +169,43 @@ export default class UserInfo extends AppContainer{
         const style = {
 			registerContainer: {
 	   			width: '100%',
-	    		height: '100px',
-	    		marginTop: '40px'
-			},
-			registerFirstInput: {
-				width: '100%',
-	    		height: '100px',
-	    		marginTop: '100px'
+	    		height: '40px',
+	    		marginTop: '20px'
 			},
 			inputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
-	    		left: '50px',
+	    		fontSize: '1rem',
+	    		left: '22px',
 			},
 			registerBtn: {
 				width: '80%',
-				height: '100px',
+				height: '40px',
 				margin: '10%'
 			},
 			btnStyle: {
 				backgroundColor: '#4642B6',
 			},
-			labelFocusStyle: {
-				lineHeight:'0',
-			},
 			registerLabelStyle: {
-				fontSize: '42px',
+				fontSize: '1.15rem',
 				color: '#fff',
-				top: '20px',
+				top: '7px',
 				fontWeight: 'normal'
 			},
 			menuItemStyle: {
-				fontSize: '40px',
-				padding: '40px 0'
+				fontSize: '1rem',
+				padding: '6px 0'
 			},
 			dateInputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
+	    		fontSize: '1.2rem',
 	    		float: 'right',
-	    		lineHeight: '100px',
+	    		lineHeight: '20px',
 	    		left: '10px'
 			},
 			errorTextStyle: {
-				fontSize: '35px',
+				fontSize: '0.9rem',
 				marginTop: '10px'
 			}
 		};
@@ -221,7 +213,7 @@ export default class UserInfo extends AppContainer{
 			<IconButton 
 				className="add-equipment-btn"
 				onTouchTap={this.handleInputStatus}>
-				<Create className="add-equipment" />
+				<Create className="update-userInfo" />
 			</IconButton>
 		);
 		let btnDisabled = true;
@@ -249,8 +241,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="姓名(必填)"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleNameChange}
           				errorText={this.state.nameErrorText}
@@ -278,8 +270,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="固定电话"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleTelephoneChange}
 						value={this.state.telephone}
@@ -289,8 +281,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="手机"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleMobilePhoneChange}
 						value={this.state.mobilephone}
@@ -300,8 +292,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="电子邮箱"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleEmailChange}
 						value={this.state.email}
@@ -311,8 +303,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="微信号"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleWeChatChange}
 						value={this.state.wechat}
@@ -322,8 +314,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="地址"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleAddressChange}
 						value={this.state.address}
@@ -333,8 +325,8 @@ export default class UserInfo extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="邮政编码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handlePostcodeChange}
 						value={this.state.postcode}

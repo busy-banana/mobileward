@@ -73,7 +73,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备名称"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '20px'}}
                     />
                     <span className="equipment-list-right">{datas.equipmentName}</span>
                     <Divider/>
@@ -82,7 +82,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备状态"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{status}</span>
                     <Divider/>
@@ -91,7 +91,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备序列号"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{this.SN}</span>
                     <Divider/>
@@ -100,7 +100,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="超级管理员序列号"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.adminUserSN}</span>
                     <Divider/>
@@ -109,7 +109,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="患者序列号"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.patientSN}</span>
                     <Divider/>
@@ -118,7 +118,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="数据浏览状态"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.userBrowseStatus==1?'有用户浏览':'无用户浏览' }</span>
                     <Divider/>
@@ -127,7 +127,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备加载模块"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.moduleSet}</span>
                     <Divider/>
@@ -136,7 +136,7 @@ export default class EquipmentInfo extends AppContainer{
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="设备连接时间"
-                        style={{fontSize: '36px',fontWeight: 'normal',lineHeight: '120px'}}
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.connectionTime}</span>
                     <Divider/>

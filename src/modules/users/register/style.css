@@ -1,0 +1,26 @@
+.input-container label{
+    top: 18px !important;
+    line-height: 0px !important;
+}
+
+.input-container input{
+    margin: 0 !important;
+}
+
+.select-field label{
+    top: 18px !important;
+    line-height: 0px !important;
+}
+
+.select-field svg{
+	width: 35px !important;
+	height: 35px !important;
+	fill: #000 !important;
+    position: relative;
+    bottom: 30px;
+}
+
+.select-field div{
+    margin: 0 !important;
+    line-height: 30px !important;
+}

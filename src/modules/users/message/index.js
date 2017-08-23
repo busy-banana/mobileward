@@ -23,58 +23,48 @@ export default class Dashboard extends AppContainer{
 			bottomNavigation: {
 				position: 'fixed',
 				bottom: '0',
-				height: '170px',
+				height: '10%',
 				backgroundColor: '#fafafa',
 			   	borderTop: '1px solid #e0e0e0',
-			},
-			listItemStyle: {
-				height: '150px',
-				fontSize: '40px',
-				fontWeight: 'normal',
-				lineHeight: '120px'
 			}
 		}
 
 		return (
 			<div className="container">
 				<AppBar
-					title={<span className="navbar-title">消息</span>}
+					title={<span className="center-navbar-title">消息</span>}
 					className="app-bar"
-					iconStyleLeft={{visibility:'hidden'}}
+					iconStyleLeft={{display:'none'}}
 				/>
 
-				<List style={{marginTop: '100px'}}>
+				<List style={{marginTop: '40px'}}>
 					<ListItem
-						className="list-item"
+						className="message-list-item"
 						primaryText="监护人/患者消息" 
 						leftIcon={<People />}
 						rightIcon={<Message />}
 						href="#/physiologicalParams"
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="message-list-item"
 						primaryText="医嘱消息" 
 						leftIcon={<AccountCircle />} 
 						rightIcon={<Message />}
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="message-list-item"
 						primaryText="报警消息" 
 						leftIcon={<AlarmAdd />} 
 						rightIcon={<Message />}
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="message-list-item"
 						primaryText="系统消息" 
 						leftIcon={<NotificationsActive />} 
 						rightIcon={<Message />}
-						style={style.listItemStyle}
 					/>
 					<Divider />
 				</List>

@@ -1,57 +1,56 @@
-.select-field svg{
-	width: 80px !important;
-	height: 80px !important;
-	fill: #000 !important;
-	position: relative;
-    bottom: 30px;
-    right: 40px;
+.home-list-item{
+    height: 60px;
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    line-height: 0 !important;
+}
+
+.home-list-item svg{
+	width: 20px !important;
+	height: 20px !important;
+    top: 10px !important;
+    margin: 0 35px 0 0 !important;
+}
+
+.home-list-item div{
+    margin-left: 8px !important;
+    padding-top: 10px !important;
+    padding-left: 26px !important;
 }
 
 .bottom-navigation-item{
-	width: 33.3%;
-	max-width: none !important;
+    width: 33.3%;
+    max-width: none !important;
 }
 
 .bottom-navigation-item svg{
-    height: 60px !important;
+    height: 25px !important;
 }
 
 .bottom-navigation-item div{
-    font-size: 30px !important;
+    font-size: 0.8rem !important;
 }
 
 .home-portrait{
-  	width: 200px;
-  	height: 200px;
-	border-radius: 100px;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	box-shadow: 5px 5px 10px #aaa;
-	-moz-box-shadow: 5px 5px 10px #aaa; 
-	-webkit-box-shadow:  5px 5px 10px #aaa;
-	margin: 20px;
+  	width: 90px;
+  	height: 90px;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	box-shadow: 2px 2px 1px #aaa;
+	-moz-box-shadow: 2px 2px 1px #aaa; 
+	-webkit-box-shadow:  2px 2px 1px #aaa;
+	margin: 15px 15px 0 15px;
 }
 
 .home-name{
-	font-size: 50px;
-    padding: 40px 0 10px 0;
+	font-size: 1.2rem;
+    padding: 40px 0 3px 0;
 }
 
 .home-username{
-	font-size: 36px;
+	font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.5);
-	margin-bottom: 50px;
-}
-
-.list-item svg{
-	width: 50px !important;
-	height: 50px !important;
-	top: 40px !important;
-    margin-right: 90px !important;
-}
-
-.list-item div{
-    margin-left: 80px;
 }
 
 .clearfix:after{
@@ -62,5 +61,4 @@
 
 .home-img-left{
 	float: left;
-	margin-right: 30px;
 }

@@ -85,35 +85,32 @@ export default class Dashboard extends AppContainer{
             inputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
-	    		left: '50px',
+	    		fontSize: '1rem',
+	    		left: '22px',
             },
             errorTextStyle: {
-				fontSize: '35px',
+				fontSize: '0.9rem',
 				marginTop: '10px'
             },
             registerContainer: {
 	   			width: '100%',
-	    		height: '100px',
-	    		marginTop: '40px'
+	    		height: '40px',
+	    		marginTop: '20px'
             },
             registerBtn: {
 				width: '80%',
-				height: '100px',
+				height: '40px',
 				margin: '10%'
             },
             registerLabelStyle: {
-				fontSize: '42px',
+				fontSize: '1.15rem',
 				color: '#fff',
-				top: '20px',
+				top: '7px',
 				fontWeight: 'normal'
             },
             btnStyle: {
 				backgroundColor: '#4642B6',
-            },
-            labelFocusStyle: {
-				lineHeight:'0',
-			},
+            }
         }
 
         let btnDisabled = true;
@@ -143,8 +140,8 @@ export default class Dashboard extends AppContainer{
                 <p className="add-tips">添加设备后默认成为超级管理员</p>
                 <div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="设备序列号"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleEquipmentSNChange}
           				errorText={this.state.snErrorText}
@@ -153,8 +150,8 @@ export default class Dashboard extends AppContainer{
 				</div>
                 <div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="设备绑定码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleEquipmentBNChange}
           				errorText={this.state.bnErrorText}

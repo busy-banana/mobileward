@@ -4,34 +4,45 @@
 }
 
 .login-title{
-    width: 100%;
-	font-size: 100px;
+	width: 100%;
+    font-size: 2.5rem;
     color: #fff;
-    margin-top: 65px;
+    margin-top: 24px;
     text-align: center;
     display: inline-block;
 }
 
 .login-portrait{
-  	width: 300px;
-  	height: 300px;
-	border-radius: 150px;
-	-moz-border-radius: 150px;
-	-webkit-border-radius: 150px;
-	box-shadow: 5px 5px 10px #aaa;
-	-moz-box-shadow: 5px 5px 10px #aaa; 
-	-webkit-box-shadow:  5px 5px 10px #aaa;
+  	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 300px;
+	-moz-border-radius: 300px;
+	-webkit-border-radius: 300px;
+	box-shadow: 2px 2px 1px #aaa;
+	-moz-box-shadow: 2px 2px 1px #aaa; 
+	-webkit-box-shadow:  2px 2px 1px #aaa;
 }
 
 .login-img{
-	width: 300px;
-	margin: 80px auto;
+	width: 100%;
+	margin: 25px auto;
 }
 
 .login-input div{
     bottom: 40px !important;
 }
 
+.login-input label{
+	top: 18px !important;
+    line-height: 0px !important;
+	font-size: 1rem !important;
+}
+
+.login-input input{
+    margin-top: 0 !important;
+}
 
 
 

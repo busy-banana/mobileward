@@ -1,23 +1,19 @@
-.bottom-navigation-item{
-	width: 33.3%;
-	max-width: none !important;
+.message-list-item{
+    height: 60px;
+    font-size: 1rem !important;
+    font-weight: normal !important;
+    line-height: 0 !important;
 }
 
-.bottom-navigation-item svg{
-    height: 60px !important;
+.message-list-item svg{
+	width: 20px !important;
+	height: 20px !important;
+    top: 10px !important;
+    margin: 0 35px 0 0 !important;
 }
 
-.bottom-navigation-item div{
-    font-size: 30px !important;
-}
-
-.list-item svg{
-	width: 50px !important;
-	height: 50px !important;
-	top: 40px !important;
-    margin-right: 90px !important;
-}
-
-.list-item div{
-    margin-left: 80px;
+.message-list-item div{
+    margin-left: 8px !important;
+    padding-top: 10px !important;
+    padding-left: 26px !important;
 }

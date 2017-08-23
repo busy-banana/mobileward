@@ -1,6 +1,6 @@
 .navbar-title{
-	font-size: 50px;
-    line-height: 175px;
+	font-size: 1.2rem;
+	line-height: 69px;
     font-weight: normal;
 }
 
@@ -10,14 +10,14 @@
 }
 
 .navigation-arrow-back{
-	width: 70px !important;
-	height: 70px !important;
-	padding: 32px;
+	width: 25px !important;
+	height: 25px !important;
 }
 
 .navigation-btn{
-	width: 140px !important;
-	height: 155px !important;
+	width: 40px !important;
+	height: 45px !important;
+	top: 2px;
 }
 
 .app-bar div{

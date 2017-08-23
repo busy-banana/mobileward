@@ -16,48 +16,35 @@ export default class Dashboard extends AppContainer{
 	}
 
 	render(){
-		const style = {
-			listItemStyle: {
-				height: '150px',
-				fontSize: '40px',
-				fontWeight: 'normal',
-				lineHeight: '120px',
-			}
-		}
-
 		return (
 			<div className="container">
 				<NavBar title="功能" href="#/equipmentList"/>
 
-				<List style={{marginTop: '100px'}}>
+				<List style={{marginTop: '40px'}}>
 					<ListItem
-						className="list-item"
+						className="home-list-item"
 						primaryText="生理参数" 
 						leftIcon={<PhotoLibrary />}
 						href={`#/dashboard/physiologicalParams?SN=${this.SN}`}
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem
-						className="list-item"
+						className="home-list-item"
 						primaryText="历史回顾" 
 						leftIcon={<History />} 
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="home-list-item"
 						primaryText="设备信息"
 						leftIcon={<Computer />} 
-						style={style.listItemStyle}
 						href={`#/dashboard/equipmentInfo?SN=${this.SN}`}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="home-list-item"
 						primaryText="成员信息" 
 						leftIcon={<People />} 
-						style={style.listItemStyle}
 						href={`#/dashboard/memberInfo?SN=${this.SN}`}
 					/>
 					<Divider />

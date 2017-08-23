@@ -13,6 +13,7 @@ import ChangePWD from './modules/users/changePwd';
 import About from './modules/manage/about';
 import EquipmentInfo from './modules/manage/equipmentInfo';
 import MemberInfo from './modules/manage/memberInfo';
+import AddMember from './modules/manage/addMember';
 import EquipmentList from './modules/users/equipmentList';
 import PhysiologicalParams from './modules/patients/physiologicalParams';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -47,6 +48,7 @@ const run = () => {
 					<Route path="/dashboard/physiologicalParams" components={PhysiologicalParams}/>
 					<Route path="/dashboard/equipmentInfo" components={EquipmentInfo}/>
 					<Route path="/dashboard/memberInfo" components={MemberInfo}/>
+					<Route path="/dashboard/addMember" components={AddMember}/>
 				</Route>
 			</Router>
   		</MuiThemeProvider>

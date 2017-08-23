@@ -7,7 +7,7 @@ import Http from '../../../actions';
 import AppContainer from '../../appContainer';
 import './style.css';
 
-export default class ChangePWD extends React.Component{
+export default class ChangePWD extends AppContainer{
 	constructor(props){
         super(props);
         this.state = {
@@ -98,35 +98,32 @@ export default class ChangePWD extends React.Component{
             inputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
-	    		left: '50px',
+	    		fontSize: '1rem',
+	    		left: '22px',
             },
             errorTextStyle: {
-				fontSize: '35px',
+				fontSize: '0.9rem',
 				marginTop: '10px'
             },
             registerContainer: {
 	   			width: '100%',
-	    		height: '100px',
-	    		marginTop: '40px'
+	    		height: '40px',
+	    		marginTop: '20px'
             },
             registerBtn: {
 				width: '80%',
-				height: '100px',
+				height: '40px',
 				margin: '10%'
             },
             registerLabelStyle: {
-				fontSize: '42px',
+				fontSize: '1.15rem',
 				color: '#fff',
-				top: '20px',
+				top: '7px',
 				fontWeight: 'normal'
             },
             btnStyle: {
 				backgroundColor: '#4642B6',
-            },
-            labelFocusStyle: {
-				lineHeight:'0',
-			},
+            }
         }
 
         let btnDisabled = true;
@@ -156,18 +153,18 @@ export default class ChangePWD extends React.Component{
 				<NavBar title="修改密码" href="#/home"/>
                 <div style={style.registerContainer}>
 					<TextField
+						className="input-container"
                         type="password"
 						floatingLabelText="原密码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleOldPwdChange}
 					/>
 				</div>
                 <div style={style.registerContainer}>
 					<TextField
-                        type="password"                    
+						className="input-container"
+						type="password"                    
 						floatingLabelText="新密码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleNewPwdChange}
           				errorText={this.state.newPwdErrorText}
@@ -176,9 +173,9 @@ export default class ChangePWD extends React.Component{
 				</div>
                 <div style={style.registerContainer}>
 					<TextField
+						className="input-container"
                         type="password"                    
 						floatingLabelText="确认新密码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleConfirmPwdChange}
           				errorText={this.state.confirmPwdErrorText}

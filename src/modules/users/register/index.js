@@ -214,51 +214,43 @@ export default class Register extends AppContainer{
 		const style = {
 			registerContainer: {
 	   			width: '100%',
-	    		height: '100px',
-	    		marginTop: '40px'
-			},
-			registerFirstInput: {
-				width: '100%',
-	    		height: '100px',
-	    		marginTop: '100px'
+	    		height: '40px',
+	    		marginTop: '20px'
 			},
 			inputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
-	    		left: '50px',
+	    		fontSize: '1rem',
+	    		left: '22px',
 			},
 			registerBtn: {
 				width: '80%',
-				height: '100px',
+				height: '40px',
 				margin: '10%'
 			},
 			btnStyle: {
 				backgroundColor: '#4642B6',
 			},
 			registerLabelStyle: {
-				fontSize: '42px',
+				fontSize: '1.15rem',
 				color: '#fff',
-				top: '20px',
+				top: '7px',
 				fontWeight: 'normal'
 			},
-			labelFocusStyle: {
-				lineHeight:'0',
-			},
 			menuItemStyle: {
-				fontSize: '40px',
-				padding: '40px 0'
+				fontSize: '1rem',
+				padding: '6px 0'
 			},
 			dateInputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '35px',
+	    		fontSize: '1.2rem',
 	    		float: 'right',
-	    		lineHeight: '100px',
+	    		lineHeight: '20px',
 	    		left: '10px'
 			},
 			errorTextStyle: {
-				fontSize: '35px',
+				fontSize: '0.9rem',
 				marginTop: '10px'
 			}
 		};
@@ -289,8 +281,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="用户名(必填)"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleUsernameChange}
           				errorText={this.state.usernameErrorText}
@@ -300,9 +292,9 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						type="password"
 						floatingLabelText="密码(必填，区分大小写)"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handlePasswordChange}
           				errorText={this.state.pwdErrorText}
@@ -312,9 +304,9 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						type="password"
 						floatingLabelText="确认密码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleConfirmPwdChange}
           				errorText={this.state.confirmPwdErrorText}
@@ -324,8 +316,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="姓名(必填)"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleNameChange}
           				errorText={this.state.nameErrorText}
@@ -337,7 +329,6 @@ export default class Register extends AppContainer{
 					<SelectField
           				className="select-field"
 						floatingLabelText="性别(必选)"
-						floatingLabelStyle={style.labelFocusStyle}
 						style={style.inputContainer}
 						menuItemStyle={style.menuItemStyle}
 						value={this.state.sex}
@@ -350,8 +341,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"
 						floatingLabelText="固定电话"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleTelephoneChange}
 					/>
@@ -359,8 +350,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"				
 						floatingLabelText="手机"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleMobilePhoneChange}
 					/>
@@ -368,8 +359,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"						
 						floatingLabelText="电子邮箱"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleEmailChange}
 					/>
@@ -377,8 +368,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"					
 						floatingLabelText="微信号"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleWeChatChange}
 					/>
@@ -386,8 +377,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"					
 						floatingLabelText="地址"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleAddressChange}
 					/>
@@ -395,8 +386,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"					
 						floatingLabelText="邮政编码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handlePostcodeChange}
 					/>
@@ -424,8 +415,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"					
 						floatingLabelText="证件类型"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleCertificateTypeChange}
 					/>
@@ -433,8 +424,8 @@ export default class Register extends AppContainer{
 
 				<div style={style.registerContainer}>
 					<TextField
+						className="input-container"					
 						floatingLabelText="证件号码"
-						floatingLabelFocusStyle={style.labelFocusStyle}
 						style={style.inputContainer}
           				onChange={this.handleCertificateNumChange}
 					/>

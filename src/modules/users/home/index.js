@@ -76,59 +76,49 @@ export default class Home extends AppContainer{
 			bottomNavigation: {
 				position: 'fixed',
 				bottom: '0',
-				height: '170px',
+				height: '10%',
 				backgroundColor: '#fafafa',
 			   	borderTop: '1px solid #e0e0e0',
-			},
-			listItemStyle: {
-				height: '150px',
-				fontSize: '40px',
-				fontWeight: 'normal',
-				lineHeight: '120px'
 			}
 		}
 
 		return (
 			<div className="container">
 				<AppBar
-					title={<span className="navbar-title">个人中心</span>}
+					title={<span className="center-navbar-title">个人中心</span>}
 					className="app-bar"
-					iconStyleLeft={{visibility:'hidden'}}
+					iconStyleLeft={{display:'none'}}
 				/>
 
 				{imgDOM}
 
 				<List>
 					<ListItem
-						className="list-item"
+						className="home-list-item"
 						primaryText="个人信息" 
 						leftIcon={<PersonOutline />}
 						href="#/home/userInfo"
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem
-						className="list-item"
+						className="home-list-item"
 						primaryText="修改密码" 
 						leftIcon={<Lock />}
-						onTouchTap={this.changePwd}
-						style={style.listItemStyle}
+						onTouchTap={(e) => {e.preventDefault();this.changePwd()}}
 					/>
 					<Divider />
 					<ListItem
-						className="list-item"
+						className="home-list-item"
 						primaryText="关于" 
 						leftIcon={<About />}
 						href="#/home/about"
-						style={style.listItemStyle}
 					/>
 					<Divider />
 					<ListItem 
-						className="list-item"
+						className="home-list-item"
 						primaryText="退出登录" 
 						leftIcon={<Logout />} 
 						onTouchTap={this.logout}
-						style={style.listItemStyle}
 					/>
 					<Divider />
 				</List>
