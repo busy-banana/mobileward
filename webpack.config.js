@@ -27,12 +27,17 @@ module.exports = {
             	loader: 'url-loader'
         	}
     	]
-  	},
-  // plugins: [
-  //   new webpack.optimize.UglifyJsPlugin({
-  //     compress: {
-  //       warnings: false
-  //     }
-  //   })
-  // ]
+//   	},
+//   plugins: [
+//     new webpack.optimize.UglifyJsPlugin({
+//       compress: {
+//         warnings: false
+//       }
+// 	}),
+// 	new webpack.DefinePlugin({
+// 		"process.env": { 
+// 		   NODE_ENV: JSON.stringify("production") 
+// 		 }
+// 	})
+//   ]
 }

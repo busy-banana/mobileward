@@ -13,7 +13,7 @@
 
 .list-item div{
     margin-left: 10px;
-    padding-top: 4px !important;
+    padding-top: 3px !important;
     padding-left: 28px !important;
 }
 
@@ -70,7 +70,7 @@
 
 .empyt-list{
     color: rgba(0, 0, 0, 0.5);
-    font-size: 1.2rem;
+    font-size: 0.92rem;
     margin: 20px 0;
     text-align: center;
 }
