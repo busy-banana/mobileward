@@ -40763,7 +40763,7 @@ exports.default = About;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -40776,35 +40776,33 @@ var _navbar = __webpack_require__(45);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
-var _List = __webpack_require__(75);
+var _TextField = __webpack_require__(76);
 
-var _Divider = __webpack_require__(74);
+var _TextField2 = _interopRequireDefault(_TextField);
 
-var _Divider2 = _interopRequireDefault(_Divider);
+var _RaisedButton = __webpack_require__(125);
 
-var _appContainer = __webpack_require__(34);
-
-var _appContainer2 = _interopRequireDefault(_appContainer);
-
-var _actions = __webpack_require__(43);
-
-var _actions2 = _interopRequireDefault(_actions);
-
-var _IconButton = __webpack_require__(48);
-
-var _IconButton2 = _interopRequireDefault(_IconButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _dialog = __webpack_require__(44);
 
 var _dialog2 = _interopRequireDefault(_dialog);
 
-var _add = __webpack_require__(228);
+var _actions = __webpack_require__(43);
 
-var _add2 = _interopRequireDefault(_add);
+var _actions2 = _interopRequireDefault(_actions);
 
-var _person = __webpack_require__(126);
+var _appContainer = __webpack_require__(34);
 
-var _person2 = _interopRequireDefault(_person);
+var _appContainer2 = _interopRequireDefault(_appContainer);
+
+var _SelectField = __webpack_require__(380);
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _MenuItem = __webpack_require__(378);
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
 __webpack_require__(1065);
 
@@ -40816,87 +40814,202 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var EquipmentInfo = function (_AppContainer) {
-    _inherits(EquipmentInfo, _AppContainer);
+var Dashboard = function (_AppContainer) {
+	_inherits(Dashboard, _AppContainer);
 
-    function EquipmentInfo(props) {
-        _classCallCheck(this, EquipmentInfo);
+	function Dashboard(props) {
+		_classCallCheck(this, Dashboard);
 
-        var _this = _possibleConstructorReturn(this, (EquipmentInfo.__proto__ || Object.getPrototypeOf(EquipmentInfo)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
 
-        _this.state = {
-            datas: '',
-            open: false,
-            message: ''
-        };
-        _this.SN = _this.getParams(1);
-        _this.handleClose = _this.handleClose.bind(_this);
-        return _this;
-    }
+		_this.state = {
+			message: '',
+			open: false,
+			addUsername: '',
+			addMemberType: '',
+			usernameErrorText: ''
+		};
+		_this.handleAddMemberChange = _this.handleAddMemberChange.bind(_this);
+		_this.handleAddMemberTypeChange = _this.handleAddMemberTypeChange.bind(_this);
+		_this.addEquipment = _this.addEquipment.bind(_this);
+		_this.handleClose = _this.handleClose.bind(_this);
+		return _this;
+	}
 
-    _createClass(EquipmentInfo, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.getMemberInfo();
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({ open: false });
-        }
-    }, {
-        key: 'getMemberInfo',
-        value: function getMemberInfo() {
-            var _this2 = this;
+	_createClass(Dashboard, [{
+		key: 'handleClose',
+		value: function handleClose() {
+			this.setState({ open: false });
+			if (this.state.message == '添加成功') {
+				this.go('#/equipmentList');
+			}
+		}
+	}, {
+		key: 'handleAddMemberChange',
+		value: function handleAddMemberChange(event, value) {
+			if (!/^[a-zA-Z][a-zA-Z0-9_]{3,}$/.test(value) || value.length > 20) {
+				this.setState({ usernameErrorText: '4~20个字符(字母、数字、下划线)，以字母开头' });
+			} else {
+				this.setState({
+					usernameErrorText: '',
+					addUsername: value
+				});
+			}
+		}
+	}, {
+		key: 'handleAddMemberTypeChange',
+		value: function handleAddMemberTypeChange(event, index, value) {
+			this.setState({
+				addMemberType: value
+			});
+		}
+	}, {
+		key: 'addEquipment',
+		value: function addEquipment() {
+			var _this2 = this;
 
-            if (this.SN) {
-                _actions2.default.http('post', {
-                    url: '/api/getEquipmentInfo',
-                    params: {
-                        serialNumber: this.SN
-                    }
-                }, function (data) {
-                    if (data.resCode == "00") {
-                        _this2.setState({
-                            datas: data.datas
-                        });
-                    } else {
-                        _this2.setState({ open: true, message: '系统异常' });
-                    }
-                });
-            } else {
-                return null;
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var datas = this.state.datas;
-            var rightBtn = _react2.default.createElement(
-                _IconButton2.default,
-                {
-                    className: 'add-equipment-btn',
-                    onTouchTap: this.addMember },
-                _react2.default.createElement(_add2.default, { className: 'add-equipment' })
-            );
-            return _react2.default.createElement(
-                'div',
-                { className: 'container' },
-                _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u4FE1\u606F', href: '#/dashboard?SN=' + this.SN, rightElement: rightBtn }),
-                _react2.default.createElement(_person2.default, { className: 'person-icon' }),
-                _react2.default.createElement(_dialog2.default, {
-                    message: this.state.message,
-                    onTouchTap: this.handleClose,
-                    open: this.state.open
-                })
-            );
-        }
-    }]);
+			var SN = localStorage.getItem('serialNumber');
+			if (this.state.equipmentSN && this.state.equipmentBN && SN) {
+				_actions2.default.http('post', {
+					url: '/api/addEquipment',
+					params: {
+						equipmentSN: this.state.equipmentSN,
+						equipmentBN: this.state.equipmentBN,
+						serialNumber: SN
+					}
+				},
+				//00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
+				function (data) {
+					if (data == "00") {
+						_this2.setState({ open: true, message: '添加成功' });
+					} else if (data == "01") {
+						_this2.setState({ open: true, message: '该设备已被绑定' });
+					} else if (data == "02") {
+						_this2.setState({ open: true, message: '设备序列号不正确' });
+					} else if (data == "03") {
+						_this2.setState({ open: true, message: '设备绑定码不正确' });
+					} else {
+						_this2.setState({ open: true, message: '系统异常，请稍后再试' });
+					}
+					//console.log(data);
+				});
+			} else {
+				return '';
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
 
-    return EquipmentInfo;
+			var style = {
+				inputContainer: {
+					width: '90%',
+					height: '100%',
+					fontSize: '1rem',
+					left: '22px'
+				},
+				errorTextStyle: {
+					fontSize: '0.9rem',
+					marginTop: '10px'
+				},
+				registerContainer: {
+					width: '100%',
+					height: '40px',
+					marginTop: '20px'
+				},
+				registerBtn: {
+					width: '80%',
+					height: '40px',
+					margin: '10%'
+				},
+				menuItemStyle: {
+					fontSize: '1rem',
+					padding: '6px 0'
+				},
+				registerLabelStyle: {
+					fontSize: '1.15rem',
+					color: '#fff',
+					top: '7px',
+					fontWeight: 'normal'
+				},
+				btnStyle: {
+					backgroundColor: '#4642B6'
+				}
+			};
+
+			var btnDisabled = true;
+			if (this.state.equipmentSN && this.state.equipmentBN) {
+				btnDisabled = false;
+			}
+
+			var btnDOM = btnDisabled ? _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6DFB\u52A0',
+				style: style.registerBtn,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: function onTouchTap(e) {
+					e.preventDefault();_this3.addEquipment();
+				},
+				disabled: true
+			}) : _react2.default.createElement(_RaisedButton2.default, {
+				label: '\u6DFB\u52A0',
+				style: style.registerBtn,
+				buttonStyle: style.btnStyle,
+				labelStyle: style.registerLabelStyle,
+				onTouchTap: function onTouchTap(e) {
+					e.preventDefault();_this3.addEquipment();
+				}
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'container' },
+				_react2.default.createElement(_navbar2.default, { title: '\u6DFB\u52A0\u6210\u5458', href: '#/equipmentList' }),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(_TextField2.default, {
+						className: 'input-container',
+						floatingLabelText: '\u6DFB\u52A0\u6210\u5458\u7528\u6237\u540D',
+						style: style.inputContainer,
+						onChange: this.handleAddMemberChange,
+						errorText: this.state.usernameErrorText,
+						errorStyle: style.errorTextStyle
+					})
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: style.registerContainer },
+					_react2.default.createElement(
+						_SelectField2.default,
+						{
+							className: 'select-field',
+							floatingLabelText: '\u6DFB\u52A0\u6210\u5458\u7C7B\u578B',
+							style: style.inputContainer,
+							menuItemStyle: style.menuItemStyle,
+							value: this.state.addMemberType,
+							onChange: this.handleAddMemberTypeChange
+						},
+						_react2.default.createElement(_MenuItem2.default, { value: '1', primaryText: '\u666E\u901A\u7BA1\u7406\u5458' }),
+						_react2.default.createElement(_MenuItem2.default, { value: '2', primaryText: '\u4E34\u65F6\u7528\u6237' })
+					)
+				),
+				btnDOM,
+				_react2.default.createElement(_dialog2.default, {
+					message: this.state.message,
+					onTouchTap: function onTouchTap(e) {
+						e.preventDefault();_this3.handleClose();
+					},
+					open: this.state.open
+				})
+			);
+		}
+	}]);
+
+	return Dashboard;
 }(_appContainer2.default);
 
-exports.default = EquipmentInfo;
+exports.default = Dashboard;
 
 /***/ }),
 /* 446 */
@@ -42700,8 +42813,17 @@ var Login = function (_AppContainer) {
 	_createClass(Login, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
+			// this.quitApp();
 			this.isCacheExit();
 		}
+
+		// quitApp(){
+		// 	document.addEventListener('backbutton',this.yeyeye,false);
+		// }
+
+		// yeyeye(){
+		// 	console.log('123')
+		// }
 
 		//判断localStorage是否包含用户登录信息，有则跳过登录。
 
@@ -48650,7 +48772,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".person-icon{\n    width: 100px;\n    height: 100px;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -48748,7 +48870,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".center-navbar-title{\n    font-size: 1.4rem;\n    font-weight: normal;\n    vertical-align: middle;\n}\n\n.list-item svg{\n\twidth: 20px !important;\n\theight: 20px !important;\n    top: 10px !important;\n    margin: 0 !important;\n}\n\n.list-item div{\n    margin-left: 10px;\n    padding-top: 3px !important;\n    padding-left: 28px !important;\n}\n\n.terminal-type{\n\tmargin: 15px 0;\n}\n\n.terminal-type p{\n\tfont-size: 1rem;\n    margin: 0 auto;\n    color: #4642B6;\n    width: 100%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 1rem;\n    float: right;\n    position: relative;\n    bottom: 48.5px;\n    right: 45px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 25px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 0.8rem !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}\n\n.add-equipment-btn{\n    width: 60px !important;\n    height: 60px !important;\n    padding: 0 !important;\n    margin-top: -4px !important;\n}\n\n.add-equipment{\n    width: 30px !important;\n    height: 30px !important;\n    padding: 12px;\n}\n\n.empyt-list{\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 0.92rem;\n    margin: 20px 0;\n    text-align: center;\n}", ""]);
+exports.push([module.i, ".center-navbar-title{\n    font-size: 1.4rem;\n    font-weight: normal;\n    vertical-align: middle;\n}\n\n.list-item svg{\n\twidth: 20px !important;\n\theight: 20px !important;\n    top: 10px !important;\n    margin: 0 !important;\n}\n\n.list-item div{\n    margin-left: 10px;\n    padding-top: 3px !important;\n    padding-left: 28px !important;\n}\n\n.terminal-type{\n\tmargin: 15px 0;\n}\n\n.terminal-type p{\n\tfont-size: 1rem;\n    margin: 0 auto;\n    color: #4642B6;\n    width: 100%;\n    text-align: center;\n}\n\n.user-name{\n\tfont-size: 1rem;\n    float: right;\n    position: relative;\n    bottom: 51px;\n    right: 45px;\n}\n\n.bottom-navigation-item{\n    width: 33.3%;\n    max-width: none !important;\n}\n\n.bottom-navigation-item svg{\n    height: 25px !important;\n}\n\n.bottom-navigation-item div{\n    font-size: 0.8rem !important;\n}\n\n.equipmentList{\n    height: 80%;\n    overflow: auto;\n}\n\n.add-equipment-btn{\n    width: 60px !important;\n    height: 60px !important;\n    padding: 0 !important;\n    margin-top: -4px !important;\n}\n\n.add-equipment{\n    width: 30px !important;\n    height: 30px !important;\n    padding: 12px;\n}\n\n.empyt-list{\n    color: rgba(0, 0, 0, 0.5);\n    font-size: 0.92rem;\n    margin: 20px 0;\n    text-align: center;\n}", ""]);
 
 // exports
 
