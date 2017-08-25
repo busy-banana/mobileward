@@ -22,7 +22,7 @@ export default class Dashboard extends AppContainer{
         this.SN = this.getParams(1);
         this.handleAddMemberChange = this.handleAddMemberChange.bind(this);
         this.handleAddMemberTypeChange = this.handleAddMemberTypeChange.bind(this);
-        this.addEquipment = this.addEquipment.bind(this);
+        this.addMember = this.addMember.bind(this);
 		this.handleClose = this.handleClose.bind(this);
     }
     
@@ -50,7 +50,7 @@ export default class Dashboard extends AppContainer{
 		});
 	}
     
-    addEquipment(){
+    addMember(){
 		let SN = localStorage.getItem('serialNumber');
 		if(this.state.equipmentSN && this.state.equipmentBN && SN){
 			Http.http('post',{
@@ -88,7 +88,7 @@ export default class Dashboard extends AppContainer{
             inputContainer: {
 				width: '90%',
 	    		height: '100%',
-	    		fontSize: '1rem',
+	    		fontSize: '0.9rem',
 	    		left: '22px',
             },
             errorTextStyle: {
@@ -121,7 +121,7 @@ export default class Dashboard extends AppContainer{
         }
 
         let btnDisabled = true;
-		if(this.state.equipmentSN && this.state.equipmentBN){
+		if(this.state.addUsername && this.state.addMemberType && this.state.usernameErrorText == ''){
 			btnDisabled = false;
 		}
 
@@ -130,7 +130,7 @@ export default class Dashboard extends AppContainer{
 				label="添加"
 				style={style.registerBtn}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={(e) => {e.preventDefault();this.addEquipment()}}
+				onTouchTap={(e) => {e.preventDefault();this.addMember()}}
 				disabled={true}
 			/> :
 			<RaisedButton
@@ -138,7 +138,7 @@ export default class Dashboard extends AppContainer{
 				style={style.registerBtn}
 				buttonStyle={style.btnStyle}
 				labelStyle={style.registerLabelStyle}
-				onTouchTap={(e) => {e.preventDefault();this.addEquipment()}}
+				onTouchTap={(e) => {e.preventDefault();this.addMember()}}
 			/>;
 
 		return (

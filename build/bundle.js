@@ -40832,7 +40832,7 @@ var Dashboard = function (_AppContainer) {
 		_this.SN = _this.getParams(1);
 		_this.handleAddMemberChange = _this.handleAddMemberChange.bind(_this);
 		_this.handleAddMemberTypeChange = _this.handleAddMemberTypeChange.bind(_this);
-		_this.addEquipment = _this.addEquipment.bind(_this);
+		_this.addMember = _this.addMember.bind(_this);
 		_this.handleClose = _this.handleClose.bind(_this);
 		return _this;
 	}
@@ -40865,8 +40865,8 @@ var Dashboard = function (_AppContainer) {
 			});
 		}
 	}, {
-		key: 'addEquipment',
-		value: function addEquipment() {
+		key: 'addMember',
+		value: function addMember() {
 			var _this2 = this;
 
 			var SN = localStorage.getItem('serialNumber');
@@ -40907,7 +40907,7 @@ var Dashboard = function (_AppContainer) {
 				inputContainer: {
 					width: '90%',
 					height: '100%',
-					fontSize: '1rem',
+					fontSize: '0.9rem',
 					left: '22px'
 				},
 				errorTextStyle: {
@@ -40940,7 +40940,7 @@ var Dashboard = function (_AppContainer) {
 			};
 
 			var btnDisabled = true;
-			if (this.state.equipmentSN && this.state.equipmentBN) {
+			if (this.state.addUsername && this.state.addMemberType && this.state.usernameErrorText == '') {
 				btnDisabled = false;
 			}
 
@@ -40949,7 +40949,7 @@ var Dashboard = function (_AppContainer) {
 				style: style.registerBtn,
 				labelStyle: style.registerLabelStyle,
 				onTouchTap: function onTouchTap(e) {
-					e.preventDefault();_this3.addEquipment();
+					e.preventDefault();_this3.addMember();
 				},
 				disabled: true
 			}) : _react2.default.createElement(_RaisedButton2.default, {
@@ -40958,7 +40958,7 @@ var Dashboard = function (_AppContainer) {
 				buttonStyle: style.btnStyle,
 				labelStyle: style.registerLabelStyle,
 				onTouchTap: function onTouchTap(e) {
-					e.preventDefault();_this3.addEquipment();
+					e.preventDefault();_this3.addMember();
 				}
 			});
 
