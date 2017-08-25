@@ -30,6 +30,9 @@ export default class Home extends AppContainer{
 
 	handleClose(){
 		this.setState({open: false});
+		if(this.state.message == '用户未登录'){
+			this.go('#/login');
+		}
     }
 
 	changePwd(){
@@ -38,6 +41,18 @@ export default class Home extends AppContainer{
 			this.setState({open: true, message: '用户未登录'});
 		}else{
 			this.go("#/home/changePwd");
+		}
+	}
+
+	componentWillMount(){
+		this.isUserLogin();
+	}
+
+
+	isUserLogin(){
+		const username = localStorage.getItem('username');
+		if(!username){
+			this.setState({open: true, message: '用户未登录'});
 		}
 	}
 

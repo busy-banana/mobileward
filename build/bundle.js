@@ -40829,6 +40829,7 @@ var Dashboard = function (_AppContainer) {
 			addMemberType: '',
 			usernameErrorText: ''
 		};
+		_this.SN = _this.getParams(1);
 		_this.handleAddMemberChange = _this.handleAddMemberChange.bind(_this);
 		_this.handleAddMemberTypeChange = _this.handleAddMemberTypeChange.bind(_this);
 		_this.addEquipment = _this.addEquipment.bind(_this);
@@ -40964,7 +40965,7 @@ var Dashboard = function (_AppContainer) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container' },
-				_react2.default.createElement(_navbar2.default, { title: '\u6DFB\u52A0\u6210\u5458', href: '#/equipmentList' }),
+				_react2.default.createElement(_navbar2.default, { title: '\u6DFB\u52A0\u6210\u5458', href: '#/dashboard/memberInfo?SN=' + this.SN }),
 				_react2.default.createElement(
 					'div',
 					{ style: style.registerContainer },
@@ -42561,6 +42562,9 @@ var Home = function (_AppContainer) {
 		key: 'handleClose',
 		value: function handleClose() {
 			this.setState({ open: false });
+			if (this.state.message == '用户未登录') {
+				this.go('#/login');
+			}
 		}
 	}, {
 		key: 'changePwd',
@@ -42570,6 +42574,19 @@ var Home = function (_AppContainer) {
 				this.setState({ open: true, message: '用户未登录' });
 			} else {
 				this.go("#/home/changePwd");
+			}
+		}
+	}, {
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.isUserLogin();
+		}
+	}, {
+		key: 'isUserLogin',
+		value: function isUserLogin() {
+			var username = localStorage.getItem('username');
+			if (!username) {
+				this.setState({ open: true, message: '用户未登录' });
 			}
 		}
 	}, {
@@ -42818,11 +42835,7 @@ var Login = function (_AppContainer) {
 		}
 
 		// quitApp(){
-		// 	document.addEventListener('backbutton',this.yeyeye,false);
-		// }
 
-		// yeyeye(){
-		// 	console.log('123')
 		// }
 
 		//判断localStorage是否包含用户登录信息，有则跳过登录。

@@ -32,11 +32,7 @@ export default class Login extends AppContainer{
 	}
 	
 	// quitApp(){
-	// 	document.addEventListener('backbutton',this.yeyeye,false);
-	// }
-
-	// yeyeye(){
-	// 	console.log('123')
+		
 	// }
 
 	//判断localStorage是否包含用户登录信息，有则跳过登录。

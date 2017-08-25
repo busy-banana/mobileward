@@ -19,6 +19,7 @@ export default class Dashboard extends AppContainer{
             addMemberType: '',
             usernameErrorText: '',            
         }
+        this.SN = this.getParams(1);
         this.handleAddMemberChange = this.handleAddMemberChange.bind(this);
         this.handleAddMemberTypeChange = this.handleAddMemberTypeChange.bind(this);
         this.addEquipment = this.addEquipment.bind(this);
@@ -142,7 +143,7 @@ export default class Dashboard extends AppContainer{
 
 		return (
 			<div className="container">
-				<NavBar title="添加成员" href="#/equipmentList"/>
+				<NavBar title="添加成员" href={`#/dashboard/memberInfo?SN=${this.SN}`}/>
                 <div style={style.registerContainer}>
 					<TextField
 						className="input-container"
