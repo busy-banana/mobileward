@@ -106,6 +106,7 @@ exports.addEquipment = function (req,res){
 	});
 
 	//00:绑定成功   01:设备已绑定  02:设备序列号不存在  03:设备绑定码不正确   99:系统异常
+	//后期改造成async模式
 	client.HMGET("DeviceBindHash",equipmentSN,equipmentSN+"_BindID",(err,obj) => {
 		if(err){
 			console.log("[GetBindStatus] Error:" + err);
@@ -129,12 +130,26 @@ exports.addEquipment = function (req,res){
 											if(err){
 												return console.log("[AddBindType] Error:" + err);
 											}else if(obj == 'OK'){
-												res.send("00")
+												client.SADD("DevUserSet_"+equipmentSN,SerialNumber,(err,obj) => {
+													if(err){
+														return console.log("[DevUser] Error:" + err);
+													}else{
+														client.HMSET("DevUserHash_"+equipmentSN+"_"+SerialNumber,"Type",0,"BindTime",bindTime,
+														(err,obj) =>{
+															if(err){
+																return console.log("[DevUser] Error:" + err);
+															}else if(obj == 'OK'){
+																res.send("00")
+															}else{
+																res.send("99");
+															}
+														})
+													}
+												})
 											}else{
 												res.send("99")
 											}
-										}
-									)
+									})
 								}else{
 									res.send("99");
 								}
