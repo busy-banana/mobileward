@@ -143,7 +143,7 @@ export default class Dashboard extends AppContainer{
 
 		return (
 			<div className="container">
-				<NavBar title="添加成员" href={`#/dashboard/memberInfo?SN=${this.SN}`}/>
+				<NavBar title="添加成员" href={`#/dashboard/memberList?SN=${this.SN}`}/>
                 <div style={style.registerContainer}>
 					<TextField
 						className="input-container"

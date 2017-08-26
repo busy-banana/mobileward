@@ -12,7 +12,7 @@ import UserInfo from './modules/users/userInfo';
 import ChangePWD from './modules/users/changePwd';
 import About from './modules/manage/about';
 import EquipmentInfo from './modules/manage/equipmentInfo';
-import MemberInfo from './modules/manage/memberInfo';
+import MemberList from './modules/manage/memberList';
 import AddMember from './modules/manage/addMember';
 import EquipmentList from './modules/users/equipmentList';
 import PhysiologicalParams from './modules/patients/physiologicalParams';
@@ -47,7 +47,7 @@ const run = () => {
 					<Route path="/equipmentList" components={EquipmentList}/>
 					<Route path="/dashboard/physiologicalParams" components={PhysiologicalParams}/>
 					<Route path="/dashboard/equipmentInfo" components={EquipmentInfo}/>
-					<Route path="/dashboard/memberInfo" components={MemberInfo}/>
+					<Route path="/dashboard/memberList" components={MemberList}/>
 					<Route path="/dashboard/addMember" components={AddMember}/>
 				</Route>
 			</Router>

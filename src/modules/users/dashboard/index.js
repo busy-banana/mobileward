@@ -43,9 +43,9 @@ export default class Dashboard extends AppContainer{
 					<Divider />
 					<ListItem 
 						className="home-list-item"
-						primaryText="成员信息" 
+						primaryText="成员列表" 
 						leftIcon={<People />} 
-						href={`#/dashboard/memberInfo?SN=${this.SN}`}
+						href={`#/dashboard/memberList?SN=${this.SN}`}
 					/>
 					<Divider />
 

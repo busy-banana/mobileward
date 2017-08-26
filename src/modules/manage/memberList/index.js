@@ -10,7 +10,7 @@ import Add from 'material-ui/svg-icons/content/add';
 import Person from 'material-ui/svg-icons/social/person';
 import './style.css';
 
-export default class EquipmentInfo extends AppContainer{
+export default class memberList extends AppContainer{
     constructor(props){
         super(props);
         this.state = {
@@ -24,7 +24,7 @@ export default class EquipmentInfo extends AppContainer{
     }
 
     componentWillMount(){
-        this.getMemberInfo();
+        this.getMemberList();
     }
 
 	handleClose(){
@@ -40,7 +40,7 @@ export default class EquipmentInfo extends AppContainer{
 		}
 	}
 
-    getMemberInfo(){
+    getMemberList(){
         if(this.SN){
             Http.http('post',{
                     url:'/api/getEquipmentInfo',
@@ -74,7 +74,7 @@ export default class EquipmentInfo extends AppContainer{
 		);
         return(
             <div className="container">
-                <NavBar title="成员信息" href={`#/dashboard?SN=${this.SN}`} rightElement={rightBtn}/>
+                <NavBar title="成员列表" href={`#/dashboard?SN=${this.SN}`} rightElement={rightBtn}/>
 
                 <Person className="person-icon"/>
                 <Dialogs
