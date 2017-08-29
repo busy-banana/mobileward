@@ -10,6 +10,7 @@ var login = require('./public/js/login');
 var register = require('./public/js/register'); 
 var equipmentInfo = require('./public/js/equipmentInfo'); 
 var userInfo = require('./public/js/userInfo'); 
+var memberInfo = require('./public/js/memberInfo'); 
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,6 +31,6 @@ app.post('/api/updateUserInfo',userInfo.updateUserInfo);
 app.post('/api/getEquipmentList',equipmentInfo.getEquipmentList);
 app.post('/api/getEquipmentInfo',equipmentInfo.getEquipmentInfo);
 app.post('/api/addEquipment',equipmentInfo.addEquipment);
-
+app.post('/api/getMemberList',memberInfo.getMemberList);
 app.listen(3000);
 console.log('Server is running..');

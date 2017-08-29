@@ -43,19 +43,23 @@ export default class memberList extends AppContainer{
     getMemberList(){
         if(this.SN){
             Http.http('post',{
-                    url:'/api/getEquipmentInfo',
+                    url:'/api/getMemberList',
                     params:{
-                        serialNumber: this.SN
+                        equipmentSN: this.SN
                     }
                 },
                 (data) => {
-                    if(data.resCode == "00"){
-                        this.setState({
-                            datas: data.datas
-                        })
-                    }else{
-                        this.setState({open: true,message: '系统异常'})
-                    }
+                    // if(data.resCode == "00"){
+                    //     this.setState({
+                    //         datas: data.datas
+                    //     })
+                    // }else if(data.resCode == "98"){
+                    //     this.setState({datas: ''})
+                    // }
+                    // else{
+                    //     this.setState({open: true,message: '系统异常'})
+                    // }
+                    console.log(data);
                 }
             )
         }else{
@@ -64,9 +68,14 @@ export default class memberList extends AppContainer{
     }
 
     render(){
+        let superAdminDOM = '',commonAdminDOM = '',tempUserDOM = '';
+        
         let datas = this.state.datas;
+        const emptyDOM = (
+			<p className="empyt-list">该权限下未添加任何成员</p>
+		);
         const rightBtn = (
-			<IconButton 
+			<IconButton
 				className="add-equipment-btn"
 				onTouchTap={this.addMember}>
 				<Add className="add-equipment" />
@@ -76,7 +85,38 @@ export default class memberList extends AppContainer{
             <div className="container">
                 <NavBar title="成员列表" href={`#/dashboard?SN=${this.SN}`} rightElement={rightBtn}/>
 
-                <Person className="person-icon"/>
+
+				<div className="equipmentList">
+					<div className="terminal-type">
+						<p>超级管理员</p>
+					</div>
+					<Divider />
+					<List>
+						{superAdminDOM}
+					</List>
+					<Divider />
+
+					<div className="terminal-type">
+						<p>普通管理员</p>
+					</div>
+					<Divider />
+					<List>
+						{commonAdminDOM}
+					</List>
+					<Divider />
+
+					<div className="terminal-type">
+						<p>临时用户</p>
+					</div>
+					<Divider />
+					<List>
+						{tempUserDOM}
+					</List>
+					<Divider />
+				</div>
+
+
+
                 <Dialogs
 					message={this.state.message}
 					onTouchTap={this.handleClose}

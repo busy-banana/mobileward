@@ -96601,7 +96601,7 @@ module.exports = function() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -96655,94 +96655,156 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var memberList = function (_AppContainer) {
-    _inherits(memberList, _AppContainer);
+  _inherits(memberList, _AppContainer);
 
-    function memberList(props) {
-        _classCallCheck(this, memberList);
+  function memberList(props) {
+    _classCallCheck(this, memberList);
 
-        var _this = _possibleConstructorReturn(this, (memberList.__proto__ || Object.getPrototypeOf(memberList)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (memberList.__proto__ || Object.getPrototypeOf(memberList)).call(this, props));
 
-        _this.state = {
-            datas: '',
-            open: false,
-            message: ''
-        };
-        _this.SN = _this.getParams(1);
-        _this.handleClose = _this.handleClose.bind(_this);
-        _this.addMember = _this.addMember.bind(_this);
-        return _this;
+    _this.state = {
+      datas: '',
+      open: false,
+      message: ''
+    };
+    _this.SN = _this.getParams(1);
+    _this.handleClose = _this.handleClose.bind(_this);
+    _this.addMember = _this.addMember.bind(_this);
+    return _this;
+  }
+
+  _createClass(memberList, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.getMemberList();
     }
+  }, {
+    key: 'handleClose',
+    value: function handleClose() {
+      this.setState({ open: false });
+    }
+  }, {
+    key: 'addMember',
+    value: function addMember() {
+      var username = localStorage.getItem('username');
+      if (!username) {
+        this.setState({ open: true, message: '用户未登录' });
+      } else {
+        this.go('#/dashboard/addMember?SN=' + this.SN);
+      }
+    }
+  }, {
+    key: 'getMemberList',
+    value: function getMemberList() {
+      if (this.SN) {
+        _actions2.default.http('post', {
+          url: '/api/getMemberList',
+          params: {
+            equipmentSN: this.SN
+          }
+        }, function (data) {
+          // if(data.resCode == "00"){
+          //     this.setState({
+          //         datas: data.datas
+          //     })
+          // }else if(data.resCode == "98"){
+          //     this.setState({datas: ''})
+          // }
+          // else{
+          //     this.setState({open: true,message: '系统异常'})
+          // }
+          console.log(data);
+        });
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var superAdminDOM = '',
+          commonAdminDOM = '',
+          tempUserDOM = '';
 
-    _createClass(memberList, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            this.getMemberList();
-        }
-    }, {
-        key: 'handleClose',
-        value: function handleClose() {
-            this.setState({ open: false });
-        }
-    }, {
-        key: 'addMember',
-        value: function addMember() {
-            var username = localStorage.getItem('username');
-            if (!username) {
-                this.setState({ open: true, message: '用户未登录' });
-            } else {
-                this.go('#/dashboard/addMember?SN=' + this.SN);
-            }
-        }
-    }, {
-        key: 'getMemberList',
-        value: function getMemberList() {
-            var _this2 = this;
+      var datas = this.state.datas;
+      var emptyDOM = _react2.default.createElement(
+        'p',
+        { className: 'empyt-list' },
+        '\u8BE5\u6743\u9650\u4E0B\u672A\u6DFB\u52A0\u4EFB\u4F55\u6210\u5458'
+      );
+      var rightBtn = _react2.default.createElement(
+        _IconButton2.default,
+        {
+          className: 'add-equipment-btn',
+          onTouchTap: this.addMember },
+        _react2.default.createElement(_add2.default, { className: 'add-equipment' })
+      );
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u5217\u8868', href: '#/dashboard?SN=' + this.SN, rightElement: rightBtn }),
+        _react2.default.createElement(
+          'div',
+          { className: 'equipmentList' },
+          _react2.default.createElement(
+            'div',
+            { className: 'terminal-type' },
+            _react2.default.createElement(
+              'p',
+              null,
+              '\u8D85\u7EA7\u7BA1\u7406\u5458'
+            )
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            _List.List,
+            null,
+            superAdminDOM
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            'div',
+            { className: 'terminal-type' },
+            _react2.default.createElement(
+              'p',
+              null,
+              '\u666E\u901A\u7BA1\u7406\u5458'
+            )
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            _List.List,
+            null,
+            commonAdminDOM
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            'div',
+            { className: 'terminal-type' },
+            _react2.default.createElement(
+              'p',
+              null,
+              '\u4E34\u65F6\u7528\u6237'
+            )
+          ),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(
+            _List.List,
+            null,
+            tempUserDOM
+          ),
+          _react2.default.createElement(_Divider2.default, null)
+        ),
+        _react2.default.createElement(_dialog2.default, {
+          message: this.state.message,
+          onTouchTap: this.handleClose,
+          open: this.state.open
+        })
+      );
+    }
+  }]);
 
-            if (this.SN) {
-                _actions2.default.http('post', {
-                    url: '/api/getEquipmentInfo',
-                    params: {
-                        serialNumber: this.SN
-                    }
-                }, function (data) {
-                    if (data.resCode == "00") {
-                        _this2.setState({
-                            datas: data.datas
-                        });
-                    } else {
-                        _this2.setState({ open: true, message: '系统异常' });
-                    }
-                });
-            } else {
-                return null;
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var datas = this.state.datas;
-            var rightBtn = _react2.default.createElement(
-                _IconButton2.default,
-                {
-                    className: 'add-equipment-btn',
-                    onTouchTap: this.addMember },
-                _react2.default.createElement(_add2.default, { className: 'add-equipment' })
-            );
-            return _react2.default.createElement(
-                'div',
-                { className: 'container' },
-                _react2.default.createElement(_navbar2.default, { title: '\u6210\u5458\u5217\u8868', href: '#/dashboard?SN=' + this.SN, rightElement: rightBtn }),
-                _react2.default.createElement(_person2.default, { className: 'person-icon' }),
-                _react2.default.createElement(_dialog2.default, {
-                    message: this.state.message,
-                    onTouchTap: this.handleClose,
-                    open: this.state.open
-                })
-            );
-        }
-    }]);
-
-    return memberList;
+  return memberList;
 }(_appContainer2.default);
 
 exports.default = memberList;
