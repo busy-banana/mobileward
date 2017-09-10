@@ -87,8 +87,10 @@ export default class memberList extends AppContainer{
 
 
 				<div className="equipmentList">
-					<div className="terminal-type">
-						<p>超级管理员</p>
+					<div className="member-type">
+						<p className="member-type-title">超级管理员</p>
+						<span className="sub-title">成员姓名</span>
+						<span className="sub-title">添加时间</span>
 					</div>
 					<Divider />
 					<List>
@@ -96,8 +98,10 @@ export default class memberList extends AppContainer{
 					</List>
 					<Divider />
 
-					<div className="terminal-type">
-						<p>普通管理员</p>
+					<div className="member-type">
+						<p className="member-type-title">普通管理员</p>
+                        <span className="sub-title">成员姓名</span>
+						<span className="sub-title">添加时间</span>
 					</div>
 					<Divider />
 					<List>
@@ -105,8 +109,10 @@ export default class memberList extends AppContainer{
 					</List>
 					<Divider />
 
-					<div className="terminal-type">
-						<p>临时用户</p>
+					<div className="member-type">
+						<p className="member-type-title">临时用户</p>
+                        <span className="sub-title">成员姓名</span>
+						<span className="sub-title">添加时间</span>
 					</div>
 					<Divider />
 					<List>

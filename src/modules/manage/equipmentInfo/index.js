@@ -32,7 +32,7 @@ export default class EquipmentInfo extends AppContainer{
             Http.http('post',{
                     url:'/api/getEquipmentInfo',
                     params:{
-                        serialNumber: this.SN
+                        equipmentSN: this.SN
                     }
                 },
                 (data) => {
@@ -96,14 +96,14 @@ export default class EquipmentInfo extends AppContainer{
                     <span className="equipment-list-right">{this.SN}</span>
                     <Divider/>
 
-                    <ListItem
+                    {/* <ListItem
                         disabled={true}
                         className="equipment-list-left"
                         primaryText="超级管理员序列号"
                         style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.adminUserSN}</span>
-                    <Divider/>
+                    <Divider/> */}
 
                     <ListItem
                         disabled={true}
@@ -126,19 +126,19 @@ export default class EquipmentInfo extends AppContainer{
                     <ListItem
                         disabled={true}
                         className="equipment-list-left"
-                        primaryText="设备加载模块"
-                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
-                    />
-                    <span className="equipment-list-right">{datas.moduleSet}</span>
-                    <Divider/>
-
-                    <ListItem
-                        disabled={true}
-                        className="equipment-list-left"
                         primaryText="设备连接时间"
                         style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
                     />
                     <span className="equipment-list-right">{datas.connectionTime}</span>
+                    <Divider/>
+                    
+                    <ListItem
+                        disabled={true}
+                        className="equipment-list-left"
+                        primaryText="设备加载模块"
+                        style={{fontSize: '1rem',fontWeight: 'normal',lineHeight: '120px'}}
+                    />
+                    <span className="equipment-list-right">{datas.moduleSet}</span>
                     <Divider/>
                 </List>
 

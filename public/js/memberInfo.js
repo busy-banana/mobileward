@@ -10,7 +10,7 @@ exports.getMemberList = function (req,res){
 
     client.SMEMBERS("DevUserSet_"+equipmentSN,(err,obj) => {
         if(err){
-			console.log("[GetMembers] Error:" + err);
+			console.log("[GetMemberList Error]: " + err);
             return;
 		}else if(obj.length > 0){
 /*

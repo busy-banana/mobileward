@@ -24,7 +24,7 @@ exports.getEquipmentList = function (req,res){
 	let resDataJson = {};
 
 	client.on("error", function(err){
-    	console.log("[Redis] Error:" + err);
+    	console.log("[Redis Connect Error]: " + err);
 	});
 
 	//依赖访问redis获取的数据，需要同步执行，否则无法返回有效数据
@@ -36,9 +36,9 @@ exports.getEquipmentList = function (req,res){
 			async.map(obj, (item,callback) => {
 				async.waterfall([
 					(callback) => {
-						client.HMGET("UserDevHash_"+SerialNumber+"_"+item,"Type","BindTime",(err,data1) => {
+						client.HMGET("DevUserHash_"+item+"_"+SerialNumber,"Type","BindTime",(err,data1) => {
 							if(err){
-								return console.log("[GetBindType] Error:" + err);
+								return console.log("[GetBindType Error]: " + err);
 							}else{
 								callback(null,data1);
 							}
@@ -125,25 +125,19 @@ exports.addEquipment = function (req,res){
 								if(err){
 									return console.log("[AddEquipmentSN] Error:" + err);
 								}else if(obj == 1){
-									client.HMSET("UserDevHash_"+SerialNumber+"_"+equipmentSN,"Type",0,"BindTime",bindTime,
-										(err,obj) =>{
+									client.HMSET("DevUserHash_"+equipmentSN+"_"+SerialNumber,"Type",0,"BindTime",bindTime,
+										(err,obj) => {
 											if(err){
 												return console.log("[AddBindType] Error:" + err);
 											}else if(obj == 'OK'){
 												client.SADD("DevUserSet_"+equipmentSN,SerialNumber,(err,obj) => {
 													if(err){
 														return console.log("[DevUser] Error:" + err);
-													}else{
-														client.HMSET("DevUserHash_"+equipmentSN+"_"+SerialNumber,"Type",0,"BindTime",bindTime,
-														(err,obj) =>{
-															if(err){
-																return console.log("[DevUser] Error:" + err);
-															}else if(obj == 'OK'){
-																res.send("00")
-															}else{
-																res.send("99");
-															}
-														})
+													}else if(obj == 1){
+														res.send("00")
+													}
+													else{
+														res.send("99")
 													}
 												})
 											}else{
@@ -167,15 +161,15 @@ exports.addEquipment = function (req,res){
 }
 
 exports.getEquipmentInfo = function(req,res){
-	const SerialNumber = req.body.serialNumber || '';
+	const equipmentSN = req.body.equipmentSN || '';
 
 	client.on("error", function(err){
-    	console.log("[Redis] Error:" + err);
+    	console.log("[Redis Connect Error]: " + err);
 	});
 
-	client.HMGET("DevHash_"+SerialNumber,"Status","PatientSN","EquipmentName","AdminUserSN","UserBrowseStatus","ModuleSet","ConnectionTime",(err,obj) => {
+	client.HMGET("DevHash_"+equipmentSN,"Status","PatientSN","EquipmentName","AdminUserSN","UserBrowseStatus","ModuleSet","ConnectionTime",(err,obj) => {
 		if(err){
-			console.log("[GetEquipmentInfo] Error:" + err);
+			console.log("[GetEquipmentInfo Error]: " + err);
 			return;
 		}else if(obj){
 			res.send({

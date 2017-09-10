@@ -2,3 +2,22 @@
     width: 100px;
     height: 100px;
 }
+.sub-title{
+    font-size: 0.9rem;
+    color: rgba(0,0,0, 0.6);
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.member-type{
+    margin:10px 0px 6px 0;
+}
+
+.member-type-title{
+    font-size: 1rem;
+    margin: 0 auto;
+    color: #4642B6;
+    width: 100%;
+    text-align: center;
+}
